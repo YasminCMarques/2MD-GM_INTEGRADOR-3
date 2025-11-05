@@ -1,4 +1,4 @@
-# BOA SORTE MARINA !
+# BOA SORTE BIA !
 # 2MD-GM - Projeto Integrador
 
 Repositório base para desenvolvimento do projeto integrador do curso de Desenvolvimento de Sistemas da 2MD-GM.

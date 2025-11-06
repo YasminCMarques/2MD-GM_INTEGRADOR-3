@@ -1,0 +1,85 @@
+.rodape {
+    background-color: #000000 !important;
+    color: #ffffff;
+    padding-top: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.rodape-links a {
+    display: block;
+    text-decoration: none;
+    color: #ffffff;
+    margin: 6px 0;
+    font-size: 15px;
+    transition: color 0.2s ease;
+    
+}
+
+.rodape-links a:hover {
+    color: #11469b;
+}
+
+.rodape-bottom {
+    border-top: 1px solid #eeeeee; /* Essa é a grossura que mudamos */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 40px;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 14px;
+    color: #ffffff;
+    
+    /* AJUSTE AQUI: Mude de 100% para um valor menor. 
+      Experimente 80% ou 90% para ver o efeito.
+    */
+    width: 90%; 
+    
+    box-sizing: border-box;
+}
+
+.rodape-bottom-links {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+ 
+.rodape-bottom-links a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.rodape-bottom-links a:hover {
+    color: #11469b;
+}
+
+
+@media (max-width: 900px) {
+    .newsletter {
+        flex-direction: column ;
+        align-items: flex-start;
+    }
+
+    .rodape-conteudo {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .rodape-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .rodape-bottom-links {
+        justify-content: center;
+    }
+
+    .rodape-social {
+        justify-content: center;
+    }
+}  

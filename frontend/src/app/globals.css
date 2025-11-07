@@ -40,3 +40,161 @@ a {
     color-scheme: dark;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+/* Fundo e container principal */
+.login-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Segoe UI", sans-serif;
+  text-align: center;
+}
+
+/* Cabeçalho */
+.login-header .logo {
+  background: white;
+  color: #1e3a8a;
+  font-weight: bold;
+  font-size: 1.8rem;
+  border-radius: 12px;
+  padding: 12px 20px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.login-header h2 {
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+.login-header p {
+  font-size: 0.95rem;
+  opacity: 0.85;
+  margin-bottom: 40px;
+}
+
+/* Container dos cards */
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+/* Card */
+.access-card {
+  background: #fff;
+  color: #333;
+  width: 400px;
+  padding: 30px 25px;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.access-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Ícones */
+.icon-container {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 15px auto;
+  color: white;
+}
+
+.icon-container.blue {
+  background: #3b82f6;
+}
+
+.icon-container.purple {
+  background: #7c3aed;
+}
+
+/* Texto do card */
+.access-card h3 {
+  margin: 10px 0;
+  font-size: 1.2rem;
+}
+
+.access-card p {
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+  color: #555;
+}
+
+.access-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+  color: #555;
+}
+
+.access-card li {
+  font-size: 0.9rem;
+  margin: 6px 0;
+  position: relative;
+  padding-left: 14px;
+}
+
+.access-card li::before {
+  content: "•";
+  color: #3b82f6;
+  position: absolute;
+  left: 0;
+}
+
+/* Botões */
+.btn {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn.blue {
+  background: #3b82f6;
+}
+
+.btn.blue:hover {
+  background: #2563eb;
+}
+
+.btn.purple {
+  background: #7c3aed;
+}
+
+.btn.purple:hover {
+  background: #6d28d9;
+}
+
+/* Rodapé */
+footer {
+  margin-top: 50px;
+  font-size: 0.85rem;
+  opacity: 0.85;
+}

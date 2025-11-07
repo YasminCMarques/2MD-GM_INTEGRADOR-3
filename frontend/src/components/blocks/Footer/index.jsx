@@ -11,11 +11,10 @@ export default function Footer() {
         <Link href="#">Termos de Uso</Link>
         <Link href="#">Política de Privacidade</Link>
         <Link href="#">Política de Cookies</Link>
-        <Link href="#">LGPD</Link>
       </div>
       <div className="rodape-bottom">
 
-        <p>© 2025 SafeCareEPI. Todos os direitos reservados.</p>
+        <p>© 2025 General Motors. Todos os direitos reservados.</p>
 
       </div>
 

@@ -185,7 +185,7 @@ Resultado esperado:
 ```bash
 curl -X POST http://localhost:3000/api/produtos \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer SEU_TOKEN_AQUI" \
+  -H "Authorization: Bearer Desenvolvedor@123" \
   -d '{
     "nome": "Mouse Gamer",
     "descricao": "Mouse gamer com 5 botoes programaveis",

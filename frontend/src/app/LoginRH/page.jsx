@@ -2,15 +2,18 @@
 import React, { useState } from 'react';
 import './loginrh.css';
 
+
 export default function LoginRH() {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Email:', email);
     console.log('Senha:', senha);
   };
+
 
   return (
    
@@ -20,6 +23,7 @@ export default function LoginRH() {
       <div className="login-box">
         <div className="header">
 
+
         <div className="logo">
           <img src="../imagens/Logo.png" width={220} alt="Logo GM" />
         </div>
@@ -27,6 +31,7 @@ export default function LoginRH() {
           <h2>Acesso RH</h2>
           <p>Portal Administrativo GM</p>
         </div>
+
 
         <form onSubmit={handleSubmit}>
           <div className="input-group">
@@ -41,6 +46,7 @@ export default function LoginRH() {
             />
           </div>
 
+
           <div className="input-group">
             <label htmlFor="senha">Senha</label>
             <input
@@ -53,18 +59,23 @@ export default function LoginRH() {
             />
           </div>
 
+
           <div className="remember-me">
             <input type="checkbox" id="lembrar" />
             <label htmlFor="lembrar">Lembrar-me</label>
           </div>
+
 
           <button type="submit" className="btn">
             Entrar no Sistema
           </button>
         </form>
 
-        
+
+       
       </div>
     </div>
   );
 }
+
+

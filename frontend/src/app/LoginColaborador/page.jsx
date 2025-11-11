@@ -1,14 +1,18 @@
 "use client";
 
+
 import React, { useState } from "react";
 import { Lock, Eye, EyeOff, User, Fingerprint, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import "./logincolaborador.css";
 
 
+
+
 export default function LoginColaborador() {
   const [showPassword, setShowPassword] = useState(false);
   const [loginMethod, setLoginMethod] = useState("cpf");
+
 
   return (
     <div className="login-page">
@@ -16,6 +20,7 @@ export default function LoginColaborador() {
         <Link href="/" className="back-link">
           <ArrowLeft size={18} /> Voltar
         </Link>
+
 
         <div className="login-card">
           <div className="login-header">
@@ -25,6 +30,7 @@ export default function LoginColaborador() {
             <h2>Portal do Colaborador</h2>
             <p>Bem-vindo à GM</p>
           </div>
+
 
           <div className="login-method">
             <button
@@ -41,6 +47,7 @@ export default function LoginColaborador() {
             </button>
           </div>
 
+
           <form>
             <div className="input-group">
               <label>{loginMethod === "cpf" ? "CPF" : "Matrícula"}</label>
@@ -56,6 +63,7 @@ export default function LoginColaborador() {
                 />
               </div>
             </div>
+
 
             <div className="input-group">
               <label>Senha</label>
@@ -75,6 +83,7 @@ export default function LoginColaborador() {
               </div>
             </div>
 
+
             <div className="form-options">
               <label>
                 <input type="checkbox" /> Lembrar-me
@@ -82,8 +91,10 @@ export default function LoginColaborador() {
               <a href="#">Esqueci minha senha</a>
             </div>
 
+
             <button className="btn-login">Acessar Meu Portal</button>
           </form>
+
 
           <div className="demo-credentials">
             <strong>Credenciais de demonstração:</strong>
@@ -92,10 +103,12 @@ export default function LoginColaborador() {
             <p>Senha: colaborador123</p>
           </div>
 
+
           <p className="default-password">
             Primeiro acesso? Sua senha padrão é sua data de nascimento (DDMMAAAA)
           </p>
         </div>
+
 
         <div className="portal-benefits">
           <h4>Benefícios do Portal</h4>
@@ -104,6 +117,7 @@ export default function LoginColaborador() {
             <li>Visualize seu histórico de feedbacks e avaliações</li>
             <li>Acompanhe seu ranking e bonificações</li>
           </ul>
+
 
           <p className="contact">
             Problemas para acessar? Contate o RH: <a href="mailto:rh@gm.com">rh@gm.com</a>

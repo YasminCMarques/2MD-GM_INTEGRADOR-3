@@ -1,5 +1,7 @@
 'use client';
 import React, { useState } from 'react';
+import { Lock, Eye, EyeOff, User, Fingerprint, ArrowLeft } from "lucide-react";
+import Link from 'next/link';
 import './loginrh.css';
 
 
@@ -17,8 +19,18 @@ export default function LoginRH() {
 
   return (
    
+
+
+
+
    
-   
+
+
+ <div className="seta">
+    <Link href="/" className="backLink">
+    <ArrowLeft size={40} /> Voltar
+  </Link>
+ 
    <div className="container">
       <div className="login-box">
         <div className="header">
@@ -72,10 +84,13 @@ export default function LoginRH() {
         </form>
 
 
-       
+       </div>
       </div>
-    </div>
+      </div>
+     
+     
   );
 }
+
 
 

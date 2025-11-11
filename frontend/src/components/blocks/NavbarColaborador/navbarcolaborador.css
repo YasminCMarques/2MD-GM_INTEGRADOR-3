@@ -1,0 +1,72 @@
+:root {
+  --purple: #6d28d9;
+  --purple-light: #7c3aed;
+  --bg-light: #f9fafb;
+  --text-dark: #1f2937;
+}
+
+
+body {
+  margin: 0;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  background: var(--bg-light);
+  height: 100vh;
+}
+
+
+.sidebar {
+  background: #fff;
+  width: 230px;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  padding: 20px 10px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: 500;
+  padding: 10px 14px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+
+.menu-item i {
+  font-size: 18px;
+}
+
+
+.menu-item:hover {
+  background: rgba(124, 58, 237, 0.08);
+}
+
+
+.menu-item.active {
+  background: var(--purple);
+  color: #fff;
+}
+
+
+.menu-item.active i {
+  color: #fff;
+}
+
+
+
+

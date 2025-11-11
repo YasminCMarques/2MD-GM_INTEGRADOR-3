@@ -1,0 +1,154 @@
+/* Estilos gerais */
+:root {
+    --blue: #3b82f6;
+    --blue-dark: #2563eb;
+    --purple: #7c3aed;
+    --purple-dark: #6d28d9;
+    --text-dark: #222;
+    --glass-bg: rgba(255, 255, 255, 0.12);
+    --shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+body {
+    font-family: "Inter", "Segoe UI", sans-serif;
+    margin: 0;
+    color: #fff;
+    background: linear-gradient(-45deg, #1e3a8a, #3b82f6, #0f172a, #1e40af);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* === Container central === */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+/* === Caixa de login === */
+.login-box {
+    backdrop-filter: blur(15px);
+    background: var(--glass-bg);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+    width: 480px;  /* Aumentei um pouco a largura para equilibrar */
+    padding: 30px 25px;
+    border-radius: 16px; /* Alterado para borda mais suave */
+    box-shadow: var(--shadow);
+    text-align: center;
+    transition: all 0.4s ease;
+    min-height: 380px; /* A altura mínima foi ajustada para ser mais compacta */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ajuste para distribuir o conteúdo */
+}
+
+.login-box:hover {
+    transform: translateY(-6px);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* === Cabeçalho === */
+.header {
+    margin-bottom: 20px;
+    
+}
+
+.header .icon {
+    width: 60px;  /* Ícone levemente maior */
+    height: 60px;
+    background: url('/icon.png') no-repeat center center;
+    background-size: contain;
+    margin: 0 auto 15px;
+}
+
+.header h2 {
+    font-size: 1.6rem;  /* Ajuste no tamanho do título */
+    color: var(--blue);
+}
+
+.header p {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 14px;
+}
+
+/* === Inputs === */
+.input-group {
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+.input-group label {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    display: block;
+    margin-bottom: 6px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px;  /* Aumentei o padding para dar mais "gordura" */
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    font-size: 1rem;  /* Aumentei um pouco o tamanho da fonte */
+    color: #fff;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+    border-color: var(--blue);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* === Checkbox (Lembrar-me) === */
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 22px;
+}
+
+.remember-me input {
+    accent-color: var(--blue);
+    transform: scale(1.1);
+}
+
+/* === Botão Entrar === */
+.btn {
+    border: none;
+    border-radius: 10px;
+    padding: 14px 22px;  /* Aumentei o padding do botão também */
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    background: linear-gradient(90deg, var(--blue), var(--blue-dark));
+    box-shadow: 0 0 12px rgba(59, 130, 246, 0.3);
+}
+
+.btn:hover {
+    transform: scale(1.03);
+    opacity: 0.95;
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+

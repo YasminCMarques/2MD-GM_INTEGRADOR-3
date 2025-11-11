@@ -21,6 +21,7 @@ export default function LoginSelection() {
           </div>
           <h3>Acesso RH</h3>
           <p>
+         
             Portal administrativo para gestão de colaboradores, avaliações e relatórios.
           </p>
           <ul>
@@ -28,7 +29,7 @@ export default function LoginSelection() {
             <li>Gestão de colaboradores</li>
             <li>Relatórios e análises</li>
           </ul>
-          <Link href="/loginrh">
+          <Link href="/LoginRH">
             <button className="btn blue">Acessar como RH</button>
           </Link>
         </div>
@@ -47,7 +48,7 @@ export default function LoginSelection() {
             <li>Feedback e avaliações</li>
             <li>Meu ranking</li>
           </ul>
-          <Link href="/navbarcolaborador">
+          <Link href="/LoginColaborador">
             <button className="btn purple">Acessar como Colaborador</button>
           </Link>
         </div>

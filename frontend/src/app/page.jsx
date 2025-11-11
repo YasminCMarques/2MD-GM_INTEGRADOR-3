@@ -28,7 +28,7 @@ export default function LoginSelection() {
             <li>Gestão de colaboradores</li>
             <li>Relatórios e análises</li>
           </ul>
-          <Link href="/loginrh">
+          <Link href="/LoginRH">
             <button className="btn blue">Acessar como RH</button>
           </Link>
         </div>
@@ -47,7 +47,7 @@ export default function LoginSelection() {
             <li>Feedback e avaliações</li>
             <li>Meu ranking</li>
           </ul>
-          <Link href="/navbarcolaborador">
+          <Link href="/LoginColaborador">
             <button className="btn purple">Acessar como Colaborador</button>
           </Link>
         </div>

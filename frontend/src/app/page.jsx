@@ -1,12 +1,14 @@
 import React from "react";
-
+import Link from "next/link";
 import { Users, Settings } from "lucide-react";
 
 export default function LoginSelection() {
   return (
     <div className="login-container">
       <div className="login-header">
-        <div className="logo">GM</div>
+        <div className="logo">
+          <img src="../imagens/Logo.png" width={300} alt="" />
+        </div>
         <h2>Sistema de Gestão de Colaboradores</h2>
         <p>General Motors - Selecione seu tipo de acesso</p>
       </div>
@@ -26,7 +28,7 @@ export default function LoginSelection() {
             <li>Gestão de colaboradores</li>
             <li>Relatórios e análises</li>
           </ul>
-          <button className="btn blue">Acessar como RH</button>
+     <Link href={"/loginrh"}>     <button className="btn blue">Acessar como RH</button> </Link>{" "}
         </div>
 
         {/* Card Colaborador */}
@@ -43,7 +45,7 @@ export default function LoginSelection() {
             <li>Feedback e avaliações</li>
             <li>Meu ranking</li>
           </ul>
-          <button className="btn purple">Acessar como Colaborador</button>
+      <Link href={"/navbarcolaborador"}>  <button className="btn purple">Acessar como Colaborador</button>   </Link>{" "}
         </div>
       </div>
 

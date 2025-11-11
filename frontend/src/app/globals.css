@@ -67,7 +67,6 @@ a {
 
 /* Cabeçalho */
 .login-header .logo {
-  background: white;
   color: #1e3a8a;
   font-weight: bold;
   font-size: 1.8rem;
@@ -75,6 +74,7 @@ a {
   padding: 12px 20px;
   display: inline-block;
   margin-bottom: 10px;
+
 }
 
 .login-header h2 {

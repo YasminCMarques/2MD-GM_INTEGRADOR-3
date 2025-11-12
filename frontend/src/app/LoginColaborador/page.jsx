@@ -5,6 +5,8 @@ import { Lock, Eye, EyeOff, User, Fingerprint, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import "./logincolaborador.css"; 
 
+
+
 export default function LoginColaborador() {
   const [showPassword, setShowPassword] = useState(false);
   const [loginMethod, setLoginMethod] = useState("cpf");
@@ -12,7 +14,7 @@ export default function LoginColaborador() {
   return (
     <div className="loginPage">
       <div className="loginContainer">
-        <Link href="/" className="backLink">
+        <Link href="/" className="backLink1">
           <ArrowLeft size={18} /> Voltar
         </Link>
 
@@ -100,8 +102,11 @@ export default function LoginColaborador() {
           <p className="contact">
             Problemas para acessar? Contate o RH: <a href="mailto:rh@gm.com">rh@gm.com</a>
           </p>
+
         </div>
+        
       </div>
     </div>
+    
   );
 }

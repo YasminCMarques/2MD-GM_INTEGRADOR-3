@@ -11,19 +11,14 @@ export default async function Colaborador() {
 
         <>
 
+            <div>
+                <Navbar />
+            </div>
 
-            <Navbar/>
-           
 
-
-   
 
 
             <Footer />
-
-
-
-
         </>
     )
 }

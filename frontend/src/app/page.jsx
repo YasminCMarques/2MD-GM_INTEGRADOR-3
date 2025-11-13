@@ -1,6 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import { Users, Settings } from "lucide-react";
+import "./login.css"
+
 
 export default function LoginSelection() {
   return (

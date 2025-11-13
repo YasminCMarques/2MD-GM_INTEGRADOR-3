@@ -18,13 +18,6 @@ export default function LoginRH() {
 
 
   return (
-   
-
-
-
-
-   
-
 
  <div className="seta">
     <Link href="/" className="backLink">

@@ -19,7 +19,7 @@ body {
     background-size: 400% 400%;
     animation: gradientShift 15s ease infinite;
     overflow-x: hidden;
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -196,6 +196,9 @@ body {
     transition: all 0.3s ease;
     width: fit-content;
     margin-bottom: 20px;
+    margin-top: 3%;
+    margin-left: 37.4%;
+
   }
  
   .backLink:hover {

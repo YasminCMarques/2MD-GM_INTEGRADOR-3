@@ -84,8 +84,8 @@ export default function LoginColaborador() {
             </div>
 
              <Link href="/Colaborador">
-                                <button className="btn purple">Acessar como Colaborador</button>
-                            </Link>
+                  <button className="btn purple">Acessar como Colaborador</button>
+              </Link>
 
           </form>
 

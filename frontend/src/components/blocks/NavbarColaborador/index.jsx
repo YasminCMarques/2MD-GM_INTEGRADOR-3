@@ -25,6 +25,11 @@ export default function Navbar() {
             <i className="lucide-lightbulb" />
             <span>Minhas Sugestões</span>
           </a>
+           <a href="/" className="menu-item">
+            <i className="lucide-lightbulb" />
+            <span>Sair</span>
+          </a>       
+          
         </div>
       </aside>
 

@@ -30,19 +30,19 @@ body {
 .menu {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 18px;
 }
 
 
 .menu-item {
-  display: flex;
+  /* display: flex; */
   align-items: center;
   gap: 10px;
   text-decoration: none;
   color: var(--text-dark);
   font-weight: 500;
   padding: 10px 14px;
-  border-radius: 8px;
+  border-radius: 10px;
   transition: all 0.3s ease;
 }
 
@@ -53,16 +53,56 @@ body {
 
 
 .menu-item:hover {
-  background: rgba(124, 58, 237, 0.08);
+  background: rgba(191, 157, 255, 0.329);
 }
 
 
 .menu-item.active {
   background: var(--purple);
-  color: #fff;
+  color: #000000;
 }
 
 
 .menu-item.active i {
-  color: #fff;
+  color: #000000;
 }
+
+.nav-link.active{
+  color: #000000;
+
+}
+
+
+
+        /* CSS customizado para o fundo escuro (simulando a cor customizada) */
+        .navbar {
+            background-color: #fcfcfc !important; /* Fundo escuro */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .navbar-brand, .navbar-nav .nav-link, .btn-danger {
+            color: #000000 !important;
+        }
+        .navbar-brand {
+            font-weight: bold;
+            margin-right:10%;
+        }
+        .navbar-toggler {
+            border-color: rgba(255, 255, 255, 0.5); /* Borda clara */
+        }
+        /* Ícone do hambúrguer branco para fundo escuro */
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+        }
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+        .dropdown-menu {
+            background-color: #495057; /* Fundo escuro para o dropdown */
+        }
+        .dropdown-menu .dropdown-item {
+            color: #ffffff;
+        }
+        .dropdown-menu .dropdown-item:hover {
+            background-color: #6c757d;
+        }

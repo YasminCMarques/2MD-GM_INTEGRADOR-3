@@ -12,6 +12,7 @@ export default function LoginColaborador() {
   const [loginMethod, setLoginMethod] = useState("cpf");
 
   return (
+    <main>
     <div className="loginPage">
       <div className="loginContainer">
         <Link href="/" className="backLink1">
@@ -108,5 +109,6 @@ export default function LoginColaborador() {
       </div>
     </div>
     
+    </main>
   );
 }

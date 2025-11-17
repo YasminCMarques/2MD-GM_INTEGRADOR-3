@@ -7,14 +7,12 @@
 
 
 
-
 body {
   margin: 0;
   font-family: "Inter", "Segoe UI", sans-serif;
   background: var(--bg-light);
   height: 100vh;
 }
-
 
 
 
@@ -31,15 +29,11 @@ body {
 }
 
 
-
-
 .menu {
   display: flex;
   flex-direction: column;
   gap: 18px;
 }
-
-
 
 
 .menu-item {
@@ -54,12 +48,9 @@ body {
 }
 
 
-
-
 .menu-item i {
   font-size: 18px;
 }
-
 
 
 
@@ -91,9 +82,6 @@ body {
 
 
 
-
-
-
 /* CSS customizado para o fundo escuro (simulando a cor customizada) */
 .navbar {
   background-color: #fcfcfc !important;
@@ -106,17 +94,25 @@ body {
 .navbar-nav .nav-link,
 .btn-danger {
   color: #000000 !important;
+ 
 }
 
 
+.navbar-brand img{
+margin-right:  60px;
+}
 
+.navbar-brand  .subtitulo{
+  font-size: 15px;
+  margin-left: 33%;
+  margin-top: auto;
 
-
+}
 
 .navbar-brand {
   font-weight: bold;
   margin-right: 10%;
-  margin-right: 10%;
+ 
 }
 
 
@@ -127,48 +123,22 @@ body {
 
 
 
-
-
-
-
-
-
-
 /* Estilo do botão Sair */
 .btn-logout {
-  /* Aparência */
   background-color: #dc3545;
-  /* Um vermelho padrão "perigo" */
   color: white;
-  /* Texto branco */
   padding: 10px 15px;
-  /* Espaçamento interno */
   border-radius: 4px;
-  /* Bordas levemente arredondadas */
-
-
-  /* Comportamento do Link */
   text-decoration: none;
-  /* Remove o sublinhado padrão do link */
   font-weight: bold;
   font-family: Arial, sans-serif;
-  /* Garante uma fonte legível */
-
-
-  /* Alinhamento do Ícone + Texto (A Mágica) */
-
-
   align-items: center;
-  /* Alinha verticalmente o ícone e o texto */
   gap: 8px;
-  /* Cria um espaço de 8px entre o ícone e o texto */
 }
 
 
 /* Efeito "hover" opcional: escurece o botão ao passar o mouse */
 .btn-logout:hover {
   background-color: #c82333;
-  /* Um vermelho um pouco mais escuro */
   cursor: pointer;
-  /* Mostra a mãozinha */
 }

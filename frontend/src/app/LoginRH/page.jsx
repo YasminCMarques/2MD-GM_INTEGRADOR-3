@@ -85,7 +85,7 @@ export default function LoginRH() {
           <form onSubmit={handleSubmit} action="javascript:void(0)">
 
             <div className="input-group">
-              <label htmlFor="email">Email Corporativo</label>
+              <label htmlFor="email">E-mail Corporativo</label>
               <input
                 type="email"
                 id="email"

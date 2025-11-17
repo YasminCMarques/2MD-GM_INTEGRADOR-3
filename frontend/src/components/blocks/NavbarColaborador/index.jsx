@@ -14,10 +14,12 @@ export default function Navbar() {
         <div className="container-fluid">
 
 
+
           {/* 1. Brand/Logo */}
           <a className="navbar-brand">
             <img src="./imagens/Logo.png" alt="GM Logo" width={120} height={90} />
             Sistema de Gestão de Colaboradores
+          <h3 className="subtitulo">General Motors - Portal do Colaborador</h3>  
           </a>
 
 

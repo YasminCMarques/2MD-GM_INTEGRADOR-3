@@ -2,9 +2,10 @@ main {
     font-family: "Inter", "Segoe UI", sans-serif;
     margin: 0;
     color: #fff;
-    background: #fff;
+    background: #ffffff;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    margin-top: 20%;
 }
 

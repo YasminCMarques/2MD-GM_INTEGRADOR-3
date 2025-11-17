@@ -49,7 +49,9 @@ export default function LoginRH() {
   };
 
   return (
-    <div className="seta">
+
+    <div className="main">
+    
       <Link href="/" className="backLink">
         <ArrowLeft size={40} /> Voltar
       </Link>
@@ -103,6 +105,8 @@ export default function LoginRH() {
 
         </div>
       </div>
+
+
     </div>
   );
 }

@@ -6,7 +6,9 @@ import "./login.css"
 
 export default function LoginSelection() {
   return (
-    <div className="login-container">
+    <div className="main">
+
+      <div className="login-container">
       <div className="login-header">
         <div className="logo">
           <img src="../imagens/Logo.png" width={220} alt="Logo GM" />
@@ -57,6 +59,8 @@ export default function LoginSelection() {
       </div>
 
       <footer>© 2025 General Motors - Todos os direitos reservados</footer>
+    </div>
+
     </div>
   );
 }

@@ -1,4 +1,5 @@
 
+
 /* Estilos gerais  */
 :root {
     --blue: #3b82f6;
@@ -11,7 +12,9 @@
 }
 
 
-main {
+
+
+.logincolaborador {
     font-family: "Inter", "Segoe UI", sans-serif;
     margin: 0;
     color: #fff;
@@ -25,11 +28,15 @@ main {
 }
 
 
+
+
 @keyframes gradientShift {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
+
+
 
 
 /* === Card mais para baixo === */
@@ -51,6 +58,8 @@ main {
 }
 
 
+
+
 .loginContainer {
   display: flex;
   flex-direction: column;
@@ -62,6 +71,9 @@ main {
 
 
 
+
+
+
 /* === Botões de método (CPF / Matrícula) === */
 .loginMethod {
   display: flex;
@@ -69,6 +81,8 @@ main {
   gap: 10px;
   margin-bottom: 25px;
 }
+
+
 
 
 .methodBtn {
@@ -87,10 +101,14 @@ main {
 }
 
 
+
+
 .methodBtn:hover {
   background: rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
 }
+
+
 
 
 .methodBtn.active {
@@ -98,6 +116,8 @@ main {
   border: 2px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 0 10px rgba(124, 58, 237, 0.4);
 }
+
+
 
 
 /* === Botão principal (Acessar como Colaborador) === */
@@ -116,6 +136,8 @@ main {
 }
 
 
+
+
 .btn.purple:hover {
   transform: translateY(-3px);
   opacity: 0.95;
@@ -123,9 +145,15 @@ main {
 }
 
 
+
+
 .btn.purple:active {
   transform: scale(0.98);
 }
+
+
+
+
 
 
 
@@ -137,6 +165,8 @@ margin-bottom: 20px;
 }
 
 
+
+
 .inputGroup label {
 display: block;
 margin-bottom: 6px;
@@ -144,6 +174,8 @@ font-weight: 500;
 color: #fff;
 font-size: 0.9rem;
 }
+
+
 
 
 .inputIcon {
@@ -158,9 +190,13 @@ transition: all 0.3s ease;
 }
 
 
+
+
 .inputIcon:hover {
 background: rgba(255, 255, 255, 0.15);
 }
+
+
 
 
 .inputIcon:focus-within {
@@ -169,10 +205,14 @@ box-shadow: 0 0 10px rgba(124, 58, 237, 0.4);
 }
 
 
+
+
 .inputIcon svg {
 color: rgba(255, 255, 255, 0.8);
 margin-right: 10px;
 }
+
+
 
 
 .inputIcon input {
@@ -186,9 +226,13 @@ padding: 8px 0;
 }
 
 
+
+
 .inputIcon input::placeholder {
 color: rgba(255, 255, 255, 0.5);
 }
+
+
 
 
 .iconBtn {
@@ -202,10 +246,14 @@ transition: all 0.3s ease;
 }
 
 
+
+
 .iconBtn:hover {
 color: #fff;
 transform: scale(1.1);
 }
+
+
 
 
 /* === Lembrar-me e link de senha === */
@@ -219,6 +267,8 @@ color: #fff;
 }
 
 
+
+
 .formOptions a {
 color: #66aaff;
 text-decoration: none;
@@ -226,9 +276,15 @@ transition: color 0.3s ease;
 }
 
 
+
+
 .formOptions a:hover {
 color: #aaccff;
 }
+
+
+
+
 
 
 
@@ -254,12 +310,16 @@ margin-right: 360px;
 }
 
 
+
+
 .backLink1:hover {
 background: rgba(255, 255, 255, 0.15);
 transform: translateX(-3px);
 box-shadow: 0 0 10px rgba(124, 58, 237, 0.3);
 color: #fff;
 }
+
+
 
 
 .backLink1 svg {
@@ -270,11 +330,8 @@ height: 22px;
 }
 
 
+
+
 .backLink1:hover svg {
 transform: translateX(-2px);
 }
-
-
-
-
-

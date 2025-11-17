@@ -1,9 +1,13 @@
 "use client";
 
+
 import React, { useState } from "react";
 import { Lock, Eye, EyeOff, User, Fingerprint, ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import "./logincolaborador.css"; 
+import "./logincolaborador.css";
+
+
+
 
 
 
@@ -11,13 +15,15 @@ export default function LoginColaborador() {
   const [showPassword, setShowPassword] = useState(false);
   const [loginMethod, setLoginMethod] = useState("cpf");
 
+
   return (
-    <main>
+    <div className="logincolaborador">
     <div className="loginPage">
       <div className="loginContainer">
         <Link href="/" className="backLink1">
           <ArrowLeft size={18} /> Voltar
         </Link>
+
 
         <div className="loginCard">
           <div className="loginHeader">
@@ -27,6 +33,7 @@ export default function LoginColaborador() {
             <h2>Portal do Colaborador</h2>
             <p>Bem-vindo à GM</p>
           </div>
+
 
           <div className="loginMethod">
             <button
@@ -43,6 +50,7 @@ export default function LoginColaborador() {
             </button>
           </div>
 
+
           <form>
             <div className="inputGroup">
               <label>{loginMethod === "cpf" ? "CPF" : "Matrícula"}</label>
@@ -58,6 +66,7 @@ export default function LoginColaborador() {
                 />
               </div>
             </div>
+
 
             <div className="inputGroup">
               <label>Senha</label>
@@ -77,38 +86,48 @@ export default function LoginColaborador() {
               </div>
             </div>
 
+
             <div className="formOptions">
               <label>
                 <input type="checkbox" /> Lembrar-me
               </label>
-              
+             
             </div>
+
 
              <Link href="/Colaborador">
                   <button className="btn purple">Acessar como Colaborador</button>
               </Link>
 
+
           </form>
 
-        
+
+       
+
 
           <p className="defaultPassword">
             Primeiro acesso? Sua senha padrão é sua data de nascimento (DDMMAAAA)
           </p>
         </div>
 
+
         <div className="portalBenefits">
-          
+         
+
 
           <p className="contact">
             Problemas para acessar? Contate o RH: <a href="mailto:rh@gm.com">rh@gm.com</a>
           </p>
 
+
         </div>
-        
+       
       </div>
     </div>
-    
-    </main>
+    </div>
+   
   );
 }
+
+

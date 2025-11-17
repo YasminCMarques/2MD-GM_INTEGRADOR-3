@@ -3,6 +3,7 @@ import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { ArrowLeft } from "lucide-react";
 import Link from 'next/link';
+import Swal from 'sweetalert2';
 import './loginrh.css';
 
 export default function LoginRH() {
@@ -28,17 +29,31 @@ export default function LoginRH() {
       const dados = await resposta.json();
 
       if (!resposta.ok) {
-        alert(dados.mensagem || "Erro ao fazer login");
+        
+        Swal.fire({
+            title: "Falha no Login",
+            text: dados.mensagem || "Erro desconhecido ao tentar fazer login.",
+            icon: "error",
+            confirmButtonText: "Tentar Novamente" ,
+            timer: 2000 
+        });
         setCarregando(false);
         return;
-      }
+    }
 
-      // Salva o token
-      localStorage.setItem("token", dados.dados.token);
+    // Salva o token
+    localStorage.setItem("token", dados.dados.token);
 
-      alert("Login realizado com sucesso.");
-      router.push("/RH");
     
+    await Swal.fire({
+        title: "Sucesso!",
+        text: "Login realizado com êxito!",
+        icon: "success",
+        showConfirmButton: false, 
+        timer: 1500 
+    });
+    
+    router.push("/RH");
 
     } catch (erro) {
       alert("Erro ao conectar ao servidor.");

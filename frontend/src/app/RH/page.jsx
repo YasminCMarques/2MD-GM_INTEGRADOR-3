@@ -1,121 +1,145 @@
 "use client";
 
-import React, { useState } from "react";
-import { Lock, Eye, EyeOff, User, Fingerprint, ArrowLeft } from "lucide-react";
-import Link from "next/link";
-import "./rh.css"; 
+import React from "react";
+import {
+  Users,
+  GraduationCap,
+  ClipboardCheck,
+  BarChart3,
+  TrendingUp,
+  Gift,
+  DollarSign,
+  Circle,
+} from "lucide-react";
+import Navbar from "@/components/blocks/NavbarRH";
+import Footer from "@/components/blocks/Footer";
+import "./rh.css";
+import SidebarNav from "@/components/blocks/SideBar";
 
-
-
-export default function LoginColaborador2() {
-  const [showPassword, setShowPassword] = useState(false);
-  const [loginMethod, setLoginMethod] = useState("cpf");
-
+export default function RH() {
   return (
-    <main>
-
-     <div className="TEste">
-
-        <h2> APAGA ESSA TELA POR FAVOR </h2>
-        </div>  
+    <>
+      <Navbar />
 
 
-    <div className="loginPage">
-      <div className="loginContainer">
-        <Link href="/" className="backLink1">
-          <ArrowLeft size={18} /> Voltar
-        </Link>
+      <div className="rh-layout">
+      <SidebarNav />
 
-        <div className="loginCard">
-          <div className="loginHeader">
-           <div className="logo">
-          <img src="../imagens/Logo.png" width={220} alt="Logo GM" />
-        </div>
-            <h2>Portal do Colaborador</h2>
-            <p>Bem-vindo à GM</p>
+      <div className="rh-dashboard-container">
+
+        <h1 className="rh-title">Dashboard</h1>
+        <p className="rh-subtitle">Visão geral do sistema de gestão de colaboradores</p>
+
+        {/* CARDS SUPERIORES */}
+        <div className="rh-cards-grid">
+
+          <div className="rh-card">
+            <Users className="rh-card-icon blue" />
+            <h3>Total de Colaboradores</h3>
+            <p className="rh-card-value">847</p>
+            <span className="rh-card-status positive">+12 este mês</span>
           </div>
 
-          <div className="loginMethod">
-            <button
-              className={`methodBtn ${loginMethod === "cpf" ? "active" : ""}`}
-              onClick={() => setLoginMethod("cpf")}
-            >
-              <Fingerprint size={16} /> CPF
-            </button>
-            <button
-              className={`methodBtn ${loginMethod === "matricula" ? "active" : ""}`}
-              onClick={() => setLoginMethod("matricula")}
-            >
-              <User size={16} /> Matrícula
-            </button>
+          <div className="rh-card">
+            <GraduationCap className="rh-card-icon purple" />
+            <h3>Aprendizes/Estagiários</h3>
+            <p className="rh-card-value">124</p>
+            <span className="rh-card-status positive">+8 este mês</span>
           </div>
 
-          <form>
-            <div className="inputGroup">
-              <label>{loginMethod === "cpf" ? "CPF" : "Matrícula"}</label>
-              <div className="inputIcon">
-                <Fingerprint size={18} />
-                <input
-                  type="text"
-                  placeholder={
-                    loginMethod === "cpf"
-                      ? "000.000.000-00"
-                      : "Digite sua matrícula"
-                  }
-                />
-              </div>
-            </div>
+          <div className="rh-card">
+            <ClipboardCheck className="rh-card-icon yellow" />
+            <h3>Avaliações Pendentes</h3>
+            <p className="rh-card-value">23</p>
+            <span className="rh-card-status negative">-5 este mês</span>
+          </div>
 
-            <div className="inputGroup">
-              <label>Senha</label>
-              <div className="inputIcon">
-                <Lock size={18} />
-                <input
-                  type={showPassword ? "text" : "password"}
-                  placeholder="••••••••"
-                />
-                <button
-                  type="button"
-                  className="iconBtn"
-                  onClick={() => setShowPassword(!showPassword)}
-                >
-                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-                </button>
-              </div>
-            </div>
+          <div className="rh-card">
+            <BarChart3 className="rh-card-icon green" />
+            <h3>Performance Média</h3>
+            <p className="rh-card-value">8.4</p>
+            <span className="rh-card-status positive">+0.3 este mês</span>
+          </div>
 
-            <div className="formOptions">
-              <label>
-                <input type="checkbox" /> Lembrar-me
-              </label>
-              
-            </div>
+          <div className="rh-card">
+            <Gift className="rh-card-icon purple" />
+            <h3>Bonificações Ativas</h3>
+            <p className="rh-card-value">156</p>
+            <span className="rh-card-status positive">+18 este mês</span>
+          </div>
 
-             <Link href="/Colaborador">
-                  <button className="btn purple">Acessar como Colaborador</button>
-              </Link>
-
-          </form>
-
-        
-
-          <p className="defaultPassword">
-            Primeiro acesso? Sua senha padrão é sua data de nascimento (DDMMAAAA)
-          </p>
-        </div>
-
-        <div className="portalBenefits">
-          
-
-          <p className="contact">
-            Problemas para acessar? Contate o RH: <a href="mailto:rh@gm.com">rh@gm.com</a>
-          </p>
+          <div className="rh-card">
+            <DollarSign className="rh-card-icon blue" />
+            <h3>Investimento em RH</h3>
+            <p className="rh-card-value">R$ 2.4M</p>
+            <span className="rh-card-status positive">+15% este mês</span>
+          </div>
 
         </div>
-        
+
+        {/* SEÇÃO INFERIOR */}
+        <div className="rh-bottom-grid">
+
+          {/* ATIVIDADES RECENTES */}
+          <div className="rh-box">
+            <h3>Atividades Recentes</h3>
+
+            <div className="rh-activity">
+              <Circle className="dot green" /> Ana Silva
+              <span className="activity-info">Novo Colaborador</span>
+              <span className="activity-time">Há 2 horas</span>
+            </div>
+
+            <div className="rh-activity">
+              <Circle className="dot blue" /> Carlos Santos
+              <span className="activity-info">Feedback Enviado</span>
+              <span className="activity-time">Há 3 horas</span>
+            </div>
+
+            <div className="rh-activity">
+              <Circle className="dot yellow" /> Maria Oliveira
+              <span className="activity-info">Bonificação</span>
+              <span className="activity-time">Há 5 horas</span>
+            </div>
+
+            <div className="rh-activity">
+              <Circle className="dot green" /> João Pedro
+              <span className="activity-info">Treinamento Concluído</span>
+              <span className="activity-time">Há 6 horas</span>
+            </div>
+          </div>
+
+          {/* TOP PERFORMERS */}
+          <div className="rh-box">
+            <h3>Top Performers do Mês</h3>
+
+            <div className="rh-performer">
+              <span className="rank gold">1</span> Maria Oliveira - Vendas
+              <span className="score">9.8</span>
+            </div>
+
+            <div className="rh-performer">
+              <span className="rank silver">2</span> Carlos Santos - Engenharia
+              <span className="score">9.5</span>
+            </div>
+
+            <div className="rh-performer">
+              <span className="rank bronze">3</span> Ana Silva - Marketing
+              <span className="score">9.3</span>
+            </div>
+
+            <div className="rh-performer">
+              <span className="rank blue">4</span> Pedro Costa - TI
+              <span className="score">9.1</span>
+            </div>
+          </div>
+
+        </div>
       </div>
-    </div>
-    
-    </main>
+
+      </div>
+
+      <Footer />
+    </>
   );
 }

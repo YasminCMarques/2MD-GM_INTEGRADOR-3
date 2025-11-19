@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import {
   LayoutGrid,
   Users,
@@ -8,55 +10,65 @@ import {
   Trophy,
   Lightbulb
 } from "lucide-react";
-import Link from "next/link";
+
 import "./Sidebar.css";
 
-export default function SidebarNav() {
+export default function SidebarNav({ setConteudo }) {
+
+  const [ativo, setAtivo] = useState("dashboard");
+
+  const handleClick = (id) => {
+    setAtivo(id);
+    setConteudo(id);
+  };
+
   return (
     <aside className="sidebar-container">
       <nav className="sidebar-nav">
         <ul>
-          <li className="active">
-            <Link href="#">
+
+          <li className={ativo === "dashboard" ? "active" : ""}>
+            <button onClick={() => handleClick("dashboard")}>
               <LayoutGrid className="icon" /> Dashboard
-            </Link>
+            </button>
           </li>
 
-          <li>
-            <Link href="#">
+          <li className={ativo === "colaboradores" ? "active" : ""}>
+            <button onClick={() => handleClick("colaboradores")}>
               <Users className="icon" /> Colaboradores
-            </Link>
+            </button>
           </li>
 
-          <li>
-            <Link href="#">
+          <li className={ativo === "novoColaborador" ? "active" : ""}>
+            <button onClick={() => handleClick("novoColaborador")}>
               <UserPlus className="icon" /> Novo Colaborador
-            </Link>
+            </button>
           </li>
 
-          <li>
-            <Link href="#">
+          <li className={ativo === "aprendizes" ? "active" : ""}>
+            <button onClick={() => handleClick("aprendizes")}>
               <GraduationCap className="icon" /> Aprendizes/Estagiários
-            </Link>
+            </button>
           </li>
 
-          <li>
-            <Link href="#">
+          <li className={ativo === "feedback" ? "active" : ""}>
+            <button onClick={() => handleClick("feedback")}>
               <MessageSquare className="icon" /> Feedback
-            </Link>
+            </button>
           </li>
 
-          <li>
-            <Link href="#">
+          <li className={ativo === "ranking" ? "active" : ""}>
+            <button onClick={() => handleClick("ranking")}>
               <Trophy className="icon" /> Ranking & Bonificação
-            </Link>
+            </button>
           </li>
 
-          <li>
-            <Link href="#">
+          <li className={ativo === "sugestoes" ? "active" : ""}>
+            <button onClick={() => handleClick("sugestoes")}>
               <Lightbulb className="icon" /> Sugestões Recebidas
-            </Link>
+            </button>
           </li>
+
         </ul>
       </nav>
     </aside>

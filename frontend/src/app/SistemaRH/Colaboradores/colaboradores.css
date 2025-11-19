@@ -1,0 +1,156 @@
+.colab-container {
+    padding: 20px 40px;
+}
+
+.subtitulo {
+    margin-top: -10px;
+    color: #6b7280;
+}
+
+/* FILTROS */
+.filtros-box {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    background: #fff;
+    padding: 14px 20px;
+    border-radius: 12px;
+    margin: 25px 0;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.filtros-box input {
+    flex: 1;
+    background: #f8f9fc;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 8px;
+}
+
+.select-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.select-wrapper select {
+    appearance: none;
+    padding: 12px 40px 12px 16px;
+    background: #f8f9fc;
+    border: none;
+    border-radius: 8px;
+}
+
+.icone-filtro {
+    position: absolute;
+    right: 10px;
+    pointer-events: none;
+}
+
+/* GRID */
+.grid-colaboradores {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 70px;
+    /* espaçamento entre cards */
+    justify-content: center;
+    /* centraliza os cards */
+    padding-top: 20px;
+}
+
+
+/* CARD */
+.card-colab {
+    width: 420px;
+    /* largura fixa maior 🔥 */
+    height: 380px;
+    /* altura fixa */
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 20px;
+}
+
+
+/* Topo azul */
+.card-topo {
+    background: linear-gradient(90deg, #005cff, #37a9ff);
+    height: 60px;
+    border-radius: 12px 12px 0 0;
+}
+
+/* Círculo com iniciais */
+.inicial-circle {
+    width: 70px;
+    height: 70px;
+    background: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 30px;
+    left: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #005cff;
+    font-size: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Conteúdo */
+.card-info {
+    margin-top: 50px;
+    padding: 0 25px;
+}
+
+.cargo {
+    margin-top: -5px;
+    color: #555;
+}
+
+.departamento {
+    font-size: 14px;
+    color: #999;
+}
+
+.linha {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 6px;
+    color: #444;
+}
+
+.status.ativo {
+    padding: 6px 14px;
+    background: #d9ffe7;
+    color: #0c8f3a;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+.linha-final {
+    margin-top: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.performance {
+    color: #005cff;
+}
+
+@media (max-width: 1024px) {
+    .grid-colaboradores {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Celular */
+@media (max-width: 600px) {
+    .grid-colaboradores {
+        grid-template-columns: 1fr;
+    }
+}

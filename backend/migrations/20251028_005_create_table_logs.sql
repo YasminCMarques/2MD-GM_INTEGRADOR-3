@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS logs (
     dados_resposta JSON,
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE SET NULL
 );
-
+    
 -- Índices para melhorar performance das consultas
 CREATE INDEX idx_logs_usuario_id ON logs(usuario_id);
 CREATE INDEX idx_logs_data_hora ON logs(data_hora);

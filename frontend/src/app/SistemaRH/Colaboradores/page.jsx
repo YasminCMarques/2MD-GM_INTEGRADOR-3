@@ -71,7 +71,6 @@ export default function ColaboradoresContent() {
     }
 
     // PUT - Salvar Edição
-    // PUT - Salvar Edição
     async function salvarAlteracoes() {
         setSalvando(true);
         try {
@@ -95,7 +94,7 @@ export default function ColaboradoresContent() {
 
             // --- AQUI ESTÁ A MUDANÇA SOLICITADA ---
             // Substituímos o alert("Usuário atualizado...") pelo seu código:
-            Swal.fire("Usuário atualizado!"); 
+            Swal.fire("Usuário atualizado!");
 
             // Atualiza a lista localmente
             setColaboradores((prev) =>
@@ -119,18 +118,12 @@ export default function ColaboradoresContent() {
 
     // DELETE - Excluir Usuário com SweetAlert
     async function excluirUsuario() {
-        // Configuração do estilo dos botões (Bootstrap)
-        const swalWithBootstrapButtons = Swal.mixin({
-            customClass: {
-                // Adicione 'ms-3' (margin-start-3) para dar espaço à esquerda do botão verde
-                confirmButton: "btn btn-success ms-3",
-                cancelButton: "btn btn-danger"
-            },
-            buttonsStyling: false
+        // Remove custom CSS e deixa SweetAlert padrão
+        const swalDefault = Swal.mixin({
+            buttonsStyling: true // usa os estilos padrão do SweetAlert2
         });
 
-        // Dispara o primeiro alerta de confirmação
-        swalWithBootstrapButtons.fire({
+        swalDefault.fire({
             title: "Tem certeza?",
             text: `Você não poderá reverter a exclusão de ${formData.nome}!`,
             icon: "warning",
@@ -139,9 +132,9 @@ export default function ColaboradoresContent() {
             cancelButtonText: "Não, cancelar!",
             reverseButtons: true
         }).then(async (result) => {
-            // Se o usuário clicou em "Sim"
+
             if (result.isConfirmed) {
-                setSalvando(true); // Ativa o loading
+                setSalvando(true);
 
                 try {
                     const token = localStorage.getItem("token");
@@ -160,11 +153,10 @@ export default function ColaboradoresContent() {
                         throw new Error(errorData.message || "Erro ao excluir usuário.");
                     }
 
-                    // SUCESSO: Remove visualmente e mostra alerta de sucesso
                     setColaboradores((prev) => prev.filter((c) => c.id !== formData.id));
                     fecharModal();
 
-                    swalWithBootstrapButtons.fire({
+                    swalDefault.fire({
                         title: "Excluído!",
                         text: "O usuário foi removido com sucesso.",
                         icon: "success"
@@ -172,8 +164,8 @@ export default function ColaboradoresContent() {
 
                 } catch (err) {
                     console.error(err);
-                    // ERRO: Mostra alerta de erro
-                    swalWithBootstrapButtons.fire({
+
+                    swalDefault.fire({
                         title: "Erro!",
                         text: err.message,
                         icon: "error"
@@ -182,11 +174,8 @@ export default function ColaboradoresContent() {
                     setSalvando(false);
                 }
 
-            } else if (
-                /* Se o usuário clicou em Cancelar */
-                result.dismiss === Swal.DismissReason.cancel
-            ) {
-                swalWithBootstrapButtons.fire({
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                swalDefault.fire({
                     title: "Cancelado",
                     text: "O usuário está seguro :)",
                     icon: "error"
@@ -194,6 +183,7 @@ export default function ColaboradoresContent() {
             }
         });
     }
+
 
     useEffect(() => {
         carregarColaboradores();

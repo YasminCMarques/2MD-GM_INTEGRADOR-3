@@ -9,6 +9,7 @@ import {
   DollarSign,
   Circle,
 } from "lucide-react";
+import "./dashboard.css";
 
 export default function DashboardContent() {
   return (

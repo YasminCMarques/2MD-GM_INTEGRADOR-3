@@ -1,22 +1,25 @@
+/* =========================================
+   LAYOUT GERAL & ESTRUTURA
+========================================= */
 .rh-layout {
   display: flex;
   align-items: flex-start;
   gap: 30px;
   padding: 30px 40px;
+  /* Garante que o layout não quebre em telas menores antes do breakpoint */
+  min-height: 100vh; 
+  box-sizing: border-box;
 }
 
 .rh-dashboard-container {
   flex: 1;
-  padding: 20px;
-}
-
-
-/* ===== CONTAINER GERAL ===== */
-.rh-dashboard-container {
-  padding: 40px;
+  /* Removida a duplicidade de padding que havia no código original */
+  padding: 20px; 
   max-width: 1500px;
   margin: auto;
+  width: 100%; /* Garante que não estoure a largura */
   font-family: "Inter", sans-serif;
+  box-sizing: border-box;
 }
 
 .rh-title {
@@ -31,11 +34,14 @@
   font-size: 15px;
 }
 
-/* ===== GRID DOS CARDS SUPERIORES ===== */
+/* =========================================
+   GRID DOS CARDS SUPERIORES
+========================================= */
 .rh-cards-grid {
   margin-top: 30px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  /* auto-fit já ajuda na responsividade, mas o minmax ajusta a largura mínima */
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 20px;
 }
 
@@ -70,44 +76,33 @@
   font-weight: 600;
 }
 
-.rh-card-status.positive {
-  color: #16a34a;
-}
+.rh-card-status.positive { color: #16a34a; }
+.rh-card-status.negative { color: #dc2626; }
 
-.rh-card-status.negative {
-  color: #dc2626;
-}
-
-/* ===== ÍCONES DOS CARDS ===== */
+/* Ícones dos Cards */
 .rh-card-icon {
   width: 36px;
   height: 36px;
   padding: 8px;
   border-radius: 10px;
   color: #fff;
+  display: flex; /* Garante centralização do ícone */
+  align-items: center;
+  justify-content: center;
 }
 
-.rh-card-icon.blue {
-  background: #2563eb;
-}
+.rh-card-icon.blue { background: #2563eb; }
+.rh-card-icon.purple { background: #7c3aed; }
+.rh-card-icon.yellow { background: #f59e0b; }
+.rh-card-icon.green { background: #16a34a; }
 
-.rh-card-icon.purple {
-  background: #7c3aed;
-}
-
-.rh-card-icon.yellow {
-  background: #f59e0b;
-}
-
-.rh-card-icon.green {
-  background: #16a34a;
-}
-
-/* ===== GRID INFERIOR ===== */
+/* =========================================
+   GRID INFERIOR (Box Charts/Lists)
+========================================= */
 .rh-bottom-grid {
   margin-top: 35px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr; /* Padrão: 2 colunas */
   gap: 25px;
 }
 
@@ -117,6 +112,8 @@
   padding: 25px;
   border: 1px solid #eee;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  /* Garante que o conteúdo não vase */
+  overflow: hidden; 
 }
 
 .rh-box h3 {
@@ -125,8 +122,9 @@
   margin-bottom: 15px;
 }
 
-
-/* ===== ATIVIDADES RECENTES ===== */
+/* =========================================
+   ATIVIDADES RECENTES
+========================================= */
 .rh-activity {
   display: flex;
   align-items: center;
@@ -136,41 +134,35 @@
   font-size: 15px;
 }
 
-.rh-activity:last-child {
-  border-bottom: none;
-}
+.rh-activity:last-child { border-bottom: none; }
 
-.dot {
-  width: 10px;
-  height: 10px;
-}
+.dot { width: 10px; height: 10px; border-radius: 50%; /* Adicionei radius para garantir que seja bolinha */ }
+.dot.green { background-color: #16a34a; } /* Mudei de color para background-color se for div */
+.dot.blue { background-color: #2563eb; }
+.dot.yellow { background-color: #f59e0b; }
 
-.dot.green {
-  color: #16a34a;
-}
-
-.dot.blue {
-  color: #2563eb;
-}
-
-.dot.yellow {
-  color: #f59e0b;
-}
+/* Caso use Lucide Icons em vez de div para o dot, mantenha 'color' */
+/* .dot-icon { color: ... } */
 
 .activity-info {
   color: #666;
   margin-left: 5px;
   font-size: 14px;
+  flex: 1; /* Ocupa o espaço disponível */
+  white-space: nowrap; /* Evita quebra de linha indesejada */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Três pontinhos se o texto for longo */
 }
 
 .activity-time {
-  margin-left: auto;
   font-size: 13px;
   color: #777;
+  white-space: nowrap;
 }
 
-
-/* ===== TOP PERFORMERS ===== */
+/* =========================================
+   TOP PERFORMERS
+========================================= */
 .rh-performer {
   display: flex;
   align-items: center;
@@ -179,9 +171,7 @@
   font-size: 15px;
 }
 
-.rh-performer:last-child {
-  border-bottom: none;
-}
+.rh-performer:last-child { border-bottom: none; }
 
 .rank {
   width: 28px;
@@ -193,26 +183,60 @@
   margin-right: 12px;
   font-weight: 700;
   color: white;
+  flex-shrink: 0; /* Impede que o círculo amasse */
 }
 
-.rank.gold {
-  background: #fbbf24;
-}
-
-.rank.silver {
-  background: #9ca3af;
-}
-
-.rank.bronze {
-  background: #d97706;
-}
-
-.rank.blue {
-  background: #2563eb;
-}
+.rank.gold { background: #fbbf24; }
+.rank.silver { background: #9ca3af; }
+.rank.bronze { background: #d97706; }
+.rank.blue { background: #2563eb; }
 
 .score {
   margin-left: auto;
   font-weight: 700;
   color: #2563eb;
+}
+
+/* =========================================
+   RESPONSIVIDADE (MEDIA QUERIES)
+========================================= */
+
+/* Telas médias (Tablets / Laptops pequenos - até 1024px) */
+@media (max-width: 1024px) {
+  .rh-layout {
+    padding: 20px;
+    gap: 20px;
+    flex-direction: column; /* Se houver sidebar, ela fica no topo ou some */
+  }
+
+  .rh-bottom-grid {
+    grid-template-columns: 1fr; /* Vira 1 coluna (um box embaixo do outro) */
+  }
+}
+
+/* Telas pequenas (Celulares - até 768px) */
+@media (max-width: 768px) {
+  .rh-layout {
+    padding: 10px;
+  }
+
+  .rh-dashboard-container {
+    padding: 15px; /* Reduz padding interno */
+  }
+
+  .rh-title {
+    font-size: 24px; /* Fonte menor no mobile */
+  }
+
+  .rh-cards-grid {
+    grid-template-columns: 1fr; /* Cards um embaixo do outro no celular */
+  }
+
+  .rh-box {
+    padding: 15px; /* Menos espaçamento interno nos boxes */
+  }
+
+  .activity-info {
+    font-size: 13px; /* Ajuste de fonte */
+  }
 }

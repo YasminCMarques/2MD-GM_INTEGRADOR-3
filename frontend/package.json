@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@next/swc-win32-x64-msvc": "^16.0.3",
     "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.13.1",
     "lucide-react": "^0.553.0",

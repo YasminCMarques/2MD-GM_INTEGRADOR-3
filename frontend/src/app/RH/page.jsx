@@ -13,7 +13,6 @@ import "./rh.css";
 // IMPORTA OS COMPONENTES EXISTENTES
 import DashboardContent from "@/app/SistemaRH/Dashboard/page.jsx";
 import ColaboradoresContent from "@/app/SistemaRH/Colaboradores/page.jsx";
-import FeedbackContent from "@/app/SistemaRH/Feedback/page.jsx";
 
 // IMPORTA OS NOVOS COMPONENTES (Descomente e ajuste os caminhos quando criar os arquivos)
 import NovoColaboradorContent from "@/app/SistemaRH/NovoColaborador/page.jsx";

@@ -47,20 +47,6 @@ export default function SidebarNav({ setConteudo }) {
             </button>
           </li>
 
-          {/* APRENDIZES */}
-          <li className={ativo === "aprendizes" ? "active" : ""}>
-            <button onClick={() => handleClick("aprendizes")}>
-              <GraduationCap className="icon" /> Aprendizes/Estagiários
-            </button>
-          </li>
-
-          {/* FEEDBACK */}
-          <li className={ativo === "feedback" ? "active" : ""}>
-            <button onClick={() => handleClick("feedback")}>
-              <MessageSquare className="icon" /> Feedback
-            </button>
-          </li>
-
           {/* RANKING */}
           <li className={ativo === "ranking" ? "active" : ""}>
             <button onClick={() => handleClick("ranking")}>

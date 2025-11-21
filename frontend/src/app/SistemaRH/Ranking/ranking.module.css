@@ -1,0 +1,332 @@
+/* Ranking.module.css */
+
+/* ---------------------- */
+/* Variáveis de Tema      */
+/* ---------------------- */
+:root {
+  --bg-light: #f8f9fa;
+  --text-dark: #0f172a;
+  --text-muted: #64748b;
+  --text-light: #94a3b8;
+
+  --white: #ffffff;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.07);
+
+  --gold-start: #fbbf24;
+  --gold-end: #d97706;
+
+  --silver-start: #c7ccd4;
+  --silver-end: #64748b;
+
+  --bronze-start: #fb923c;
+  --bronze-end: #ea580c;
+}
+
+/* ---------------------- */
+/* Container Geral        */
+/* ---------------------- */
+.container {
+  padding: 2.5rem;
+  font-family: 'Inter', sans-serif;
+  color: #333;
+  min-height: 100vh;
+  width: 100%;
+  animation: fadeIn 0.4s ease;
+  
+}
+
+/* ---------------------- */
+/* Header                 */
+/* ---------------------- */
+.header {
+  margin-bottom: 2rem;
+}
+
+.header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.header p {
+  margin: 0.5rem 0 0;
+  color: var(--text-muted);
+}
+
+/* ---------------------- */
+/* Estatísticas           */
+/* ---------------------- */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.statCard {
+  background: var(--white);
+  padding: 1.75rem;
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform .2s ease;
+}
+
+.statCard:hover {
+  transform: translateY(-4px);
+}
+
+.statInfo h3 {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.statValue {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-top: 0.4rem;
+}
+
+.iconBox {
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  background: #f1f5f9;
+}
+
+/* ---------------------- */
+/* Layout Principal       */
+/* ---------------------- */
+.mainContent {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2.5rem;
+}
+
+/* ---------------------- */
+/* Pódio                  */
+/* ---------------------- */
+.podiumContainer {
+  background: var(--white);
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+}
+
+.podiumTitle {
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+.podiumStage {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 1.25rem;
+  height: 420px;
+  padding-bottom: 1rem;
+}
+
+.podiumColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 180px;
+  position: relative;
+  text-align: center;
+  transition: transform .2s ease;
+}
+
+.podiumColumn:hover {
+  transform: translateY(-6px);
+}
+
+/* Ranking */
+.rank1 { z-index: 3; margin-bottom: 22px; }
+.rank2 { z-index: 2; }
+.rank3 { z-index: 1; }
+
+.avatar {
+  width: 68px;
+  height: 68px;
+  background: #e2e8f0;
+  color: var(--text-muted);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  border: 4px solid var(--white);
+  box-shadow: var(--shadow-sm);
+}
+
+.rank1 .avatar {
+  background: var(--gold-start);
+  color: var(--white);
+  width: 84px;
+  height: 84px;
+  font-size: 1.45rem;
+}
+
+.userName {
+  font-weight: 600;
+  margin-bottom: 0.15rem;
+  color: #1e293b;
+  font-size: 0.95rem;
+}
+
+.userDept {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  margin-bottom: 1rem;
+}
+
+/* Cartões do Pódio */
+.podiumCard {
+  width: 100%;
+  padding: 1.75rem;
+  border-radius: 14px;
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: var(--shadow-md);
+}
+
+/* Gradientes */
+.rank1 .podiumCard {
+  height: 230px;
+  background: linear-gradient(135deg, var(--gold-start), var(--gold-end));
+}
+
+.rank2 .podiumCard {
+  height: 190px;
+  background: linear-gradient(135deg, var(--silver-start), var(--silver-end));
+}
+
+.rank3 .podiumCard {
+  height: 165px;
+  background: linear-gradient(135deg, var(--bronze-start), var(--bronze-end));
+}
+
+.trophyIcon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.scoreBox {
+  background: rgba(255,255,255,0.28);
+  padding: 0.6rem 1.4rem;
+  border-radius: 10px;
+  font-weight: 600;
+  backdrop-filter: blur(6px);
+}
+
+.scoreValue {
+  font-size: 1.3rem;
+}
+
+.scoreLabel {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+/* ---------------------- */
+/* Conquistas             */
+/* ---------------------- */
+.achievementsList {
+  background: var(--white);
+  padding: 2.2rem;
+  border-radius: 18px;
+  box-shadow: var(--shadow-md);
+}
+
+.achievementsList h3 {
+  margin-top: 0;
+  margin-bottom: 1.6rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.achievementItem {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  margin-bottom: 1.1rem;
+  background: #f8fafc;
+  border-radius: 14px;
+  transition: transform .2s ease, background .2s ease;
+}
+
+.achievementItem:hover {
+  transform: translateX(6px);
+  background: #eef2f6;
+}
+
+.achievementIcon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  box-shadow: var(--shadow-sm);
+  font-size: 1.4rem;
+}
+
+.achievementText h4 {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #334155;
+  font-weight: 600;
+}
+
+.achievementText p {
+  margin: 0.3rem 0 0;
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
+
+/* ---------------------- */
+/* Responsivo             */
+/* ---------------------- */
+@media (max-width: 768px) {
+  .mainContent {
+    grid-template-columns: 1fr;
+  }
+
+  .podiumStage {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .podiumColumn {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .rank1 {
+    order: -1;
+  }
+}

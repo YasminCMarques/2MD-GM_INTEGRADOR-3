@@ -11,6 +11,9 @@ import authRotas from './routes/authRotas.js';
 import criptografiaRotas from './routes/criptografiaRotas.js';
 import usuarioRotas from './routes/usuarioRotas.js';
 
+import rankingRoutes from './routes/rankingRoutes.js';
+import sugestoesRoutes from './routes/sugestoesRoutes.js';
+
 // Importar middlewares
 import { logMiddleware } from './middlewares/logMiddleware.js';
 import { errorMiddleware } from './middlewares/errorMiddleware.js';
@@ -28,13 +31,13 @@ const PORT = process.env.PORT || 3000;
 // Middlewares globais
 app.use(helmet()); // Segurança HTTP headers
 
-// Configurar CORS para permitir que rotas OPTIONS específicas sejam processadas
+// Configurar CORS
 app.use(cors({
-    origin: '*', //endereço do localhost
+    origin: '*', // Em produção, troque pelo domínio do seu front
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
-    preflightContinue: false, // Deixa as rotas OPTIONS específicas serem processadas
-    optionsSuccessStatus: 200 // Retorna 200 para OPTIONS em vez de 204
+    preflightContinue: false,
+    optionsSuccessStatus: 200
 }));
 
 app.use(express.json());
@@ -43,7 +46,7 @@ app.use(express.urlencoded({ extended: true }));
 // Servir arquivos estáticos (imagens)
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// Middleware para log de requisições (salva no banco de dados)
+// Middleware para log de requisições
 app.use(logMiddleware);
 
 // Rotas da API
@@ -51,6 +54,10 @@ app.use('/api/auth', authRotas);
 app.use('/api/produtos', produtoRotas);
 app.use('/api/criptografia', criptografiaRotas);
 app.use('/api/usuarios', usuarioRotas);
+
+// AQUI ESTAVA O ERRO (require removido). Agora usamos a variável importada lá em cima:
+app.use('/api/ranking', rankingRoutes);
+app.use('/api/sugestoes', sugestoesRoutes);
 
 // Rota raiz
 app.get('/', (req, res) => {
@@ -61,19 +68,8 @@ app.get('/', (req, res) => {
         rotas: {
             autenticacao: '/api/auth',
             produtos: '/api/produtos',
-            criptografia: '/api/criptografia'
-        },
-        documentacao: {
-            login: 'POST /api/auth/login',
-            registrar: 'POST /api/auth/registrar',
-            perfil: 'GET /api/auth/perfil',
-            listarProdutos: 'GET /api/produtos',
-            buscarProduto: 'GET /api/produtos/:id',
-            criarProduto: 'POST /api/produtos',
-            atualizarProduto: 'PUT /api/produtos/:id',
-            excluirProduto: 'DELETE /api/produtos/:id',
-            infoCriptografia: 'GET /api/criptografia/info',
-            cadastrarUsuario: 'POST /api/criptografia/cadastrar-usuario'
+            criptografia: '/api/criptografia',
+            ranking: '/api/ranking' // Adicionei na documentação da raiz também
         }
     });
 });
@@ -87,7 +83,7 @@ app.use('*', (req, res) => {
     });
 });
 
-// Middleware global de tratamento de erros (deve ser o último)
+// Middleware global de tratamento de erros
 app.use(errorMiddleware);
 
 // Iniciar servidor
@@ -99,4 +95,3 @@ app.listen(PORT, () => {
 });
 
 export default app;
-

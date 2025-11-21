@@ -1,8 +1,8 @@
 .container {
   padding: 2rem;
-  background-color: #f8f9fa;
   min-height: 100vh;
   font-family: 'Inter', sans-serif;
+  animation: fadeIn 0.4s ease;
 }
 
 .header {
@@ -228,3 +228,14 @@
 .btnApprove:hover { background: #15803d; }
 .btnReject:hover { background: #fca5a5; }
 .btnCancel:hover { background: #e2e8f0; }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -5,10 +5,16 @@
   border-radius: 14px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   height: fit-content;
+  
+  /* Sticky para desktop */
   position: sticky;
   top: 40px;
   align-self: flex-start;
   flex-shrink: 0;
+  
+  /* Garante que o padding não aumente a largura total */
+  box-sizing: border-box; 
+  z-index: 10; /* Garante que fique acima de outros elementos se necessário */
 }
 
 .sidebar-nav ul {
@@ -20,38 +26,84 @@
   gap: 18px;
 }
 
-/* ====== ANTES: estilo do link <a> =======
- Agora aplicamos o MESMO estilo para button
-================================================ */
+/* ================================================
+   ESTILO DO BOTÃO (Corrigido)
+   ================================================ */
 .sidebar-nav li button {
-  all: unset; /* remove estilo padrão do button */
+  all: unset; /* Remove estilos nativos */
+  
+  /* CORREÇÃO IMPORTANTE: Traz de volta o comportamento de caixa padrão */
+  box-sizing: border-box; 
+  
   display: flex;
   align-items: center;
   gap: 12px;
   padding: 12px;
-  width: 100%;
+  width: 100%; /* Agora respeita o padding por causa do box-sizing */
   font-size: 15px;
   font-weight: 500;
   color: #1f2937;
   border-radius: 10px;
   cursor: pointer;
-  transition: 0.2s ease;
+  transition: all 0.2s ease;
+  position: relative; /* Para efeitos visuais se precisar */
 }
 
-/* HOVER igual ao que você tinha no <a> */
+/* HOVER */
 .sidebar-nav li button:hover {
   background: #f3f4f6;
+  transform: translateX(4px); /* Pequeno efeito visual de movimento */
 }
 
-/* ACTIVE exatamente igual ao seu .active a */
+/* ACTIVE */
 .sidebar-nav li.active button {
   background: #2563eb;
   color: #ffffff;
   box-shadow: 0 3px 10px rgba(37, 99, 235, 0.3);
 }
 
-/* Ícones permanecem iguais */
+/* Ícones */
 .icon {
   width: 20px;
   height: 20px;
+  flex-shrink: 0; /* Impede que o ícone amasse */
+}
+
+/* ================================================
+   RESPONSIVIDADE (MEDIA QUERIES)
+   ================================================ */
+
+/* Quando a tela for menor que 1024px (Tablets e Celulares) */
+@media (max-width: 1024px) {
+  .sidebar-container {
+    width: 100%; /* Ocupa toda a largura */
+    position: relative; /* Deixa de ser sticky lateral */
+    top: 0;
+    margin-bottom: 20px; /* Empurra o conteúdo para baixo */
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Opcional: Se quiser que o menu fique horizontal no mobile, descomente abaixo: */
+  /*
+  .sidebar-nav ul {
+    flex-direction: row;
+    overflow-x: auto; 
+    padding-bottom: 5px;
+  }
+  
+  .sidebar-nav li button {
+    white-space: nowrap; 
+    width: auto;
+  }
+  */
+}
+
+
+.main-layout {
+  display: flex;
+  flex-wrap: wrap; /* Permite que a sidebar e o conteúdo quebrem linha no mobile */
+  gap: 20px;
+  align-items: flex-start;
 }

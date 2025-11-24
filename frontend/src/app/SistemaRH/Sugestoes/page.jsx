@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 import styles from './sugestoes.module.css';
 
 export default function SugestoesRecebidasPage() {
@@ -41,8 +42,18 @@ export default function SugestoesRecebidasPage() {
     if (!itemSelecionado) return;
 
     // Validação simples: se aprovar, precisa de nota
+    // if (status === 'aprovada' && !pontos) {
+    //   alert("Por favor, atribua uma pontuação para aprovar.");
+    //   return;
+    // }
+
     if (status === 'aprovada' && !pontos) {
-      alert("Por favor, atribua uma pontuação para aprovar.");
+      Swal.fire({
+        title: 'Pontuação Necessária',
+        text: 'Por favor, atribua uma pontuação para aprovar esta sugestão.',
+        icon: 'warning', // Ícone de aviso
+        confirmButtonText: 'Entendi'
+      });
       return;
     }
 

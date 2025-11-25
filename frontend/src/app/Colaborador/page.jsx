@@ -71,33 +71,19 @@ export default function Colaborador() {
           </div>
         </div>
         <div className="header-right">
-          <div className="user-profile">
-            <span className="user-name">Beatriz</span>
-            <span className="user-id">ID: 12346</span>
-          </div>
-          <button className="logout-btn">Sair</button>
+
+          <a className="botao-sair" href="/"><button className="logout-btn" >Sair</button> </a>
         </div>
       </header>
 
 
       <div className="layout-container">
-        <aside className="sidebar">
-          <nav className="menu-list">
-            <a href="#" className="menu-item active">
-              Dashboard
-            </a>
-            <a href="#" className="menu-item">Meu Painel</a>
-            <a href="#" className="menu-item">Meus Feedbacks</a>
-            <a href="#" className="menu-item">Minhas Sugestões</a>
-          </nav>
-        </aside>
-
 
         <main className="main-content">
-            {/* 🔥 Vídeo de Fundo */}
-<video className="bg-video" autoPlay loop muted playsInline>
-  <source src="/videos/fundo.mp4" type="video/mp4" />
-</video>
+          {/* 🔥 Vídeo de Fundo */}
+          <video className="bg-video" autoPlay loop muted playsInline>
+            <source src="/videos/fundo.mp4" type="video/mp4" />
+          </video>
 
 
 
@@ -172,83 +158,83 @@ export default function Colaborador() {
                 ))}
               </div>
             </div>
-           
+
           </div>
 
 
         </main>
-       
+
       </div>
       <div className="metrics-box">
-  <h2 className="metrics-title">General Motors em Números</h2>
-  <div className="metrics-container">
-    {/* Item 1 */}
-    <div className="metric-item">
-      <div className="metric-icon bg-blue-light">📈</div>
-      <h3>117+</h3>
-      <p>Anos de História</p>
-    </div>
-    {/* Item 2 */}
-    <div className="metric-item">
-      <div className="metric-icon bg-purple-light">👥</div>
-      <h3>167k+</h3>
-      <p>Colaboradores</p>
-    </div>
-    {/* Item 3 */}
-    <div className="metric-item">
-      <div className="metric-icon bg-blue-light">🎖️</div>
-      <h3>4</h3>
-      <p>Marcas Globais</p>
-    </div>
-    {/* Item 4 */}
-    <div className="metric-item">
-      <div className="metric-icon bg-green-light">🎯</div>
-      <h3>100+</h3>
-      <p>Países</p>
-    </div>
-  </div>
-</div>
+        <h2 className="metrics-title">General Motors em Números</h2>
+        <div className="metrics-container">
+          {/* Item 1 */}
+          <div className="metric-item">
+            <div className="metric-icon bg-blue-light">📈</div>
+            <h3>117+</h3>
+            <p>Anos de História</p>
+          </div>
+          {/* Item 2 */}
+          <div className="metric-item">
+            <div className="metric-icon bg-purple-light">👥</div>
+            <h3>167k+</h3>
+            <p>Colaboradores</p>
+          </div>
+          {/* Item 3 */}
+          <div className="metric-item">
+            <div className="metric-icon bg-blue-light">🎖️</div>
+            <h3>4</h3>
+            <p>Marcas Globais</p>
+          </div>
+          {/* Item 4 */}
+          <div className="metric-item">
+            <div className="metric-icon bg-green-light">🎯</div>
+            <h3>100+</h3>
+            <p>Países</p>
+          </div>
+        </div>
+      </div>
 
 
       <div className="cards-container">
-  {/* Card 1 */}
-  <div className="info-card">
-    <img
-      className="info-img"
-      src="https://images.pexels.com/photos/373912/pexels-photo-373912.jpeg"
-      alt="Missão GM"
-    />
-    <div className="info-content">
-      <h3>
-        <span className="icon">🎯</span> Nossa Missão
-      </h3>
-      <p>
-        Criar um mundo com Zero Acidentes, Zero Emissões e Zero
-        Congestionamentos. Na General Motors, trabalhamos diariamente para
-        transformar a mobilidade global através da inovação, sustentabilidade e
-        excelência operacional.
-      </p>
-    </div>
-  </div>
-  {/* Card 2 */}
-  <div className="info-card">
-    <img
-      className="info-img"
-      src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg"
-      alt="Equipe GM"
-    />
-    <div className="info-content">
-      <h3>
-        <span className="icon">👥</span> Nossa Equipe
-      </h3>
-      <p>
-        Com mais de 167 mil colaboradores ao redor do mundo, a GM é formada por
-        pessoas talentosas e dedicadas. Valorizamos a diversidade, a inovação e
-        o desenvolvimento contínuo de todos os nossos profissionais.
-      </p>
-    </div>
-  </div>
-</div>
+        {/* Card 1 */}
+        <div className="info-card">
+          <img
+            className="info-img"
+            src="https://images.pexels.com/photos/373912/pexels-photo-373912.jpeg"
+            alt="Missão GM"
+          />
+          <div className="info-content">
+            <h3>
+              <span className="icon">🎯</span> Nossa Missão
+            </h3>
+            <p>
+              Criar um mundo com Zero Acidentes, Zero Emissões e Zero
+              Congestionamentos. Na General Motors, trabalhamos diariamente para
+              transformar a mobilidade global através da inovação, sustentabilidade e
+              excelência operacional.
+            </p>
+          </div>
+        </div>
+        {/* Card 2 */}
+        <div className="info-card">
+          <img
+            className="info-img"
+            src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg"
+            alt="Equipe GM"
+          />
+          <div className="info-content">
+            <h3>
+              <span className="icon">👥</span> Nossa Equipe
+            </h3>
+            <p>
+              Com mais de 167 mil colaboradores ao redor do mundo, a GM é formada por
+              pessoas talentosas e dedicadas. Valorizamos a diversidade, a inovação e
+              o desenvolvimento contínuo de todos os nossos profissionais.
+            </p>
+          </div>
+        </div>
+      </div>
 
 
       <Footer />

@@ -131,35 +131,7 @@ export default function Colaborador() {
         </main>
 
       </div>
-      <div className="metrics-box">
-        <h2 className="metrics-title">General Motors em Números</h2>
-        <div className="metrics-container">
-          {/* Item 1 */}
-          <div className="metric-item">
-            <div className="metric-icon bg-blue-light">📈</div>
-            <h3>100+</h3>
-            <p>Anos de História</p>
-          </div>
-          {/* Item 2 */}
-          <div className="metric-item">
-            <div className="metric-icon bg-purple-light">👥</div>
-            <h3>167k+</h3>
-            <p>Colaboradores</p>
-          </div>
-          {/* Item 3 */}
-          <div className="metric-item">
-            <div className="metric-icon bg-blue-light">🎖️</div>
-            <h3>4</h3>
-            <p>Marcas Globais</p>
-          </div>
-          {/* Item 4 */}
-          <div className="metric-item">
-            <div className="metric-icon bg-green-light">🎯</div>
-            <h3>100+</h3>
-            <p>Países</p>
-          </div>
-        </div>
-      </div>
+
 
 
       <div className="cards-container">
@@ -172,7 +144,7 @@ export default function Colaborador() {
           />
           <div className="info-content">
             <h3>
-              <span className="icon">🎯</span> Nossa Missão
+              <img src="./imagens/alvo.png" width={35} height={35} alt="" /><b>Nossa Missão</b>
             </h3>
             <p>
               Criar um mundo com Zero Acidentes, Zero Emissões e Zero
@@ -186,12 +158,12 @@ export default function Colaborador() {
         <div className="info-card">
           <img
             className="info-img"
-            src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg"
+            src="https://plus.unsplash.com/premium_photo-1661758211006-d41106e4be4d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGVtcHJlc2F8ZW58MHx8MHx8fDA%3D"
             alt="Equipe GM"
           />
           <div className="info-content">
             <h3>
-              <span className="icon">👥</span> Nossa Equipe
+              <img src="./imagens/equipe.png" width={35} height={35} alt="" /> <b>Nossa Equipe</b>
             </h3>
             <p>
               Com mais de 167 mil colaboradores ao redor do mundo, a GM é formada por
@@ -203,15 +175,15 @@ export default function Colaborador() {
         <div className="info-card">
           <img
             className="info-img"
-            src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg"
+            src="https://images.unsplash.com/photo-1501621667575-af81f1f0bacc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8dmlzaW9ufGVufDB8fDB8fHww"
             alt="Equipe GM"
           />
           <div className="info-content">
             <h3>
-              <span className="icon">👥</span> Nossa Visão
+              <img src="./imagens/visao.png" width={35} height={35} alt="" /> <b>Nossa Visão</b>
             </h3>
 
-            <img src="" alt="" />
+
             <p>
               Na General Motors, nossa visão vai muito além da fabricação de veículos; nosso propósito é transformar
               a maneira como o mundo se move. Estamos comprometidos em liderar um futuro definido pelo nosso "Triplo Zero"</p>
@@ -219,6 +191,66 @@ export default function Colaborador() {
         </div>
       </div>
 
+
+
+      <h3 className="titulo"> <b>Triplo Zero</b></h3>
+      <div className="cards-container">
+
+
+
+        <div className="info-card">
+          <img
+            className="info-img"
+            src="https://images.unsplash.com/photo-1501621667575-af81f1f0bacc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8dmlzaW9ufGVufDB8fDB8fHww"
+            alt="Equipe GM"
+          />
+          <div className="info-content">
+            <h3>
+              <img src="./imagens/visao.png" width={35} height={35} alt="" /> <b>Zero Acidentes</b>
+            </h3>
+
+
+            <p>
+              Na General Motors, nossa visão vai muito além da fabricação de veículos; nosso propósito é transformar
+              a maneira como o mundo se move. Estamos comprometidos em liderar um futuro definido pelo nosso "Triplo Zero"</p>
+          </div>
+        </div>
+        <div className="info-card">
+          <img
+            className="info-img"
+            src="https://media.istockphoto.com/id/1340519926/photo/concept-depicting-new-possibilities-for-the-development-of-electric-and-hybrid-cars-and-the.webp?a=1&b=1&s=612x612&w=0&k=20&c=_L_cPqS6GTH6YhYe2r7jBF2nhixWgBdS1W__cJ8ED8A="
+            alt="Equipe GM"
+          />
+          <div className="info-content">
+            <h3>
+              <img src="./imagens/visao.png" width={35} height={35} alt="" /> <b>Zero Emissões</b>
+            </h3>
+
+
+            <p>
+              Na General Motors, nossa visão vai muito além da fabricação de veículos; nosso propósito é transformar
+              a maneira como o mundo se move. Estamos comprometidos em liderar um futuro definido pelo nosso "Triplo Zero"</p>
+          </div>
+        </div>
+        <div className="info-card">
+          <img
+            className="info-img"
+            src="https://plus.unsplash.com/premium_photo-1663951812821-08c681ada29b?q=80&w=1075&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Equipe GM"
+          />
+          <div className="info-content">
+            <h3>
+              <img src="./imagens/visao.png" width={35} height={35} alt="" /> <b>Zero Congestionamentos</b>
+            </h3>
+
+
+            <p>
+              Na General Motors, nossa visão vai muito além da fabricação de veículos; nosso propósito é transformar
+              a maneira como o mundo se move. Estamos comprometidos em liderar um futuro definido pelo nosso "Triplo Zero"</p>
+          </div>
+        </div>
+
+      </div>
 
       <Footer />
     </>

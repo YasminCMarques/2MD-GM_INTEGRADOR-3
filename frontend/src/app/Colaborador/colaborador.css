@@ -284,8 +284,8 @@ min-height: calc(100vh - 80px); /* remove altura da navbar superior */
 
 
       /* Card Bem-Vindo (Ajustado para layout fluído) */
-      .welcome-card {
-          width: 100%; /* Ocupa 100% da área main-content */
+      /* .welcome-card {
+          width: 100%; Ocupa 100% da área main-content
           background: linear-gradient(90deg, #5820D8 0%, #7B2CBF 100%);
           border-radius: 16px;
           padding: 30px 40px;
@@ -294,7 +294,7 @@ min-height: calc(100vh - 80px); /* remove altura da navbar superior */
           justify-content: space-between;
           align-items: center;
           box-shadow: 0 4px 15px rgba(98, 0, 234, 0.2);
-      }
+      } */
 
 
       .text-content h1 { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
@@ -493,7 +493,8 @@ margin-bottom: 10px;
 display: flex;
 align-items: center;
 gap: 8px;
-color: #3f3dff;
+color: #000000;
+margin-right: 50%;
 }
 
 
@@ -507,15 +508,6 @@ line-height: 1.6;
 /* Ícone */
 .icon {
 font-size: 1.4rem;
-}
-/* Caixa geral */
-.metrics-box {
-width: 100%;
-background: #fff;
-border-radius: 20px;
-padding: 40px 20px;
-box-shadow: 0px 4px 20px rgba(0,0,0,0.08);
-margin: 40px auto;
 }
 
 
@@ -589,14 +581,14 @@ color: #4d4d4d;
 
 
     /* Caixa geral */
-.metrics-box {
+/* .metrics-box {
   width: 80%;
   background: #fff;
   border-radius: 20px;
   padding: 40px 20px;
   box-shadow: 0px 4px 20px rgba(0,0,0,0.08);
   margin: 40px auto;
-}
+} */
 
 
 /* Título */
@@ -653,19 +645,6 @@ color: #4d4d4d;
 }
 
 
-/* Número */
-.metric-item h3 {
-  font-size: 28px;
-  color: #0d0d0d;
-  margin-bottom: 5px;
-}
-
-
-/* Descrição */
-.metric-item p {
-  font-size: 14px;
-  color: #4d4d4d;
-}
 /* ----- VÍDEO DE FUNDO ----- */
 
 

@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import {
   LayoutGrid,
   Users,
@@ -8,33 +10,56 @@ import {
   Trophy,
   Lightbulb
 } from "lucide-react";
-import Link from "next/link";
+
 import "./sidebarcolaborador.css";
 
-export default function SidebarNavColaborador() {
+export default function SidebarNav({ setConteudo }) {
+  const [ativo, setAtivo] = useState("dashboard");
+
+  const handleClick = (id) => {
+    setAtivo(id);
+    setConteudo(id);
+  };
+
   return (
     <aside className="sidebar-container">
       <nav className="sidebar-nav">
         <ul>
-
-          <li>
-            <Link href="#">
-              <Users className="icon" /> Meu Painel
-            </Link>
+          {/* DASHBOARD */}
+          <li className={ativo === "dashboard" ? "active" : ""}>
+            <button onClick={() => handleClick("dashboard")}>
+              <LayoutGrid className="icon" /> Dashboard
+            </button>
           </li>
 
-          <li>
-            <Link href="#">
-              <UserPlus className="icon" /> Meus Feedbacks
-            </Link>
+          {/* COLABORADORES */}
+          <li className={ativo === "colaboradores" ? "active" : ""}>
+            <button onClick={() => handleClick("colaboradores")}>
+              <Users className="icon" /> Colaboradores
+            </button>
           </li>
 
-          <li>
-            <Link href="#">
-              <GraduationCap className="icon" /> Minhas Sugestões
-            </Link>
+          {/* NOVO COLABORADOR */}
+          {/* Nota: O ID aqui deve ser "novo-colaborador" para bater com o case do page.jsx */}
+          <li className={ativo === "novo-colaborador" ? "active" : ""}>
+            <button onClick={() => handleClick("novo-colaborador")}>
+              <UserPlus className="icon" /> Novo Colaborador
+            </button>
           </li>
 
+          {/* RANKING */}
+          <li className={ativo === "ranking" ? "active" : ""}>
+            <button onClick={() => handleClick("ranking")}>
+              <Trophy className="icon" /> Ranking & Bonificação
+            </button>
+          </li>
+
+          {/* SUGESTÕES */}
+          <li className={ativo === "sugestoes" ? "active" : ""}>
+            <button onClick={() => handleClick("sugestoes")}>
+              <Lightbulb className="icon" /> Sugestões Recebidas
+            </button>
+          </li>
         </ul>
       </nav>
     </aside>

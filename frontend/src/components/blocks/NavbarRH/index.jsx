@@ -1,60 +1,44 @@
 "use client";
 import Link from "next/link";
+import "./navbar.css"
 
 export default function Navbar() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
-      <div className="container-fluid">
-        <Link className="navbar-brand fw-bold" href="/">
-          GM
-        </Link>
+    <>
 
-        {/* Botão do menu mobile */}
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Alternar navegação"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
 
-        {/* Links do menu */}
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
-            <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" href="/">
-                Início
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" href="/features">
-                Recursos
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" href="/pricing">
-                Planos
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" href="/contact">
-                Contato
-              </Link>
-            </li>
-          </ul>
+     
 
-          {/* Botão de login (exemplo) */}
-          <div className="d-flex ms-lg-3 mt-2 mt-lg-0">
-            <Link href="/login" className="btn btn-outline-primary">
-              Entrar
-            </Link>
+
+      <header className="main-header">
+        <div className="header-left">
+          <div className="gm-logo">GM</div>
+          <div className="system-info">
+            <span className="system-title">Sistema de Gestão de Colaboradores</span>
+            <span className="system-subtitle">
+              General Motors - Portal do RH
+            </span>
           </div>
         </div>
-      </div>
-    </nav>
-  );
+        <div className="header-right">
+          <div className="user-profile">
+            <span className="user-name">Administrador RH</span>
+            
+          </div>
+        <Link href="/" className="logout-btn">
+    <svg className="logout-icon" viewBox="0 0 24 24">
+        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+        <polyline points="16 17 21 12 16 7" />
+        <line x1={21} y1={12} x2={9} y2={12} />
+    </svg>
+    Sair
+</Link>
+        </div>
+      </header>
+
+
+
+
+    </>
+  )
 }

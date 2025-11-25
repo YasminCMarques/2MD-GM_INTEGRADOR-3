@@ -11,7 +11,7 @@ import {
   Lightbulb
 } from "lucide-react";
 
-import "./sidebarcolaborador.css";
+import "./Sidebar.css";
 
 export default function SidebarNav({ setConteudo }) {
   const [ativo, setAtivo] = useState("dashboard");

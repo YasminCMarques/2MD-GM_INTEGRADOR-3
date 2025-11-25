@@ -60,22 +60,10 @@ export default function Colaborador() {
 
 
   return (
+
     <>
-      {/* HEADER GM */}
-      <header className="main-header">
-        <div className="header-left">
-          <div className="gm-logo">GM</div>
-          <div className="system-info">
-            <span className="system-title">Sistema de Gestão de Colaboradores</span>
-            <span className="system-subtitle">General Motors - Portal do Colaborador</span>
-          </div>
-        </div>
-        <div className="header-right">
 
-          <a className="botao-sair" href="/"><button className="logout-btn" >Sair</button> </a>
-        </div>
-      </header>
-
+      <Navbar />
 
       <div className="layout-container">
 
@@ -84,28 +72,6 @@ export default function Colaborador() {
           <video className="bg-video" autoPlay loop muted playsInline>
             <source src="/videos/fundo.mp4" type="video/mp4" />
           </video>
-
-
-
-
-          {/* CARD DE BOAS-VINDAS */}
-          <div className="welcome-card">
-            <div className="text-content">
-              <h1>Seja Bem-Vindo(a), Beatriz!</h1>
-              <p>Estamos felizes em ter você conosco. Confira as novidades e atualizações da GM.</p>
-            </div>
-            <div className="date-content">
-              <div className="calendar-icon">
-                <svg viewBox="0 0 24 24">
-                  <rect x={3} y={4} width={18} height={18} rx={2} ry={2} />
-                </svg>
-              </div>
-              <div className="date-info">
-                <span className="date-label">Hoje</span>
-                <span className="date-value">Terça-feira, 18 de novembro de 2025</span>
-              </div>
-            </div>
-          </div>
 
 
           {/* ----------------------- */}
@@ -138,12 +104,12 @@ export default function Colaborador() {
 
 
               <button className="btn prev" onClick={() => setIndex((index - 1 + slides.length) % slides.length)}>
-                ❮
+
               </button>
 
 
               <button className="btn next" onClick={() => setIndex((index + 1) % slides.length)}>
-                ❯
+
               </button>
 
 
@@ -171,7 +137,7 @@ export default function Colaborador() {
           {/* Item 1 */}
           <div className="metric-item">
             <div className="metric-icon bg-blue-light">📈</div>
-            <h3>117+</h3>
+            <h3>100+</h3>
             <p>Anos de História</p>
           </div>
           {/* Item 2 */}
@@ -232,6 +198,23 @@ export default function Colaborador() {
               pessoas talentosas e dedicadas. Valorizamos a diversidade, a inovação e
               o desenvolvimento contínuo de todos os nossos profissionais.
             </p>
+          </div>
+        </div>
+        <div className="info-card">
+          <img
+            className="info-img"
+            src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg"
+            alt="Equipe GM"
+          />
+          <div className="info-content">
+            <h3>
+              <span className="icon">👥</span> Nossa Visão
+            </h3>
+
+            <img src="" alt="" />
+            <p>
+              Na General Motors, nossa visão vai muito além da fabricação de veículos; nosso propósito é transformar
+              a maneira como o mundo se move. Estamos comprometidos em liderar um futuro definido pelo nosso "Triplo Zero"</p>
           </div>
         </div>
       </div>

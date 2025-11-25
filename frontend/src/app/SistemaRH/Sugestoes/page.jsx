@@ -38,50 +38,62 @@ export default function SugestoesRecebidasPage() {
   };
 
   // 3. Enviar Avaliação (Aprovar ou Rejeitar)
-  const handleAvaliar = async (status) => {
-    if (!itemSelecionado) return;
+ const handleAvaliar = async (status) => {
+  if (!itemSelecionado) return;
 
-    // Validação simples: se aprovar, precisa de nota
-    // if (status === 'aprovada' && !pontos) {
-    //   alert("Por favor, atribua uma pontuação para aprovar.");
-    //   return;
-    // }
+  // Validação simples: se aprovar, precisa de nota
+  if (status === 'aprovada' && !pontos) {
+    Swal.fire({
+      title: 'Pontuação Necessária',
+      text: 'Por favor, atribua uma pontuação para aprovar esta sugestão.',
+      icon: 'warning', // Ícone de aviso
+      confirmButtonText: 'Entendi'
+    });
+    return;
+  }
 
-    if (status === 'aprovada' && !pontos) {
-      Swal.fire({
-        title: 'Pontuação Necessária',
-        text: 'Por favor, atribua uma pontuação para aprovar esta sugestão.',
-        icon: 'warning', // Ícone de aviso
-        confirmButtonText: 'Entendi'
-      });
-      return;
-    }
+  try {
+    const response = await fetch(`http://localhost:3000/api/sugestoes/${itemSelecionado.id}/avaliar`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        status: status, // 'aprovada' ou 'rejeitada'
+        pontos: pontos // Nota (se for rejeitada, o back ignora isso)
+      })
+    });
 
-    try {
-      const response = await fetch(`http://localhost:3000/api/sugestoes/${itemSelecionado.id}/avaliar`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          status: status, // 'aprovada' ou 'rejeitada'
-          pontos: pontos // Nota (se for rejeitada, o back ignora isso)
-        })
-      });
+    const result = await response.json();
 
-      const result = await response.json();
-
-      if (result.success) {
-        alert(result.message);
-        setModalOpen(false);
-        fetchPendentes(); // Recarrega a lista para sumir com o item avaliado
-      } else {
-        alert("Erro ao avaliar: " + result.message);
+    if (result.success) {
+      if (status === 'aprovada') {
+        // Exibir o SweetAlert de sucesso após a aprovação
+        Swal.fire({
+          title: "Sugestão aprovada com sucesso!",
+          icon: "success",
+          draggable: true
+        });
+      } else if (status === 'rejeitada') {
+        // Exibir o SweetAlert de erro após a rejeição
+        Swal.fire({
+          icon: "error",
+          text: "Sugestão Rejeitada!"
+ 
+        });
       }
 
-    } catch (error) {
-      console.error("Erro na requisição:", error);
-      alert("Erro ao conectar com o servidor.");
+      setModalOpen(false);
+      fetchPendentes(); // Recarrega a lista para sumir com o item avaliado
+    } else {
+      alert("Erro ao avaliar: " + result.message);
     }
-  };
+
+  } catch (error) {
+    console.error("Erro na requisição:", error);
+    alert("Erro ao conectar com o servidor.");
+  }
+};
+
+
 
   const formatDate = (dateString) => {
     const options = { day: '2-digit', month: '2-digit', year: 'numeric' };

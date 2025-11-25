@@ -30,27 +30,28 @@
     border-radius: 8px;
     min-width: 200px; /* Garante que os inputs não fiquem muito pequenos */
 }
-
+/* Wrapper para posicionar o select e a seta lado a lado */
 .select-wrapper {
+    position: relative;
     display: flex;
     align-items: center;
-    position: relative;
-    flex: 1; /* Deixa o select ajustável */
+    gap: 6px;
 }
 
+/* Select normal */
 .select-wrapper select {
-    appearance: none;
-    padding: 12px 40px 12px 16px;
-    background: #f8f9fc;
-    border: none;
-    border-radius: 8px;
+    padding-right: 30px;
+    cursor: pointer;
 }
 
+/* Seta ao lado do select (não em cima) */
 .icone-filtro {
-    position: absolute;
-    right: 10px;
-    pointer-events: none;
+    cursor: pointer;
+    font-size: 18px;
+    user-select: none;
+    margin-left: -5px;
 }
+
 
 /* GRID */
 .grid-colaboradores {

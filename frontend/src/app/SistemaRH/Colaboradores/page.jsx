@@ -1,20 +1,19 @@
 "use client";
 
-
 import Swal from 'sweetalert2';
 import "./colaboradores.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 export default function ColaboradoresContent() {
     const [colaboradores, setColaboradores] = useState([]);
     const [loading, setLoading] = useState(true);
     const [erro, setErro] = useState(null);
 
-    // --- NOVOS STATES PARA OS FILTROS ---
     const [termoBusca, setTermoBusca] = useState("");
     const [filtroTipo, setFiltroTipo] = useState("todos");
 
-    // Estado para controlar o modal e o formulário
+    const selectRef = useRef(null);
+
     const [mostrarModal, setMostrarModal] = useState(false);
     const [salvando, setSalvando] = useState(false);
     const [formData, setFormData] = useState({
@@ -27,7 +26,6 @@ export default function ColaboradoresContent() {
         data_criacao: ""
     });
 
-    // Abre o modal e preenche os dados
     function abrirPerfil(colab) {
         setFormData({
             id: colab.id,
@@ -70,7 +68,6 @@ export default function ColaboradoresContent() {
         }
     }
 
-    // PUT - Salvar Edição
     async function salvarAlteracoes() {
         setSalvando(true);
         try {
@@ -92,11 +89,8 @@ export default function ColaboradoresContent() {
                 throw new Error(errorData.message || "Erro ao atualizar usuário.");
             }
 
-            // --- AQUI ESTÁ A MUDANÇA SOLICITADA ---
-            // Substituímos o alert("Usuário atualizado...") pelo seu código:
             Swal.fire("Usuário atualizado!");
 
-            // Atualiza a lista localmente
             setColaboradores((prev) =>
                 prev.map((c) => (c.id === formData.id ? { ...c, ...formData } : c))
             );
@@ -104,8 +98,6 @@ export default function ColaboradoresContent() {
             fecharModal();
 
         } catch (err) {
-            console.error(err);
-            // Sugestão: Usar Swal também no erro para manter o padrão
             Swal.fire({
                 title: "Erro!",
                 text: err.message,
@@ -116,11 +108,9 @@ export default function ColaboradoresContent() {
         }
     }
 
-    // DELETE - Excluir Usuário com SweetAlert
     async function excluirUsuario() {
-        // Remove custom CSS e deixa SweetAlert padrão
         const swalDefault = Swal.mixin({
-            buttonsStyling: true // usa os estilos padrão do SweetAlert2
+            buttonsStyling: true
         });
 
         swalDefault.fire({
@@ -163,8 +153,6 @@ export default function ColaboradoresContent() {
                     });
 
                 } catch (err) {
-                    console.error(err);
-
                     swalDefault.fire({
                         title: "Erro!",
                         text: err.message,
@@ -189,15 +177,11 @@ export default function ColaboradoresContent() {
         carregarColaboradores();
     }, []);
 
-    // --- LÓGICA DE FILTRAGEM (NOVO) ---
-    // Filtramos a lista original antes de renderizar o HTML
     const colaboradoresFiltrados = colaboradores.filter((c) => {
-        // 1. Verifica se o nome ou email contém o texto digitado (ignorando maiúsculas/minúsculas)
         const matchTexto =
             c.nome.toLowerCase().includes(termoBusca.toLowerCase()) ||
             c.email.toLowerCase().includes(termoBusca.toLowerCase());
 
-        // 2. Verifica se o tipo bate com o selecionado (ou se é "todos")
         const matchTipo = filtroTipo === "todos" || c.tipo === filtroTipo;
 
         return matchTexto && matchTipo;
@@ -211,7 +195,6 @@ export default function ColaboradoresContent() {
             <h1>Colaboradores</h1>
             <p className="subtitulo">Lista completa de colaboradores</p>
 
-            {/* --- ÁREA DE FILTROS (NOVO) --- */}
             <div className="filtros-box">
                 <input
                     type="text"
@@ -222,6 +205,7 @@ export default function ColaboradoresContent() {
 
                 <div className="select-wrapper">
                     <select
+                        ref={selectRef}
                         value={filtroTipo}
                         onChange={(e) => setFiltroTipo(e.target.value)}
                     >
@@ -229,21 +213,24 @@ export default function ColaboradoresContent() {
                         <option value="comum">Usuário Comum</option>
                         <option value="admin">Administrador</option>
                     </select>
-                    <span className="icone-filtro">▼</span>
+
+                    {/* Seta clicável */}
+                    <span
+                        className="icone-filtro"
+                        onClick={() => selectRef.current?.focus() || selectRef.current?.click()}
+                    >
+                        
+                    </span>
                 </div>
             </div>
 
-            {/* GRID DE CARDS */}
             <div className="grid-colaboradores">
-
-                {/* Mensagem caso o filtro não encontre ninguém */}
                 {colaboradoresFiltrados.length === 0 && (
                     <p style={{ width: "100%", textAlign: "center", color: "#999", marginTop: "20px" }}>
                         Nenhum colaborador encontrado com esses filtros.
                     </p>
                 )}
 
-                {/* Mapeamos a lista FILTRADA agora */}
                 {colaboradoresFiltrados.map((c) => {
                     const iniciais = c.nome
                         ? c.nome.split(" ").map((p) => p[0]).join("").toUpperCase().substring(0, 2)
@@ -281,7 +268,6 @@ export default function ColaboradoresContent() {
                 })}
             </div>
 
-            {/* MODAL */}
             {mostrarModal && (
                 <div className="modal-overlay">
                     <div className="modal-box">

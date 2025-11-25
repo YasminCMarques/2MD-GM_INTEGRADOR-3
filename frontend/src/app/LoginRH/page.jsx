@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { ArrowLeft } from "lucide-react";
 import Link from 'next/link';
 import Swal from 'sweetalert2';
+import { jwtDecode } from "jwt-decode"; // Importação necessária
 import './loginrh.css';
 
 export default function LoginRH() {
@@ -19,46 +20,73 @@ export default function LoginRH() {
     try {
       const resposta = await fetch("http://localhost:3000/api/auth/login", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, senha })
       });
-
 
       const dados = await resposta.json();
 
       if (!resposta.ok) {
-        
         Swal.fire({
             title: "Falha no Login",
-            text: dados.mensagem || "Erro desconhecido ao tentar fazer login.",
+            text: dados.mensagem || "Erro desconhecido.",
             icon: "error",
-            confirmButtonText: "Tentar Novamente" ,
+            confirmButtonText: "Tentar Novamente",
             timer: 2000 
         });
         setCarregando(false);
         return;
-    }
+      }
 
-    // Salva o token
-    localStorage.setItem("token", dados.dados.token);
+      // --- VALIDAÇÃO DE SEGURANÇA DO RH ---
+      
+      const token = dados.dados.token;
+      
+      try {
+          const usuarioDecodificado = jwtDecode(token);
+          console.log("Payload do Token:", usuarioDecodificado); // Para você conferir no F12
 
-    
-    await Swal.fire({
-        title: "Sucesso!",
-        text: "Login realizado com êxito!",
+          // Verifica se a coluna 'tipo' é exatamente 'admin'
+          if (usuarioDecodificado.tipo !== 'admin') {
+            Swal.fire({
+                title: "Acesso Restrito",
+                text: "Este login pertence a um colaborador comum. Acesso exclusivo para RH/Admin.",
+                icon: "warning",
+                confirmButtonColor: "#d33",
+                confirmButtonText: "Entendido"
+            });
+            setCarregando(false);
+            return; // PARA AQUI. Não salva token, não redireciona.
+          }
+          
+      } catch (errorDecode) {
+          console.error("Erro ao decodificar token:", errorDecode);
+          setCarregando(false);
+          return;
+      }
+
+      // --- SE PASSOU, CONTINUA ---
+
+      localStorage.setItem("token", token);
+
+      await Swal.fire({
+        title: "Bem-vindo(a)!",
+        text: "Painel Administrativo liberado.",
         icon: "success",
         showConfirmButton: false, 
         timer: 1500 
-    });
-    
-    router.push("/RH");
+      });
+      
+      router.push("/RH");
 
     } catch (erro) {
-      alert("Erro ao conectar ao servidor.");
+      Swal.fire({
+        title: "Erro de Conexão",
+        text: "O servidor não está respondendo.",
+        icon: "error"
+      });
       console.error("Erro no login:", erro);
-    } finally {
+    } finally { 
       setCarregando(false);
     }
   };
@@ -125,3 +153,4 @@ export default function LoginRH() {
     </div>
   );
 }
+

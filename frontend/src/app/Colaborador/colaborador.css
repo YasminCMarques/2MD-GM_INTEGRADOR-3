@@ -19,11 +19,6 @@ main {
 }
 
 
-
-
-
-
-
 .dot {
 width: 10px;
 height: 10px;
@@ -49,17 +44,12 @@ color: #777;
 }
 
 
-
-
 /* ===== LAYOUT ===== */
 .layout-wrapper {
 display: flex;
 width: 100%;
 min-height: calc(100vh - 80px); /* remove altura da navbar superior */
 }
-
-
-
 
 
 
@@ -333,7 +323,7 @@ min-height: calc(100vh - 80px); /* remove altura da navbar superior */
     }
    
     /* Container principal */
-    .carrossel-container {
+    /* .carrossel-container {
         width: 100%;
         max-width: 1250px;
         margin: auto;
@@ -341,10 +331,10 @@ min-height: calc(100vh - 80px); /* remove altura da navbar superior */
         overflow: hidden;
         background: #fff;
         box-shadow: 0 0 25px rgba(0,0,0,0.1);
-    }
+    } */
    
     /* Cabeçalho */
-    .carrossel-header {
+    /* .carrossel-header {
         background: #8a05ff;
         color: white;
         padding: 18px 25px;
@@ -353,18 +343,18 @@ min-height: calc(100vh - 80px); /* remove altura da navbar superior */
         display: flex;
         align-items: center;
         gap: 10px;
-    }
+    } */
    
-    .carrossel-header .icon {
+    /* .carrossel-header .icon {
         font-size: 22px;
-    }
+    } */
    
     /* Área do carrossel */
-    .carrossel {
+    /* .carrossel {
         position: relative;
         height: 520px;
         overflow: hidden;
-    }
+    } */
    
     /* Slides */
     .slide {
@@ -580,17 +570,6 @@ color: #4d4d4d;
 }
 
 
-    /* Caixa geral */
-/* .metrics-box {
-  width: 80%;
-  background: #fff;
-  border-radius: 20px;
-  padding: 40px 20px;
-  box-shadow: 0px 4px 20px rgba(0,0,0,0.08);
-  margin: 40px auto;
-} */
-
-
 /* Título */
 .metrics-title {
   text-align: center;
@@ -658,4 +637,9 @@ object-fit: cover;
 z-index: -1; /* Fica atrás de tudo */
 opacity: 0.35; /* Ajuste para ficar sutil */
 pointer-events: none; /* Não interfere nos cliques */
+}
+
+
+.icone{
+    margin-right: 5%;
 }

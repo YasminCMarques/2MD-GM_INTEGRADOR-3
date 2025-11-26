@@ -4,60 +4,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import Navbar from "@/components/blocks/NavbarColaborador";
 import Footer from "@/components/blocks/Footer";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./colaborador.css";
 
 
 
 
 export default function Colaborador() {
-  const slideRef = useRef([]);
-  const indicatorRef = useRef([]);
-  const [index, setIndex] = useState(0);
-
-
-  const slides = [
-    {
-      img: "https://images.pexels.com/photos/305070/pexels-photo-305070.jpeg",
-      data: "Lançamento: Dezembro 2025",
-      titulo: "Novo Modelo Chevrolet Tracker 2026",
-      desc: "Conheça o mais novo SUV da linha Chevrolet com tecnologia de ponta e design inovador.",
-    },
-    {
-      img: "https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg",
-      data: "Lançamento: Outubro 2025",
-      titulo: "Novo Ford Bronco Sport",
-      desc: "Versão atualizada com motor mais eficiente e novo pacote off-road.",
-    },
-    {
-      img: "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg",
-      data: "Lançamento: Março 2026",
-      titulo: "Nova RAM 3500 Turbo Diesel",
-      desc: "Potência extrema e novo design frontal mais agressivo.",
-    },
-  ];
-
-
-  // Auto play
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % slides.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
-
-  // Atualiza sempre que o índice mudar
-  useEffect(() => {
-    slideRef.current.forEach((el, i) => {
-      if (el) el.classList.toggle("active", i === index);
-    });
-
-
-    indicatorRef.current.forEach((el, i) => {
-      if (el) el.classList.toggle("active", i === index);
-    });
-  }, [index]);
-
+  
 
   return (
 
@@ -69,69 +24,16 @@ export default function Colaborador() {
 
         <main className="main-content">
           {/* 🔥 Vídeo de Fundo */}
-          <video className="bg-video" autoPlay loop muted playsInline>
-            <source src="/videos/fundo.mp4" type="video/mp4" />
-          </video>
+     
 
 
           {/* ----------------------- */}
-          {/* 🔥 CARROSSEL FUNCIONANDO */}
+          {/* 🔥 CARROSSEL  */}
           {/* ----------------------- */}
-
-
-          <div className="carrossel-container">
-            <div className="carrossel-header">
-              <span className="icon">⚡</span>
-              <span>Lançamentos e Novidades</span>
-            </div>
-
-
-            <div className="carrossel">
-              {slides.map((s, i) => (
-                <div
-                  key={i}
-                  ref={(el) => (slideRef.current[i] = el)}
-                  className={`slide ${i === 0 ? "active" : ""}`}
-                  style={{ backgroundImage: `url(${s.img})` }}
-                >
-                  <div className="slide-content">
-                    <p className="data">{s.data}</p>
-                    <h2>{s.titulo}</h2>
-                    <p className="descricao">{s.desc}</p>
-                  </div>
-                </div>
-              ))}
-
-
-              <button className="btn prev" onClick={() => setIndex((index - 1 + slides.length) % slides.length)}>
-
-              </button>
-
-
-              <button className="btn next" onClick={() => setIndex((index + 1) % slides.length)}>
-
-              </button>
-
-
-              <div className="indicators">
-                {slides.map((_, i) => (
-                  <div
-                    key={i}
-                    ref={(el) => (indicatorRef.current[i] = el)}
-                    className={i === 0 ? "active" : ""}
-                    onClick={() => setIndex(i)}
-                  ></div>
-                ))}
-              </div>
-            </div>
-
-          </div>
-
 
         </main>
 
       </div>
-
 
 
       <div className="cards-container">
@@ -144,7 +46,7 @@ export default function Colaborador() {
           />
           <div className="info-content">
             <h3>
-              <img src="./imagens/alvo.png" width={35} height={35} alt="" /><b>Nossa Missão</b>
+              <img className="icone" src="./imagens/alvo.png" width={35} height={35} alt="" /><b>Nossa Missão</b>
             </h3>
             <p>
               Criar um mundo com Zero Acidentes, Zero Emissões e Zero
@@ -180,7 +82,7 @@ export default function Colaborador() {
           />
           <div className="info-content">
             <h3>
-              <img src="./imagens/visao.png" width={35} height={35} alt="" /> <b>Nossa Visão</b>
+              <img className="icone" src="./imagens/visao.png" width={35} height={35} alt="" /> <b>Nossa Visão</b>
             </h3>
 
 
@@ -201,18 +103,22 @@ export default function Colaborador() {
         <div className="info-card">
           <img
             className="info-img"
-            src="https://images.unsplash.com/photo-1501621667575-af81f1f0bacc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8dmlzaW9ufGVufDB8fDB8fHww"
+            src="https://plus.unsplash.com/premium_photo-1674935667280-069acbb3ccdd?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Equipe GM"
           />
           <div className="info-content">
             <h3>
-              <img src="./imagens/visao.png" width={35} height={35} alt="" /> <b>Zero Acidentes</b>
+              <img className="icone" src="./imagens/zero_acidentes.png" width={35} height={35} alt="" /> <b>Zero Acidentes</b>
             </h3>
 
 
             <p>
-              Na General Motors, nossa visão vai muito além da fabricação de veículos; nosso propósito é transformar
-              a maneira como o mundo se move. Estamos comprometidos em liderar um futuro definido pelo nosso "Triplo Zero"</p>
+              Não nos contentamos apenas em proteger os ocupantes em caso de complicações; nosso objetivo é evitar que elas aconteçam.
+              Através da implementação massiva de sistemas de segurança ativa e do avanço da tecnologia de condução autônoma,
+              obtivemos para eliminar o erro humano da inovação. Queremos criar um ambiente onde cada viagem seja segura,
+              proporcionando tranquilidade às famílias e garantindo que todos cheguem bem ao seu destino.
+            </p>
+
           </div>
         </div>
         <div className="info-card">
@@ -223,13 +129,16 @@ export default function Colaborador() {
           />
           <div className="info-content">
             <h3>
-              <img src="./imagens/visao.png" width={35} height={35} alt="" /> <b>Zero Emissões</b>
+              <img className="icone" src="./imagens/zero_emissões.png" width={35} height={35} alt="" /><b>Zero Emissões</b>
             </h3>
 
 
             <p>
-              Na General Motors, nossa visão vai muito além da fabricação de veículos; nosso propósito é transformar
-              a maneira como o mundo se move. Estamos comprometidos em liderar um futuro definido pelo nosso "Triplo Zero"</p>
+              Nossa missão é descarbonizar a indústria automotiva por completo. Isso significa ir além do escapamento: estamos reestruturando
+              toda a nossa cadeia de valor e impulsionando a plataforma Ultium para oferecer uma gama completa de veículos elétricos —
+              desde modelos acessíveis até caminhões de trabalho. Estamos construindo um futuro onde o ar limpo é um padrão global e a sustentabilidade
+              é integrada em cada milhão rodado, garantindo um legado ambiental positivo para as próximas gerações.
+            </p>
           </div>
         </div>
         <div className="info-card">
@@ -238,15 +147,19 @@ export default function Colaborador() {
             src="https://plus.unsplash.com/premium_photo-1663951812821-08c681ada29b?q=80&w=1075&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Equipe GM"
           />
+
           <div className="info-content">
             <h3>
-              <img src="./imagens/visao.png" width={35} height={35} alt="" /> <b>Zero Congestionamentos</b>
+              <img className="icone" src="./imagens/zero_rodovia_1.png" width={35} height={35} alt="" /><b>Zero Congestionamento</b>
             </h3>
 
 
             <p>
-              Na General Motors, nossa visão vai muito além da fabricação de veículos; nosso propósito é transformar
-              a maneira como o mundo se move. Estamos comprometidos em liderar um futuro definido pelo nosso "Triplo Zero"</p>
+              O tempo é o recurso mais precioso de nossos clientes, e não deve ser desperdiçado no trânsito.
+              Através da integração de veículos conectados, inteligência artificial e soluções de mobilidade autônoma compartilhada,
+              buscamos otimização do fluxo urbano. Visualizamos cidades inteligentes onde os veículos "conversam" com a infraestrutura, eliminando gargalos,
+              reduzindo o estresse do deslocamento e devolvendo horas produtivas e de lazer às pessoas.
+            </p>
           </div>
         </div>
 

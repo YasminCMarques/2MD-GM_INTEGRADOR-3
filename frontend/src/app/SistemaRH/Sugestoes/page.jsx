@@ -186,7 +186,7 @@ export default function SugestoesRecebidasPage() {
                 className={styles.btnReject} 
                 onClick={() => handleAvaliar('rejeitada')}
               >
-                Rejeitar 👎
+                Rejeitar X
               </button>
 
               <button 

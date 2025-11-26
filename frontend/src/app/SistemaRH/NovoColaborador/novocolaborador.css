@@ -1,21 +1,25 @@
+/* ===========================
+   GERAL
+=========================== */
 .app-wrapper {
   display: flex;
   justify-content: center;
   width: 100%;
+  padding: 20px;
 }
 
-/* ==========================
+/* ===========================
    CONTAINER
-========================== */
+=========================== */
 .nc-container {
   background: #ffffff;
-  padding: 40px 45px;
-  border-radius: 14px;
-  width: 1350px;
-  box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.06);
+  padding: 40px 50px;
+  border-radius: 16px;
+  width: 1200px;
+  box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.1);
   animation: fadeIn 0.4s ease;
   margin-left: 90px;
-  margin-bottom: 200px;
+  margin-bottom: 100px;
 }
 
 @keyframes fadeIn {
@@ -23,46 +27,47 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ==========================
+/* ===========================
    HEADER
-========================== */
+=========================== */
 .nc-header h2 {
   margin: 0;
   color: #1e293b;
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 700;
 }
 
 .nc-header p {
   color: #64748b;
-  margin: 6px 0 28px 0;
-  font-size: 15px;
+  margin: 6px 0 30px 0;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
-/* ==========================
-   FOTO
-========================== */
+/* ===========================
+   FOTO UPLOAD
+=========================== */
 .nc-photo-upload {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 25px;
   margin-bottom: 35px;
-  padding-bottom: 22px;
+  padding-bottom: 25px;
   border-bottom: 1px solid #e5e7eb;
 }
 
 .photo-placeholder {
-  width: 95px;
-  height: 95px;
+  width: 110px;
+  height: 110px;
   background: #f1f5f9;
-  border: 2px dashed #cbd5e1;
+  border: 3px dashed #cbd5e1;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #94a3b8;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: all 0.3s ease;
 }
 
 .photo-placeholder:hover {
@@ -74,15 +79,15 @@
 .btn-upload {
   background: #f8fafc;
   border: 1px solid #d4dbe5;
-  padding: 9px 18px;
+  padding: 10px 20px;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 15px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   color: #475569;
-  transition: 0.2s;
+  transition: 0.3s;
 }
 
 .btn-upload:hover {
@@ -91,31 +96,32 @@
 }
 
 .info-foto {
-  font-size: 12px;
+  font-size: 13px;
   color: #94a3b8;
   margin-top: 5px;
 }
 
-/* ==========================
+/* ===========================
    FORM GRID
-========================== */
+=========================== */
 .nc-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 22px;
+  gap: 25px;
+  margin-bottom: 30px;
 }
 
-/* ==========================
+/* ===========================
    FORM GROUP
-========================== */
+=========================== */
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 
 .form-group label {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   color: #334155;
 }
@@ -124,10 +130,10 @@
 .form-group select {
   padding: 12px 14px;
   border: 1px solid #d3d9e3;
-  border-radius: 8px;
-  font-size: 14px;
+  border-radius: 10px;
+  font-size: 15px;
   background-color: #ffffff;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .form-group input:hover,
@@ -141,15 +147,15 @@
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
-/* ==========================
+/* ===========================
    ACTION BUTTONS
-========================== */
+=========================== */
 .nc-actions {
-  margin-top: 40px;
+  margin-top: 50px;
   display: flex;
   justify-content: flex-end;
-  gap: 14px;
-  padding-top: 25px;
+  gap: 20px;
+  padding-top: 30px;
   border-top: 1px solid #e5e7eb;
 }
 
@@ -157,14 +163,14 @@
 .btn-save {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 11px 26px;
+  gap: 10px;
+  padding: 12px 30px;
   border-radius: 8px;
   border: none;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.25s;
+  transition: 0.3s;
 }
 
 /* CANCELAR */
@@ -190,13 +196,13 @@
   transform: translateY(-2px);
 }
 
-/* ==========================
+/* ===========================
    RESPONSIVE
-========================== */
+=========================== */
 @media (max-width: 780px) {
   .nc-container {
     width: 92%;
-    padding: 30px 25px;
+    padding: 35px 25px;
     margin-left: 0;
   }
 

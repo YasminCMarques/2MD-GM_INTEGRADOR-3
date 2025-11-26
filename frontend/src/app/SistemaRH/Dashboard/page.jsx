@@ -8,6 +8,8 @@ import {
   Gift,
   DollarSign,
   Circle,
+  TrendingUp,
+  FileText,
 } from "lucide-react";
 import "./dashboard.css";
 
@@ -20,7 +22,6 @@ export default function DashboardContent() {
 
       {/* CARDS SUPERIORES */}
       <div className="rh-cards-grid">
-
         <div className="rh-card">
           <Users className="rh-card-icon blue" />
           <h3>Total de Colaboradores</h3>
@@ -62,34 +63,47 @@ export default function DashboardContent() {
           <p className="rh-card-value">R$ 2.4M</p>
           <span className="rh-card-status positive">+15% este mês</span>
         </div>
+      </div>
 
+      {/* NOVA SEÇÃO DE GRÁFICOS DE PERFORMANCE */}
+      <div className="rh-box">
+        <h3>Gráficos de Performance</h3>
+        <div className="rh-card">
+          <TrendingUp className="rh-card-icon green" />
+          <h3>Crescimento de Colaboradores</h3>
+          <p className="rh-card-value">+20%</p>
+          <span className="rh-card-status positive">Este mês</span>
+        </div>
+
+        <div className="rh-card">
+          <BarChart3 className="rh-card-icon blue" />
+          <h3>Performance em Projetos</h3>
+          <p className="rh-card-value">80%</p>
+          <span className="rh-card-status positive">Excelente</span>
+        </div>
       </div>
 
       {/* SEÇÃO INFERIOR */}
       <div className="rh-bottom-grid">
-
+        
         {/* ATIVIDADES RECENTES */}
         <div className="rh-box">
           <h3>Atividades Recentes</h3>
-
           <div className="rh-activity">
             <Circle className="dot green" /> Ana Silva
             <span className="activity-info">Novo Colaborador</span>
             <span className="activity-time">Há 2 horas</span>
           </div>
-
           <div className="rh-activity">
             <Circle className="dot blue" /> Carlos Santos
             <span className="activity-info">Feedback Enviado</span>
             <span className="activity-time">Há 3 horas</span>
           </div>
-
           <div className="rh-activity">
             <Circle className="dot yellow" /> Maria Oliveira
             <span className="activity-info">Bonificação</span>
             <span className="activity-time">Há 5 horas</span>
           </div>
-
           <div className="rh-activity">
             <Circle className="dot green" /> João Pedro
             <span className="activity-info">Treinamento Concluído</span>
@@ -100,28 +114,37 @@ export default function DashboardContent() {
         {/* TOP PERFORMERS */}
         <div className="rh-box">
           <h3>Top Performers do Mês</h3>
-
           <div className="rh-performer">
             <span className="rank gold">1</span> Maria Oliveira - Vendas
             <span className="score">9.8</span>
           </div>
-
           <div className="rh-performer">
             <span className="rank silver">2</span> Carlos Santos - Engenharia
             <span className="score">9.5</span>
           </div>
-
           <div className="rh-performer">
             <span className="rank bronze">3</span> Ana Silva - Marketing
             <span className="score">9.3</span>
           </div>
-
           <div className="rh-performer">
             <span className="rank blue">4</span> Pedro Costa - TI
             <span className="score">9.1</span>
           </div>
         </div>
 
+      </div>
+
+      {/* NOVA SEÇÃO: RELATÓRIOS */}
+      <div className="rh-box">
+        <h3>Últimos Relatórios Gerados</h3>
+        <div className="rh-activity">
+          <FileText className="dot purple" /> Relatório de Desempenho - Outubro
+          <span className="activity-time">Gerado Há 2 dias</span>
+        </div>
+        <div className="rh-activity">
+          <FileText className="dot yellow" /> Relatório de Investimento - Setembro
+          <span className="activity-time">Gerado Há 5 dias</span>
+        </div>
       </div>
 
     </div>

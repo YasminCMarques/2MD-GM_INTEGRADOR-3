@@ -8,14 +8,16 @@ class AuthController {
     // POST /auth/login - Fazer login
     static async login(req, res) {
         try {
-            const { email, senha } = req.body;
+            // O frontend envia o dado dentro do campo "email", seja CPF ou Email.
+            // Aqui nós renomeamos para "identificador" para ficar mais lógico.
+            const { email: identificador, senha } = req.body;
             
-            // Validações básicas
-            if (!email || email.trim() === '') {
+            // 1. Validação se está vazio
+            if (!identificador || identificador.trim() === '') {
                 return res.status(400).json({
                     sucesso: false,
-                    erro: 'Email obrigatório',
-                    mensagem: 'O email é obrigatório'
+                    erro: 'Campo obrigatório',
+                    mensagem: 'Por favor, informe seu Email ou CPF.'
                 });
             }
 
@@ -27,32 +29,42 @@ class AuthController {
                 });
             }
 
-            // Validação básica de formato de email
+            // 2. Validação Híbrida (Email OU CPF)
+            const identificadorLimpo = identificador.trim();
+            
+            // Regex simples de Email
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
+            // Regex de CPF formatado (000.000.000-00)
+            const cpfRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
+
+            // Se NÃO for email E TAMBÉM NÃO for CPF, dá erro.
+            if (!emailRegex.test(identificadorLimpo) && !cpfRegex.test(identificadorLimpo)) {
                 return res.status(400).json({
                     sucesso: false,
-                    erro: 'Email inválido',
-                    mensagem: 'Formato de email inválido'
+                    erro: 'Formato inválido',
+                    mensagem: 'Digite um Email válido ou um CPF no formato 000.000.000-00'
                 });
             }
 
-            // Verificar credenciais
-            const usuario = await UsuarioModel.verificarCredenciais(email.trim(), senha);
+            // 3. Verificar credenciais
+            // ATENÇÃO: O seu UsuarioModel precisa estar preparado para buscar por CPF também!
+            // (Varemos isso no Passo 2)
+            const usuario = await UsuarioModel.verificarCredenciais(identificadorLimpo, senha);
             
             if (!usuario) {
                 return res.status(401).json({
                     sucesso: false,
                     erro: 'Credenciais inválidas',
-                    mensagem: 'Email ou senha incorretos'
+                    mensagem: 'Usuário ou senha incorretos'
                 });
             }
 
-            // Gerar token JWT
+            // 4. Gerar token JWT (Adicionamos o CPF no token por segurança)
             const token = jwt.sign(
                 { 
                     id: usuario.id, 
                     email: usuario.email,
+                    cpf: usuario.cpf, // Novo campo no token
                     tipo: usuario.tipo 
                 },
                 JWT_CONFIG.secret,
@@ -68,10 +80,12 @@ class AuthController {
                         id: usuario.id,
                         nome: usuario.nome,
                         email: usuario.email,
+                        cpf: usuario.cpf,
                         tipo: usuario.tipo
                     }
                 }
             });
+
         } catch (error) {
             console.error('Erro ao fazer login:', error);
             res.status(500).json({
@@ -81,7 +95,6 @@ class AuthController {
             });
         }
     }
-
     // POST /auth/registrar - Registrar novo usuário
     static async registrar(req, res) {
         try {

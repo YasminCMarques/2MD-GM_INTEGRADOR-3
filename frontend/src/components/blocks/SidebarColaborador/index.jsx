@@ -2,19 +2,17 @@
 
 import React, { useState } from "react";
 import {
-  LayoutGrid,
-  Users,
-  UserPlus,
-  GraduationCap,
-  MessageSquare,
-  Trophy,
-  Lightbulb
+  Home,           // Para "Página Inicial"
+  LayoutGrid,     // Para "Meu Painel"
+  MessageSquare,  // Para "Meus Feedbacks"
+  Lightbulb       // Para "Minhas Sugestões"
 } from "lucide-react";
 
-import "./Sidebar.css";
+import "./sidebarcolaborador.css";
 
-export default function SidebarNav({ setConteudo }) {
-  const [ativo, setAtivo] = useState("dashboard");
+export default function SidebarNavColaborador({ setConteudo }) {
+  // Começa ativo em 'meu-painel' para ficar igual à foto
+  const [ativo, setAtivo] = useState("meu-painel");
 
   const handleClick = (id) => {
     setAtivo(id);
@@ -25,41 +23,29 @@ export default function SidebarNav({ setConteudo }) {
     <aside className="sidebar-container">
       <nav className="sidebar-nav">
         <ul>
-          {/* DASHBOARD */}
-          <li className={ativo === "dashboard" ? "active" : ""}>
-            <button onClick={() => handleClick("dashboard")}>
-              <LayoutGrid className="icon" /> Dashboard
+
+
+          {/* MEU PAINEL */}
+          <li className={ativo === "meu-painel" ? "active" : ""}>
+            <button onClick={() => handleClick("meu-painel")}>
+              <LayoutGrid className="icon" /> Meu Painel
             </button>
           </li>
 
-          {/* COLABORADORES */}
-          <li className={ativo === "colaboradores" ? "active" : ""}>
-            <button onClick={() => handleClick("colaboradores")}>
-              <Users className="icon" /> Colaboradores
+          {/* MEUS FEEDBACKS */}
+          <li className={ativo === "meus-feedbacks" ? "active" : ""}>
+            <button onClick={() => handleClick("meus-feedbacks")}>
+              <MessageSquare className="icon" /> Meus Feedbacks
             </button>
           </li>
 
-          {/* NOVO COLABORADOR */}
-          {/* Nota: O ID aqui deve ser "novo-colaborador" para bater com o case do page.jsx */}
-          <li className={ativo === "novo-colaborador" ? "active" : ""}>
-            <button onClick={() => handleClick("novo-colaborador")}>
-              <UserPlus className="icon" /> Novo Colaborador
+          {/* MINHAS SUGESTÕES */}
+          <li className={ativo === "minhas-sugestoes" ? "active" : ""}>
+            <button onClick={() => handleClick("minhas-sugestoes")}>
+              <Lightbulb className="icon" /> Minhas Sugestões
             </button>
           </li>
 
-          {/* RANKING */}
-          <li className={ativo === "ranking" ? "active" : ""}>
-            <button onClick={() => handleClick("ranking")}>
-              <Trophy className="icon" /> Ranking & Bonificação
-            </button>
-          </li>
-
-          {/* SUGESTÕES */}
-          <li className={ativo === "sugestoes" ? "active" : ""}>
-            <button onClick={() => handleClick("sugestoes")}>
-              <Lightbulb className="icon" /> Sugestões Recebidas
-            </button>
-          </li>
         </ul>
       </nav>
     </aside>

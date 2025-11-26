@@ -97,24 +97,38 @@ class UsuarioModel {
         }
     }
 
-    // Verificar credenciais de login
-    static async verificarCredenciais(email, senha) {
+    // --- AQUI ESTÁ A MUDANÇA DO PASSO 2 ---
+    // Verificar credenciais de login (Email OU CPF)
+    static async verificarCredenciais(identificador, senha) {
         try {
-            const usuario = await this.buscarPorEmail(email);
-            
-            if (!usuario) {
-                return null;
-            }
+            // Em vez de usar this.buscarPorEmail, vamos buscar manualmente com OR
+            const connection = await getConnection();
+            try {
+                // Busca segura com Prepared Statements (?)
+                // O identificador (que veio do controller) é testado nas duas colunas
+                const sql = 'SELECT * FROM usuarios WHERE email = ? OR cpf = ?';
+                const [rows] = await connection.execute(sql, [identificador, identificador]);
+                
+                const usuario = rows[0];
 
-            const senhaValida = await comparePassword(senha, usuario.senha);
-            
-            if (!senhaValida) {
-                return null;
-            }
+                if (!usuario) {
+                    return null;
+                }
 
-            // Retornar usuário sem a senha
-            const { senha: _, ...usuarioSemSenha } = usuario;
-            return usuarioSemSenha;
+                const senhaValida = await comparePassword(senha, usuario.senha);
+                
+                if (!senhaValida) {
+                    return null;
+                }
+
+                // Retornar usuário sem a senha
+                const { senha: _, ...usuarioSemSenha } = usuario;
+                return usuarioSemSenha;
+
+            } finally {
+                // Sempre liberar a conexão
+                connection.release();
+            }
         } catch (error) {
             console.error('Erro ao verificar credenciais:', error);
             throw error;

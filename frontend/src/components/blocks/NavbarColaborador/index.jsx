@@ -3,7 +3,7 @@ import Link from "next/link";
 import "./navbarcolaborador.css"
 
 
-export default function Navbar() {
+export default function NavbarColaborador() {
   return (
     <>
 

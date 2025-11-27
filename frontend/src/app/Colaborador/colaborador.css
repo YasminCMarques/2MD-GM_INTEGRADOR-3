@@ -1,645 +1,123 @@
+/* =========================================
+   1. RESET E ESTRUTURA (Para matar o CSS Global que atrapalha)
+========================================= */
 
-
-
-
-main {
-  font-family: "Inter", "Segoe UI", sans-serif;
+/* Garante que o container ocupe a tela toda e tire as margens automáticas */
+.colaborador-layout {
+  display: flex;
+  width: 100vw; /* Ocupa a largura total da janela */
+  min-height: 100vh;
+  background-color: #f4f7fe; /* COR DE FUNDO CINZA (Igual da foto) */
   margin: 0;
-  color: #fff;
-  background: #ffffff;
-  justify-content: center;
-  align-items: center;
+  padding: 0;
+  overflow-x: hidden; /* Evita rolagem lateral indesejada */
+}
+
+/* IMPORTANTE: Isso sobrescreve o 'main' do telainicial.css 
+   que estava deixando o fundo branco e centralizado 
+*/
+.colaborador-content {
+  flex: 1; /* Ocupa todo o espaço restante a direita da sidebar */
+  background-color: transparent !important; /* Remove o fundo branco herdado */
+  padding: 30px; 
   height: 100vh;
-
+  overflow-y: auto; /* Scroll apenas no conteúdo */
+  display: block; /* Garante comportamento de bloco, não flex centralizado */
 }
 
-.botao-sair{
-    text-decoration: none;
-
+/* Ajuste para a Sidebar não ter margem esquerda */
+aside {
+  flex-shrink: 0;
+  height: 100vh;
+  background-color: #fff; /* Sidebar branca */
+  /* Se sua sidebar tiver margens internas, remova no componente dela */
 }
 
-
-.dot {
-width: 10px;
-height: 10px;
-}
-
-
-.dot.green { color: #16a34a; }
-.dot.blue { color: #2563eb; }
-.dot.yellow { color: #f59e0b; }
-
-
-.activity-info {
-color: #666;
-margin-left: 5px;
-font-size: 14px;
-}
-
-
-.activity-time {
-margin-left: auto;
-font-size: 13px;
-color: #777;
-}
-
-
-/* ===== LAYOUT ===== */
-.layout-wrapper {
-display: flex;
-width: 100%;
-min-height: calc(100vh - 80px); /* remove altura da navbar superior */
-}
-
-
-
-/* Estilo do Card */
-      .welcome-card {
-          width: 100%;
-          max-width: 900px; /* Largura máxima para não esticar demais */
-          background: linear-gradient(90deg, #5820D8 0%, #7B2CBF 100%); /* Gradiente roxo fiel */
-          border-radius: 16px;
-          padding: 30px 40px;
-          color: #ffffff;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          box-shadow: 0 4px 15px rgba(98, 0, 234, 0.2);
-      }
-
-
-      /* Seção Esquerda (Textos) */
-      .text-content {
-          flex: 1;
-          padding-right: 20px;
-      }
-
-
-      .text-content h1 {
-          font-size: 24px;
-          font-weight: 700;
-          margin-bottom: 8px;
-      }
-
-
-      .text-content p {
-          font-size: 14px;
-          font-weight: 400;
-          opacity: 0.9; /* Leve transparência para suavizar o texto secundário */
-          line-height: 1.5;
-      }
-
-
-      /* Seção Direita (Data) */
-      .date-content {
-          display: flex;
-          align-items: flex-start; /* Alinha ícone e texto no topo */
-          gap: 12px;
-          text-align: right;
-          min-width: 250px; /* Garante que a data não quebre linha feio */
-          justify-content: flex-end;
-      }
-
-
-      .date-info {
-          display: flex;
-          flex-direction: column;
-      }
-
-
-      .date-label {
-          font-size: 12px;
-          opacity: 0.8;
-          margin-bottom: 4px;
-          text-transform: capitalize;
-      }
-
-
-      .date-value {
-          font-size: 14px;
-          font-weight: 600;
-      }
-
-
-      /* Ícone SVG */
-      .calendar-icon svg {
-          width: 24px;
-          height: 24px;
-          fill: none;
-          stroke: #ffffff;
-          stroke-width: 2;
-          stroke-linecap: round;
-          stroke-linejoin: round;
-      }
-
-
-      /* Responsividade: Em telas pequenas, empilha os itens */
-      @media (max-width: 768px) {
-          .welcome-card {
-              flex-direction: column;
-              align-items: flex-start;
-              gap: 20px;
-          }
-         
-          .date-content {
-              width: 100%;
-              justify-content: flex-start;
-              text-align: left;
-          }
-      }
-
-
-
-
-
-
-      /*  */
-
-
-      /* --- 1. HEADER (Topo) --- */
-      .main-header {
-          width: 100%;
-          height: 70px;
-          background: linear-gradient(90deg, #39237E 0%, #5F0FD1 50%, #8A00E8 100%);
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 0 30px;
-          color: #fff;
-          position: sticky; /* Opcional: faz o header fixar no topo */
-          top: 0;
-          z-index: 100;
-          box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      }
-
-
-      .header-left { display: flex; align-items: center; gap: 15px; }
-      .gm-logo {
-          width: 40px; height: 40px; background: #fff; color: #4A2587;
-          border-radius: 8px; display: flex; justify-content: center; align-items: center;
-          font-weight: 700; font-size: 16px;
-      }
-      .system-info { display: flex; flex-direction: column; }
-      .system-title { font-size: 16px; font-weight: 600; }
-      .system-subtitle { font-size: 12px; opacity: 0.8; }
-     
-      .header-right { display: flex; align-items: center; gap: 20px; }
-      .user-profile { text-align: right; }
-      .user-name { display: block; font-size: 13px; font-weight: 700; }
-      .user-id { display: block; font-size: 11px; opacity: 0.9; }
-      .logout-btn {
-          background: #321C6E; color: #fff; border: none; padding: 6px 16px;
-          border-radius: 6px; cursor: pointer; font-size: 13px; display: flex; align-items: center; gap: 6px;
-      }
-
-
-      /* --- 2. LAYOUT PRINCIPAL (Container abaixo do Header) --- */
-      .layout-container {
-          display: flex; /* Cria as colunas lado a lado */
-          width: 100%;
-          max-width: 1440px;
-          margin: 0 auto; /* Centraliza em telas muito grandes */
-          padding: 20px;
-          gap: 20px; /* Espaço entre o menu e o conteúdo */
-          flex: 1;
-      }
-
-
-      /* --- 3. SIDEBAR (Menu Esquerdo Fixo) --- */
-      .sidebar {
-          width: 260px; /* Largura fixa do menu */
-          background: #fff;
-          border-radius: 12px;
-          padding: 20px;
-          height: fit-content; /* Altura se ajusta ao conteúdo */
-          box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-          margin-left: -16%;
-         
-          /* Para deixar fixo enquanto rola a página */
-          position: sticky;
-          top: 90px; /* Distância do topo (Header + margem) */
-      }
-
-
-      .menu-list {
-          list-style: none;
-          display: flex;
-          flex-direction: column;
-          gap: 8px;
-      }
-
-
-      .menu-item {
-          display: flex;
-          align-items: center;
-          padding: 12px 16px;
-          border-radius: 8px;
-          color: #555;
-          font-size: 14px;
-          font-weight: 500;
-          cursor: pointer;
-          transition: all 0.2s;
-          text-decoration: none;
-      }
-
-
-      .menu-item svg {
-          width: 20px; height: 20px; margin-right: 12px;
-          stroke: #555; fill: none; stroke-width: 2;
-      }
-
-
-      /* Estado Ativo (Dashboard) */
-      .menu-item.active {
-          background-color: #2F66F6; /* Azul vibrante da imagem */
-          color: #fff;
-          font-weight: 600;
-      }
-      .menu-item.active svg { stroke: #fff; }
-     
-      .menu-item:hover:not(.active) {
-          background-color: #f0f2f5;
-          color: #333;
-      }
-
-
-      /* --- 4. CONTEÚDO PRINCIPAL (Direita) --- */
-      .main-content {
-          flex: 1; /* Ocupa todo o espaço restante */
-          display: flex;
-          flex-direction: column;
-          gap: 2px;
-          width: 90%;
-      }
-
-
-      /* Card Bem-Vindo (Ajustado para layout fluído) */
-      /* .welcome-card {
-          width: 100%; Ocupa 100% da área main-content
-          background: linear-gradient(90deg, #5820D8 0%, #7B2CBF 100%);
-          border-radius: 16px;
-          padding: 30px 40px;
-          color: #ffffff;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          box-shadow: 0 4px 15px rgba(98, 0, 234, 0.2);
-      } */
-
-
-      .text-content h1 { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
-      .text-content p { font-size: 13px; opacity: 0.9; }
-     
-      .date-content { display: flex; align-items: flex-start; gap: 10px; text-align: right; }
-      .date-info { display: flex; flex-direction: column; }
-      .date-label { font-size: 11px; opacity: 0.8; }
-      .date-value { font-size: 13px; font-weight: 600; }
-     
-      .calendar-icon svg { width: 22px; height: 22px; stroke: #fff; fill: none; stroke-width: 2; }
-
-
-      /* --- RESPONSIVIDADE --- */
-      @media (max-width: 900px) {
-          .layout-container { flex-direction: column; }
-          .sidebar { width: 100%; position: static; display: flex; justify-content: space-between; align-items: center; }
-          .menu-list { flex-direction: row; overflow-x: auto; width: 100%; padding-bottom: 5px; }
-          .welcome-card { flex-direction: column; align-items: flex-start; gap: 15px; }
-          .date-content { width: 100%; justify-content: flex-start; text-align: left; }
-      }
-
-
-
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Poppins", sans-serif;
-    }
-   
-    body {
-        background: #f3f3f3;
-        padding: 10px;
-    }
-   
-    /* Container principal */
-    /* .carrossel-container {
-        width: 100%;
-        max-width: 1250px;
-        margin: auto;
-        border-radius: 20px;
-        overflow: hidden;
-        background: #fff;
-        box-shadow: 0 0 25px rgba(0,0,0,0.1);
-    } */
-   
-    /* Cabeçalho */
-    /* .carrossel-header {
-        background: #8a05ff;
-        color: white;
-        padding: 18px 25px;
-        font-size: 20px;
-        font-weight: 600;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    } */
-   
-    /* .carrossel-header .icon {
-        font-size: 22px;
-    } */
-   
-    /* Área do carrossel */
-    /* .carrossel {
-        position: relative;
-        height: 520px;
-        overflow: hidden;
-    } */
-   
-    /* Slides */
-    .slide {
-        position: absolute;
-        inset: 0;
-        background-size: cover;
-        background-position: center;
-        opacity: 0;
-        transition: opacity .7s ease-in-out;
-     
-    }
-   
-    .slide.active {
-        opacity: 1;
-    }
-   
-    /* Conteúdo do slide */
-    .slide-content {
-        position: absolute;
-        bottom: 30px;
-        left: 40px;
-        color: white;
-        text-shadow: 0 0 10px black;
-        max-width: 600px;
-    }
-   
-    .slide-content h2 {
-        font-size: 32px;
-        margin: 10px 0;
-    }
-   
-    .slide-content .data {
-        font-size: 14px;
-        opacity: 0.85;
-    }
-   
-    .slide-content .descricao {
-        font-size: 18px;
-    }
-   
-    /* Botões */
-    .btn {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        border: none;
-        background: white;
-        width: 45px;
-        height: 45px;
-        border-radius: 50%;
-        font-size: 22px;
-        cursor: pointer;
-        box-shadow: 0 0 10px rgba(0,0,0,0.4);
-    }
-   
-    .prev { left: 25px; }
-    .next { right: 25px; }
-   
-    /* Indicadores */
-    .indicators {
-        display: flex;
-        justify-content: center;
-        gap: 6px;
-        position: absolute;
-        bottom: 20px;
-        width: 100%;
-    }
-   
-    .indicators div {
-        width: 12px;
-        height: 12px;
-        background: white;
-        opacity: .4;
-        border-radius: 50%;
-        cursor: pointer;
-    }
-   
-    .indicators .active {
-        opacity: 1;
-    }
-
-
-    /* Container dos cards */
-.cards-container {
-width: 80%;
-margin: 40px auto;
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-gap: 30px;
-padding: 0 20px;
-}
-
-
-/* Cada card */
-.info-card {
-background: #fff;
-border-radius: 15px;
-overflow: hidden;
-box-shadow: 0px 4px 20px rgba(0,0,0,0.12);
-transition: transform 0.2s ease-in-out;
-}
-
-
-.info-card:hover {
-transform: translateY(-5px);
-}
-
-
-/* Imagem */
-.info-img {
-width: 100%;
-height: 200px;
-object-fit: cover;
-}
-
-
-/* Conteúdo */
-.info-content {
-padding: 20px 25px;
-}
-
-
-.info-content h3 {
-font-size: 1.3rem;
-margin-bottom: 10px;
-display: flex;
-align-items: center;
-gap: 8px;
-color: #000000;
-margin-right: 50%;
-}
-
-
-.info-content p {
-font-size: 1rem;
-color: #444;
-line-height: 1.6;
-}
-
-
-/* Ícone */
-.icon {
-font-size: 1.4rem;
-}
-
-
-/* Título */
-.metrics-title {
-text-align: center;
-font-size: 20px;
-color: #1f1f1f;
-margin-bottom: 35px;
-}
-
-
-/* Grid dos números */
-.metrics-container {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-gap: 25px;
-justify-items: center;
-padding: 0 20px;
-}
-
-
-/* Cada item */
-.metric-item {
-text-align: center;
-}
-
-
-/* Ícones dentro do círculo */
-.metric-icon {
-width: 60px;
-height: 60px;
-border-radius: 50%;
-font-size: 28px;
-display: flex;
-align-items: center;
-justify-content: center;
-margin: 0 auto 15px auto;
-}
-
-
-/* Cores de fundo */
-.bg-blue-light {
-background: #2359cc;
-}
-
-
-.bg-purple-light {
-background: #f2e6ff;
-}
-
-
-.bg-green-light {
-background: #e2ffe8;
-}
-
-
-/* Número */
-.metric-item h3 {
-font-size: 28px;
-color: #0d0d0d;
-margin-bottom: 5px;
-}
-
-
-/* Descrição */
-.metric-item p {
-font-size: 14px;
-color: #4d4d4d;
-}
-
-
-/* Título */
-.metrics-title {
-  text-align: center;
-  font-size: 20px;
-  color: #1f1f1f;
-  margin-bottom: 35px;
-}
-
-
-/* Grid dos números */
-.metrics-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 25px;
-  justify-items: center;
-  padding: 0 20px;
-}
-
-
-/* Cada item */
-.metric-item {
-  text-align: center;
-}
-
-
-/* Ícones dentro do círculo */
-.metric-icon {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  font-size: 28px;
+/* =========================================
+   2. TÍTULOS
+========================================= */
+.section-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #2b3674; /* Azul escuro igual da imagem */
+  margin: 10px 0 25px 0;
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin: 0 auto 15px auto;
+}
+
+/* =========================================
+   GRID PRINCIPAL (Container dos Cards)
+   Substitui .cards-grid e .cards-container
+========================================= */
+.cards-grid {
+  display: grid;
+  /* MUDANÇA CRUCIAL:
+     Em vez de 'auto-fit', usamos '3'. 
+     O '1fr' significa "uma fração". 
+     Ou seja: Divida o espaço disponível em 3 pedaços iguais.
+  */
+  grid-template-columns: repeat(3, 1fr); 
+  
+  gap: 25px; /* Espaço entre os cards */
+  width: 100%; /* Garante que usa a largura total disponível */
+  margin-bottom: 40px;
+  padding: 5px; /* Evita cortes na sombra */
+}
+/* =========================================
+   ESTILO DO CARD
+   Unifiquei suas duas versões de .info-card
+========================================= */
+.info-card {
+  background: #ffffff;
+  border-radius: 20px;
+  border: none;
+  /* Sombra suave e elegante */
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease;
+  height: 100%; /* Garante que todos tenham a mesma altura na linha */
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Imagem do Card */
+.info-img {
+  width: 100%;
+  height: 180px; /* Altura fixa para manter alinhamento */
+  object-fit: cover;
+}
+
+/* Conteúdo interno do card */
+.info-content {
+  padding: 25px;
+  flex: 1; /* Faz o conteúdo ocupar o espaço restante se o card esticar */
+  display: flex;
+  flex-direction: column;
+}
+
+.info-content h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1b2559;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.info-content p {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #a3aed0;
+  line-height: 1.6;
+  margin: 0;
 }
 
 
-/* Cores de fundo */
-.bg-blue-light {
-  background: #e6eeff;
-}
-
-
-.bg-purple-light {
-  background: #f2e6ff;
-}
-
-
-.bg-green-light {
-  background: #e2ffe8;
-}
-
-
-/* ----- VÍDEO DE FUNDO ----- */
-
-
-.bg-video {
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-object-fit: cover;
-z-index: -1; /* Fica atrás de tudo */
-opacity: 0.35; /* Ajuste para ficar sutil */
-pointer-events: none; /* Não interfere nos cliques */
-}
-
-
-.icone{
-    margin-right: 5%;
-}

@@ -69,6 +69,9 @@ export default function LoginColaborador() {
            return; 
         }
 
+          // SALVA O NOME DO USUÁRIO
+  localStorage.setItem("nomeUsuario", usuarioDecodificado.nome);
+
       } catch (error) {
         console.error("Erro ao ler token", error);
         setCarregando(false);

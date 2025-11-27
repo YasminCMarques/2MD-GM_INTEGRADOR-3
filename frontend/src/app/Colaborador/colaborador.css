@@ -1,123 +1,89 @@
-/* =========================================
-   1. RESET E ESTRUTURA (Para matar o CSS Global que atrapalha)
-========================================= */
-
-/* Garante que o container ocupe a tela toda e tire as margens automáticas */
 .colaborador-layout {
   display: flex;
-  width: 100vw; /* Ocupa a largura total da janela */
-  min-height: 100vh;
-  background-color: #f4f7fe; /* COR DE FUNDO CINZA (Igual da foto) */
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden; /* Evita rolagem lateral indesejada */
+  width: 100%; /* em vez de 100vw */
+  min-height: calc(100vh - 80px);
+  background-color: #f4f7fe;
+  overflow-x: hidden;
 }
 
-/* IMPORTANTE: Isso sobrescreve o 'main' do telainicial.css 
-   que estava deixando o fundo branco e centralizado 
-*/
-.colaborador-content {
-  flex: 1; /* Ocupa todo o espaço restante a direita da sidebar */
-  background-color: transparent !important; /* Remove o fundo branco herdado */
-  padding: 30px; 
-  height: 100vh;
-  overflow-y: auto; /* Scroll apenas no conteúdo */
-  display: block; /* Garante comportamento de bloco, não flex centralizado */
-}
-
-/* Ajuste para a Sidebar não ter margem esquerda */
-aside {
+/* Sidebar fixa à esquerda no desktop */
+aside,
+.sidebar-colaborador {
   flex-shrink: 0;
-  height: 100vh;
-  background-color: #fff; /* Sidebar branca */
-  /* Se sua sidebar tiver margens internas, remova no componente dela */
+  width: 260px;
+  min-width: 260px;
+  background: #fff;
+  height: auto;
+  padding: 20px;
+  border-right: 1px solid #e5e5e5;
 }
 
-/* =========================================
-   2. TÍTULOS
-========================================= */
-.section-title {
-  font-family: 'Inter', sans-serif;
-  font-size: 24px;
-  font-weight: 700;
-  color: #2b3674; /* Azul escuro igual da imagem */
-  margin: 10px 0 25px 0;
-  display: flex;
-  align-items: center;
+/* Conteúdo */
+.colaborador-content {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+  background-color: transparent !important;
 }
 
-/* =========================================
-   GRID PRINCIPAL (Container dos Cards)
-   Substitui .cards-grid e .cards-container
-========================================= */
+
 .cards-grid {
   display: grid;
-  /* MUDANÇA CRUCIAL:
-     Em vez de 'auto-fit', usamos '3'. 
-     O '1fr' significa "uma fração". 
-     Ou seja: Divida o espaço disponível em 3 pedaços iguais.
-  */
-  grid-template-columns: repeat(3, 1fr); 
-  
-  gap: 25px; /* Espaço entre os cards */
-  width: 100%; /* Garante que usa a largura total disponível */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  width: 100%;
   margin-bottom: 40px;
-  padding: 5px; /* Evita cortes na sombra */
 }
-/* =========================================
-   ESTILO DO CARD
-   Unifiquei suas duas versões de .info-card
-========================================= */
+
+/* Cards */
 .info-card {
   background: #ffffff;
   border-radius: 20px;
-  border: none;
-  /* Sombra suave e elegante */
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease;
-  height: 100%; /* Garante que todos tenham a mesma altura na linha */
+  box-shadow: 0px 4px 20px rgba(0,0,0,0.08);
+  transition: 0.2s ease;
 }
 
 .info-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15);
-}
-
-/* Imagem do Card */
-.info-img {
-  width: 100%;
-  height: 180px; /* Altura fixa para manter alinhamento */
-  object-fit: cover;
-}
-
-/* Conteúdo interno do card */
-.info-content {
-  padding: 25px;
-  flex: 1; /* Faz o conteúdo ocupar o espaço restante se o card esticar */
-  display: flex;
-  flex-direction: column;
-}
-
-.info-content h3 {
-  font-family: 'Inter', sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  color: #1b2559;
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.info-content p {
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  color: #a3aed0;
-  line-height: 1.6;
-  margin: 0;
 }
 
 
+@media (max-width: 992px) {
+
+  .colaborador-layout {
+    flex-direction: column;
+  }
+
+  aside,
+  .sidebar-colaborador {
+    width: 100%;
+    min-width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .colaborador-content {
+    padding: 20px;
+  }
+}
+
+/* --- MOBILE (Grid 1 coluna, sidebar vira bloco) --- */
+@media (max-width: 576px) {
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .colaborador-content {
+    padding: 15px;
+  }
+
+  aside,
+  .sidebar-colaborador {
+    padding: 15px;
+  }
+}

@@ -5,14 +5,13 @@ import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-// Importar rotas
+// --- IMPORTAÇÃO DE ROTAS ---
 import produtoRotas from './routes/produtoRotas.js';
 import authRotas from './routes/authRotas.js';
 import criptografiaRotas from './routes/criptografiaRotas.js';
 import usuarioRotas from './routes/usuarioRotas.js';
-
 import rankingRoutes from './routes/rankingRoutes.js';
-import sugestoesRoutes from './routes/sugestoesRoutes.js';
+import sugestoesRoutes from './routes/sugestoesRoutes.js'; // Importado apenas uma vez aqui
 
 // Importar middlewares
 import { logMiddleware } from './middlewares/logMiddleware.js';
@@ -29,11 +28,11 @@ const __dirname = path.dirname(__filename);
 const PORT = process.env.PORT || 3000;
 
 // Middlewares globais
-app.use(helmet()); // Segurança HTTP headers
+app.use(helmet()); 
 
 // Configurar CORS
 app.use(cors({
-    origin: '*', // Em produção, troque pelo domínio do seu front
+    origin: '*', 
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     preflightContinue: false,
@@ -43,21 +42,19 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Servir arquivos estáticos (imagens)
+// Servir arquivos estáticos
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// Middleware para log de requisições
+// Middleware de log
 app.use(logMiddleware);
 
-// Rotas da API
+// --- REGISTRO DAS ROTAS DA API ---
 app.use('/api/auth', authRotas);
 app.use('/api/produtos', produtoRotas);
 app.use('/api/criptografia', criptografiaRotas);
 app.use('/api/usuarios', usuarioRotas);
-
-// AQUI ESTAVA O ERRO (require removido). Agora usamos a variável importada lá em cima:
 app.use('/api/ranking', rankingRoutes);
-app.use('/api/sugestoes', sugestoesRoutes);
+app.use('/api/sugestoes', sugestoesRoutes); // ✅ Rota registrada corretamente!
 
 // Rota raiz
 app.get('/', (req, res) => {
@@ -69,12 +66,13 @@ app.get('/', (req, res) => {
             autenticacao: '/api/auth',
             produtos: '/api/produtos',
             criptografia: '/api/criptografia',
-            ranking: '/api/ranking' // Adicionei na documentação da raiz também
+            ranking: '/api/ranking',
+            sugestoes: '/api/sugestoes/minhas'
         }
     });
 });
 
-// Middleware para tratar rotas não encontradas
+// Middleware para rotas não encontradas
 app.use('*', (req, res) => {
     res.status(404).json({
         sucesso: false,
@@ -83,7 +81,7 @@ app.use('*', (req, res) => {
     });
 });
 
-// Middleware global de tratamento de erros
+// Middleware de erros
 app.use(errorMiddleware);
 
 // Iniciar servidor

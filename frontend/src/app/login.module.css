@@ -1,0 +1,183 @@
+:root {
+  --blue: #3b82f6;
+  --blue-dark: #2563eb;
+  --purple: #7c3aed;
+  --purple-dark: #6d28d9;
+  --text-dark: #222;
+  --glass-bg: rgba(255, 255, 255, 0.12);
+  --shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+.main {
+  font-family: "Inter", "Segoe UI", sans-serif;
+  margin: 0;
+  color: #fff;
+  background: linear-gradient(-45deg, #1e3a8a, #3b82f6, #0f172a, #1e40af);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  overflow-x: hidden;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.loginContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.loginHeader img {
+  margin-bottom: 15px;
+  transition: transform 0.4s ease;
+}
+
+.loginHeader img:hover {
+  transform: scale(1.05);
+}
+
+.loginHeader h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.loginHeader p {
+  font-size: 1rem;
+  opacity: 0.85;
+  margin-bottom: 40px;
+}
+
+.cardsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 35px;
+}
+
+.accessCard {
+  backdrop-filter: blur(12px);
+  background: var(--glass-bg);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  width: 330px;
+  padding: 30px 25px;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  transition: all 0.4s ease;
+}
+
+.accessCard:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.iconContainer {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 15px;
+  color: white;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.accessCard:hover .iconContainer {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.blue {
+  background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+}
+
+.purple {
+  background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+}
+
+.accessCard h3 {
+  margin: 10px 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.accessCard p {
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+  opacity: 0.9;
+}
+
+.accessCard ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+  text-align: left;
+}
+
+.accessCard li {
+  font-size: 0.9rem;
+  margin: 6px 0;
+  position: relative;
+  padding-left: 18px;
+}
+
+.accessCard li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--blue);
+}
+
+.btn {
+  border: none;
+  border-radius: 10px;
+  padding: 12px 22px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.btnBlue {
+  background: linear-gradient(90deg, var(--blue), var(--blue-dark));
+}
+
+.btnPurple {
+  background: linear-gradient(90deg, var(--purple), var(--purple-dark));
+}
+
+.btn:hover {
+  transform: scale(1.03);
+  opacity: 0.95;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.footer {
+  margin-top: 50px;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .cardsContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .accessCard {
+    width: 90%;
+  }
+}

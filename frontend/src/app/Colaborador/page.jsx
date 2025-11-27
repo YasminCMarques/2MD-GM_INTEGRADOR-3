@@ -15,7 +15,7 @@ import "./colaborador.css";
 // IMPORTA OS COMPONENTES DE CONTEÚDO
 import MeuPainelContent from "@/app/SistemaColaborador/MeuPainel/page.jsx"
 import FeedbacksContent from "@/app/SistemaColaborador/MeuPainel/page.jsx";
-import SugestoesContent from "@/app/SistemaColaborador/MeuPainel/page.jsx";
+import SugestoesContent from "@/app/SistemaColaborador/MinhasSugestoes/page.jsx";
 
 export default function Colaborador() {
   // Começa com 'meu-painel' para bater com a Sidebar

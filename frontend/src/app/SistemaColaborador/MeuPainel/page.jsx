@@ -1,12 +1,50 @@
 "use client";
-import React from "react";
-import "./telainicial.css"
+import React, { useEffect, useState } from "react";
+import { jwtDecode } from "jwt-decode";
+import "./telainicial.css";
 
 export default function MeuPainelContent() {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    // pega o token salvo no login
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      try {
+        const payload = jwtDecode(token);
+        setUser(payload);
+      } catch (error) {
+        console.error("Erro ao decodificar token:", error);
+      }
+    }
+  }, []);
+
   return (
     <div className="fade-in-content">
-      {/* Vídeo ou Carrossel viriam aqui */}
-      
+
+      {/* ==========================  
+          📌 CONTAINER DO USUÁRIO  
+      ========================== */}
+      {user && (
+        <div className="user-box">
+          <img
+            src="/imagens/user_default.png"
+            className="user-photo"
+            alt="Foto usuário"
+          />
+
+          <div className="user-info">
+            <h2>{user.nome}</h2>
+            <p><b>Email:</b> {user.email}</p>
+            <p><b>CPF:</b> {user.cpf}</p>
+            <p><b>Telefone:</b> {user.telefone}</p>
+            <p><b>Departamento:</b> {user.departamento}</p>
+            <p><b>Cargo:</b> {user.cargo}</p>
+          </div>
+        </div>
+      )}
+
       <div className="cards-container">
         {/* Card 1 */}
         <div className="info-card">

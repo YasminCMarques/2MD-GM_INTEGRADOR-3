@@ -5,16 +5,12 @@
   border-radius: 14px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   height: fit-content;
-  
-  /* Sticky para desktop */
   position: sticky;
   top: 40px;
   align-self: flex-start;
   flex-shrink: 0;
-  
-  /* Garante que o padding não aumente a largura total */
   box-sizing: border-box; 
-  z-index: 10; /* Garante que fique acima de outros elementos se necessário */
+  z-index: 10;
 }
 
 .sidebar-nav ul {
@@ -26,33 +22,28 @@
   gap: 18px;
 }
 
-/* ================================================
-   ESTILO DO BOTÃO (Corrigido)
-   ================================================ */
+
 .sidebar-nav li button {
-  all: unset; /* Remove estilos nativos */
-  
-  /* CORREÇÃO IMPORTANTE: Traz de volta o comportamento de caixa padrão */
+  all: unset;
   box-sizing: border-box; 
-  
   display: flex;
   align-items: center;
   gap: 12px;
   padding: 12px;
-  width: 100%; /* Agora respeita o padding por causa do box-sizing */
+  width: 100%; 
   font-size: 15px;
   font-weight: 500;
   color: #1f2937;
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.2s ease;
-  position: relative; /* Para efeitos visuais se precisar */
+  position: relative; 
 }
 
 /* HOVER */
 .sidebar-nav li button:hover {
   background: #f3f4f6;
-  transform: translateX(4px); /* Pequeno efeito visual de movimento */
+  transform: translateX(4px); 
 }
 
 /* ACTIVE */
@@ -66,44 +57,26 @@
 .icon {
   width: 20px;
   height: 20px;
-  flex-shrink: 0; /* Impede que o ícone amasse */
+  flex-shrink: 0;
 }
 
-/* ================================================
-   RESPONSIVIDADE (MEDIA QUERIES)
-   ================================================ */
 
-/* Quando a tela for menor que 1024px (Tablets e Celulares) */
 @media (max-width: 1024px) {
   .sidebar-container {
-    width: 100%; /* Ocupa toda a largura */
-    position: relative; /* Deixa de ser sticky lateral */
+    width: 100%;
+    position: relative;
     top: 0;
-    margin-bottom: 20px; /* Empurra o conteúdo para baixo */
+    margin-bottom: 20px;
     padding: 15px;
     display: flex;
     flex-direction: column;
   }
 
-  /* Opcional: Se quiser que o menu fique horizontal no mobile, descomente abaixo: */
-  /*
-  .sidebar-nav ul {
-    flex-direction: row;
-    overflow-x: auto; 
-    padding-bottom: 5px;
-  }
-  
-  .sidebar-nav li button {
-    white-space: nowrap; 
-    width: auto;
-  }
-  */
 }
-
 
 .main-layout-rh {
   display: flex;
-  flex-wrap: wrap; /* Permite que a sidebar e o conteúdo quebrem linha no mobile */
+  flex-wrap: wrap;
   gap: 20px;
   align-items: flex-start;
    margin-right: 5%;

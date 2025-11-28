@@ -29,7 +29,7 @@
   min-height: 100vh;
   width: 100%;
   animation: fadeIn 0.4s ease;
-  
+
 }
 
 /* Header */
@@ -144,9 +144,18 @@
 }
 
 /* Ranking */
-.rank1 { z-index: 3; margin-bottom: 22px; }
-.rank2 { z-index: 2; }
-.rank3 { z-index: 1; }
+.rank1 {
+  z-index: 3;
+  margin-bottom: 22px;
+}
+
+.rank2 {
+  z-index: 2;
+}
+
+.rank3 {
+  z-index: 1;
+}
 
 .avatar {
   width: 68px;
@@ -219,7 +228,7 @@
 }
 
 .scoreBox {
-  background: rgba(255,255,255,0.28);
+  background: rgba(255, 255, 255, 0.28);
   padding: 0.6rem 1.4rem;
   border-radius: 10px;
   font-weight: 600;
@@ -250,6 +259,7 @@
   font-size: 1.15rem;
   font-weight: 600;
   color: var(--text-dark);
+  font-size: 25px;
 }
 
 .achievementItem {
@@ -318,8 +328,16 @@
     opacity: 0;
     transform: translateY(10px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+
+.titulo h1 {
+  font-size: 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #c20808;
 }

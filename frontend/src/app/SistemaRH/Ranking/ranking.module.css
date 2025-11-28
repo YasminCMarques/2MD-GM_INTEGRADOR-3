@@ -1,8 +1,5 @@
 /* Ranking.module.css */
 
-/* ---------------------- */
-/* Variáveis de Tema      */
-/* ---------------------- */
 :root {
   --bg-light: #f8f9fa;
   --text-dark: #0f172a;
@@ -24,9 +21,7 @@
   --bronze-end: #ea580c;
 }
 
-/* ---------------------- */
-/* Container Geral        */
-/* ---------------------- */
+/* Container Geral */
 .container {
   padding: 2.5rem;
   font-family: 'Inter', sans-serif;
@@ -37,9 +32,7 @@
   
 }
 
-/* ---------------------- */
-/* Header                 */
-/* ---------------------- */
+/* Header */
 .header {
   margin-bottom: 2rem;
 }
@@ -56,9 +49,7 @@
   color: var(--text-muted);
 }
 
-/* ---------------------- */
-/* Estatísticas           */
-/* ---------------------- */
+
 .statsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -105,18 +96,14 @@
   background: #f1f5f9;
 }
 
-/* ---------------------- */
-/* Layout Principal       */
-/* ---------------------- */
+/* Layout Principal */
 .mainContent {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 2.5rem;
 }
 
-/* ---------------------- */
-/* Pódio                  */
-/* ---------------------- */
+/* Pódio */
 .podiumContainer {
   background: var(--white);
   padding: 2.5rem;
@@ -249,9 +236,7 @@
   opacity: 0.9;
 }
 
-/* ---------------------- */
 /* Conquistas             */
-/* ---------------------- */
 .achievementsList {
   background: var(--white);
   padding: 2.2rem;
@@ -308,9 +293,6 @@
   color: var(--text-light);
 }
 
-/* ---------------------- */
-/* Responsivo             */
-/* ---------------------- */
 @media (max-width: 768px) {
   .mainContent {
     grid-template-columns: 1fr;

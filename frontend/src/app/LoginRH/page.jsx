@@ -129,7 +129,7 @@ export default function LoginRH() {
               <input
                 type="password"
                 id="senha"
-                placeholder="********"
+                placeholder="••••••••"
                 value={senha}
                 onChange={(e) => setSenha(e.target.value)}
                 required

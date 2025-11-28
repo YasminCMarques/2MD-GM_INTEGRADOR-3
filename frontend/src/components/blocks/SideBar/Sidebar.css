@@ -101,9 +101,10 @@
 }
 
 
-.main-layout {
+.main-layout-rh {
   display: flex;
   flex-wrap: wrap; /* Permite que a sidebar e o conteúdo quebrem linha no mobile */
   gap: 20px;
   align-items: flex-start;
+   margin-right: 5%;
 }

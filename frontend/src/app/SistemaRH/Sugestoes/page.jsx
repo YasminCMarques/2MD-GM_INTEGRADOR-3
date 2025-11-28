@@ -103,7 +103,10 @@ export default function SugestoesRecebidasPage() {
   if (loading) return <div className={styles.container}><p>Carregando...</p></div>;
 
   return (
-    <div className={styles.container}>
+  
+    <div className="colab-container">
+  
+  <div className={styles.container}>
       <header className={styles.header}>
         <h1>Sugestões Recebidas</h1>
         <p>Gerencie as ideias enviadas pelos colaboradores</p>
@@ -200,6 +203,7 @@ export default function SugestoesRecebidasPage() {
         </div>
       )}
 
+    </div>
     </div>
   );
 }

@@ -1,4 +1,3 @@
-/* Estilo geral do container do Dashboard */
 .rh-dashboard-container {
   padding: 40px 60px;
   font-family: Arial, sans-serif;
@@ -9,7 +8,7 @@
   margin-left: 0.1%;
 }
 
-/* Título principal */
+
 .rh-title h1 {
   margin-bottom: 20px;
   font-size: 30px;
@@ -25,7 +24,7 @@
 
 }
 
-/* Subtítulo */
+
 .rh-subtitle {
   margin-bottom: 30px;
   color: #666;
@@ -33,7 +32,7 @@
   line-height: 1.5;
 }
 
-/* GRID DOS CARDS SUPERIORES */
+
 .rh-cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -80,7 +79,7 @@
   margin-top: 10px;
 }
 
-/* Cores dos ícones */
+
 .blue {
   color: #3498db;
 }
@@ -97,7 +96,6 @@
   color: #2ecc71;
 }
 
-/* SEÇÃO INFERIOR */
 .rh-bottom-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -142,7 +140,6 @@
   font-size: 14px;
 }
 
-/* Ranking */
 .rank {
   font-weight: bold;
   padding: 8px 16px;
@@ -176,7 +173,24 @@
   color: #2ecc71;
 }
 
-/* Animação para os cards e boxes */
+
+.rh-vertical-stack {
+  display: flex;
+  flex-direction: column; 
+  gap: 20px; 
+  width: 100%;
+}
+
+
+.rh-card-wide {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  width: 100%; 
+
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -189,7 +203,7 @@
   }
 }
 
-/* Responsividade */
+
 @media (max-width: 768px) {
   .rh-cards-grid {
     grid-template-columns: 1fr 1fr;

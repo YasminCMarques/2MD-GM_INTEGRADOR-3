@@ -20,7 +20,6 @@ export default function DashboardContent() {
       <h1 className="rh-title">Dashboard</h1>
       <p className="rh-subtitle">Visão geral do sistema de gestão de colaboradores</p>
 
-      {/* CARDS SUPERIORES */}
       <div className="rh-cards-grid">
         <div className="rh-card">
           <Users className="rh-card-icon blue" />
@@ -50,43 +49,36 @@ export default function DashboardContent() {
           <span className="rh-card-status positive">+ 0.3 este mês</span>
         </div>
 
-        <div className="rh-card">
-          <Gift className="rh-card-icon purple" />
-          <h3>Bonificações Ativas</h3>
-          <p className="rh-card-value">256</p>
-          <span className="rh-card-status positive">+ 18 este mês</span>
-        </div>
+        
+      </div>
 
-        <div className="rh-card">
-          <DollarSign className="rh-card-icon blue" />
-          <h3>Investimento em RH</h3>
-          <p className="rh-card-value">R$ 2.4M</p>
-          <span className="rh-card-status positive">+ 15% este mês</span>
+      
+      <div className="rh-section-clean">
+        <h3 className="titulo">Gráficos de Performance</h3>
+        
+        
+        <div className="rh-vertical-stack">
+          
+          <div className="rh-card-wide">
+            <TrendingUp className="rh-card-icon green" />
+            <h3>Crescimento de Colaboradores</h3>
+            <p className="rh-card-value">+20%</p>
+            <span className="rh-card-status positive">Este mês</span>
+          </div>
+
+          <div className="rh-card-wide">
+            <BarChart3 className="rh-card-icon blue" />
+            <h3>Performance em Projetos</h3>
+            <p className="rh-card-value">80%</p>
+            <span className="rh-card-status positive">Excelente</span>
+          </div>
+
         </div>
       </div>
 
-      {/* NOVA SEÇÃO DE GRÁFICOS DE PERFORMANCE */}
-      <div className="rh-box">
-        <h3 className="titulo" >Gráficos de Performance</h3>
-        <div className="rh-card">
-          <TrendingUp className="rh-card-icon green" />
-          <h3>Crescimento de Colaboradores</h3>
-          <p className="rh-card-value">+20%</p>
-          <span className="rh-card-status positive">Este mês</span>
-        </div>
-
-        <div className="rh-card">
-          <BarChart3 className="rh-card-icon blue" />
-          <h3>Performance em Projetos</h3>
-          <p className="rh-card-value">80%</p>
-          <span className="rh-card-status positive">Excelente</span>
-        </div>
-      </div>
-
-      {/* SEÇÃO INFERIOR */}
       <div className="rh-bottom-grid">
         
-        {/* ATIVIDADES RECENTES */}
+        
         <div className="rh-box">
           <h3>Atividades Recentes</h3>
           <div className="rh-activity">
@@ -111,7 +103,6 @@ export default function DashboardContent() {
           </div>
         </div>
 
-        {/* TOP PERFORMERS */}
         <div className="rh-box">
           <h3>Top Performers do Mês</h3>
           <div className="rh-performer">
@@ -134,7 +125,6 @@ export default function DashboardContent() {
 
       </div>
 
-      {/* NOVA SEÇÃO: RELATÓRIOS */}
       <div className="rh-box">
         <h3>Últimos Relatórios Gerados</h3>
         <div className="rh-activity">

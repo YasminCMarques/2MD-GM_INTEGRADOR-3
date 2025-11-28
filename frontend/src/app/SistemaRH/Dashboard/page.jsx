@@ -26,48 +26,48 @@ export default function DashboardContent() {
           <Users className="rh-card-icon blue" />
           <h3>Total de Colaboradores</h3>
           <p className="rh-card-value">847</p>
-          <span className="rh-card-status positive">+12 este mês</span>
+          <span className="rh-card-status positive">+ 10 este mês</span>
         </div>
 
         <div className="rh-card">
           <GraduationCap className="rh-card-icon purple" />
           <h3>Aprendizes/Estagiários</h3>
-          <p className="rh-card-value">124</p>
-          <span className="rh-card-status positive">+8 este mês</span>
+          <p className="rh-card-value">50</p>
+          <span className="rh-card-status positive">+ 8 este mês</span>
         </div>
 
         <div className="rh-card">
           <ClipboardCheck className="rh-card-icon yellow" />
           <h3>Avaliações Pendentes</h3>
           <p className="rh-card-value">23</p>
-          <span className="rh-card-status negative">-5 este mês</span>
+          <span className="rh-card-status negative">- 10 este mês</span>
         </div>
 
         <div className="rh-card">
           <BarChart3 className="rh-card-icon green" />
           <h3>Performance Média</h3>
           <p className="rh-card-value">8.4</p>
-          <span className="rh-card-status positive">+0.3 este mês</span>
+          <span className="rh-card-status positive">+ 0.3 este mês</span>
         </div>
 
         <div className="rh-card">
           <Gift className="rh-card-icon purple" />
           <h3>Bonificações Ativas</h3>
-          <p className="rh-card-value">156</p>
-          <span className="rh-card-status positive">+18 este mês</span>
+          <p className="rh-card-value">256</p>
+          <span className="rh-card-status positive">+ 18 este mês</span>
         </div>
 
         <div className="rh-card">
           <DollarSign className="rh-card-icon blue" />
           <h3>Investimento em RH</h3>
           <p className="rh-card-value">R$ 2.4M</p>
-          <span className="rh-card-status positive">+15% este mês</span>
+          <span className="rh-card-status positive">+ 15% este mês</span>
         </div>
       </div>
 
       {/* NOVA SEÇÃO DE GRÁFICOS DE PERFORMANCE */}
       <div className="rh-box">
-        <h3>Gráficos de Performance</h3>
+        <h3 className="titulo" >Gráficos de Performance</h3>
         <div className="rh-card">
           <TrendingUp className="rh-card-icon green" />
           <h3>Crescimento de Colaboradores</h3>

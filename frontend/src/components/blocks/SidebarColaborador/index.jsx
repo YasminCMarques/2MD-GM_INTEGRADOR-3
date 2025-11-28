@@ -32,10 +32,10 @@ export default function SidebarNavColaborador({ setConteudo }) {
             </button>
           </li>
 
-          {/* MEUS FEEDBACKS */}
-          <li className={ativo === "meus-feedbacks" ? "active" : ""}>
-            <button onClick={() => handleClick("meus-feedbacks")}>
-              <MessageSquare className="icon" /> Meus Feedbacks
+          {/* NovaSugestão */}
+          <li className={ativo === "nova-sugestao" ? "active" : ""}>
+            <button onClick={() => handleClick("nova-sugestao")}> 
+              <MessageSquare className="icon" /> Nova Sugestão
             </button>
           </li>
 

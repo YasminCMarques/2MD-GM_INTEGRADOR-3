@@ -2,63 +2,60 @@
 
 import React, { useState } from "react";
 
-// COMPONENTES GLOBAIS
+// Imports Globais
 import Footer from "@/components/blocks/Footer";
 import SidebarNavColaborador from "@/components/blocks/SidebarColaborador";
 import NavbarColaborador from "@/components/blocks/NavbarColaborador";
 
-
-// CSS
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./colaborador.css";
 
-// IMPORTA OS COMPONENTES DE CONTEÚDO
-import MeuPainelContent from "@/app/SistemaColaborador/MeuPainel/page.jsx"
-import FeedbacksContent from "@/app/SistemaColaborador/MeuPainel/page.jsx";
-import SugestoesContent from "@/app/SistemaColaborador/MinhasSugestoes/page.jsx";
+// --- ATENÇÃO AQUI ---
+import MeuPainelContent from "@/app/SistemaColaborador/MeuPainel/page.jsx";
+
+// 1. Importe a LISTA (que é o arquivo page.jsx padrão)
+import MinhasSugestoesLista from "@/app/SistemaColaborador/MinhasSugestoes/page.jsx"; 
+
+// 2. Importe o FORMULÁRIO (o arquivo novo Formulario.jsx)
+import FormularioNovaSugestao from "@/app/SistemaColaborador/NovaSugestao/page.jsx";
+
 
 export default function Colaborador() {
-  // Começa com 'meu-painel' para bater com a Sidebar
   const [conteudo, setConteudo] = useState("meu-painel");
 
+  // Função para voltar para a lista depois de enviar
+  const irParaLista = () => setConteudo("minhas-sugestoes");
+
   function renderConteudo() {
+    console.log("Conteúdo atual:", conteudo); // Isso vai aparecer no console do navegador (F12) para debug
+
     switch (conteudo) {
       case "meu-painel":
         return <MeuPainelContent />;
 
-      case "meus-feedbacks":
-        return <FeedbacksContent />;
+      // QUANDO CLICAR NO BOTÃO ROXO:
+      case "nova-sugestao":
+        return <FormularioNovaSugestao aoSucesso={irParaLista} />;
 
+      // QUANDO CLICAR NO BOTÃO DE BAIXO (LAMPADA):
       case "minhas-sugestoes":
-        return <SugestoesContent />;
+        return <MinhasSugestoesLista />;
 
       default:
         return <MeuPainelContent />;
     }
-  }
-
-  
+  } 
 
   return (
-
     <>
-    
-    <NavbarColaborador/>
-    
-    <div className="colaborador-layout">
-
-      {/* 2. A Sidebar vem primeiro */}
-      <SidebarNavColaborador setConteudo={setConteudo} />
-
-      {/* 3. O Conteúdo vem depois, com a classe correta */}
-      <main className="colaborador-content">
-        {renderConteudo()}
-      </main>
-
-    </div>
-    
-    <Footer/>
-
+      <NavbarColaborador/>
+      <div className="colaborador-layout">
+        <SidebarNavColaborador setConteudo={setConteudo} />
+        <main className="colaborador-content">
+          {renderConteudo()}
+        </main>
+      </div>
+      <Footer/>
     </>
   );
 }

@@ -41,3 +41,36 @@ export const getMinhasSugestoes = async (req, res) => {
     return res.status(500).json({ msg: 'Erro interno no servidor' });
   }
 };
+
+export const criarSugestao = async (req, res) => {
+  try {
+    const { titulo, descricao } = req.body;
+
+    // 1. Validação simples
+    if (!titulo || !descricao) {
+      return res.status(400).json({ msg: 'Título e descrição são obrigatórios.' });
+    }
+
+    // 2. Autenticação (Igual ao GET)
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
+    if (!token) return res.status(401).json({ msg: 'Token não fornecido.' });
+
+    const decoded = jwt.decode(token);
+    if (!decoded || !decoded.id) return res.status(401).json({ msg: 'Token inválido.' });
+
+    // 3. Inserir no Banco
+    const query = `
+      INSERT INTO sugestoes (usuario_id, titulo, descricao, status, pontos_gerados, data_criacao)
+      VALUES (?, ?, ?, 'pendente', 0.0, NOW())
+    `;
+    
+    await db.execute(query, [decoded.id, titulo, descricao]);
+
+    return res.status(201).json({ msg: 'Sugestão criada com sucesso!' });
+
+  } catch (error) {
+    console.error('Erro ao criar sugestão:', error);
+    return res.status(500).json({ msg: 'Erro interno no servidor' });
+  }
+};

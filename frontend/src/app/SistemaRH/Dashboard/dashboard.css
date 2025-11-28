@@ -1,11 +1,11 @@
 /* Estilo geral do container do Dashboard */
 .rh-dashboard-container {
-  padding: 40px 60px; /* Ajustando o padding para combinar com o estilo do Colaboradores */
+  padding: 40px 60px;
   font-family: Arial, sans-serif;
-  background: #ffffff; /* Cor de fundo branca */
-  border-radius: 16px; /* Bordas arredondadas como o container dos Colaboradores */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombras leves */
-  animation: fadeIn 0.4s ease; /* Animação de entrada */
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.4s ease;
 }
 
 /* Título principal */
@@ -28,15 +28,15 @@
 /* GRID DOS CARDS SUPERIORES */
 .rh-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Ajuste para manter uma boa distribuição */
-  gap: 30px; /* Aumentando o espaçamento entre os cards */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
   margin-bottom: 50px;
 }
 
 .rh-card {
   background: #ffffff;
   border-radius: 16px;
-  padding: 30px; /* Aumenta o padding interno */
+  padding: 30px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   margin-bottom: 3%;
@@ -48,7 +48,7 @@
 }
 
 .rh-card-icon {
-  width: 40px; /* Tamanho do ícone */
+  width: 40px;
   height: 40px;
   margin-bottom: 20px;
 }
@@ -82,12 +82,12 @@
 .rh-bottom-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px; /* Mais espaço entre os boxes */
+  gap: 40px;
 }
 
 .rh-box {
   background: #fff;
-  padding: 30px; /* Aumenta o padding para mais espaçamento */
+  padding: 30px;
   border-radius: 16px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
@@ -103,18 +103,18 @@
 .rh-performer {
   display: flex;
   align-items: center;
-  gap: 20px; /* Espaço aumentado entre os elementos */
-  padding: 15px 0; /* Aumenta o padding entre atividades */
+  gap: 20px;
+  padding: 15px 0;
   border-bottom: 1px solid #eee;
 }
 
 .dot {
-  width: 16px; /* Tamanho maior do ponto de atividade */
+  width: 16px;
   height: 16px;
 }
 
 .activity-info {
-  font-size: 16px; /* Aumenta o tamanho da fonte */
+  font-size: 16px;
   color: #555;
 }
 
@@ -151,15 +151,15 @@
 /* Responsividade */
 @media (max-width: 768px) {
   .rh-cards-grid {
-    grid-template-columns: 1fr 1fr; /* 2 colunas em telas menores */
+    grid-template-columns: 1fr 1fr;
   }
 
   .rh-bottom-grid {
-    grid-template-columns: 1fr; /* 1 coluna para atividades e performers */
+    grid-template-columns: 1fr;
   }
 
   .rh-card, .rh-box {
-    padding: 25px; /* Menos padding em telas pequenas */
+    padding: 25px;
   }
 }
 
@@ -172,5 +172,4 @@
     font-size: 24px;
   }
 }
-
 

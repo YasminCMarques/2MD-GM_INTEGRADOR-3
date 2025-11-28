@@ -30,10 +30,8 @@
   border-radius: 16px;
   padding: 40px;
   
-  /* --- MUDANÇA AQUI --- */
-  width: 100%;           /* Ocupa 100% do espaço disponível... */
-       /* ...até chegar em 1100px (Antes era 700px) */
-  /* -------------------- */
+ 
+  width: 100%;         
 
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   border: 1px solid #e2e8f0;
@@ -54,11 +52,11 @@
 
 .input, .textarea {
   width: 100%;
-  padding: 14px 16px; /* Mais espaço interno */
+  padding: 14px 16px;
   font-size: 1rem;
   color: #0f172a;
   background-color: #fff;
-  border: 2px solid #e2e8f0; /* Borda sutil */
+  border: 2px solid #e2e8f0; 
   border-radius: 10px;
   outline: none;
   transition: all 0.2s ease;
@@ -71,10 +69,10 @@
   line-height: 1.5;
 }
 
-/* Efeito de Foco (quando clica no input) */
+
 .input:focus, .textarea:focus {
-  border-color: #8b5cf6; /* Roxo do seu tema */
-  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.1); /* Anel roxo suave */
+  border-color: #8b5cf6; 
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.1); 
 }
 
 .input::placeholder, .textarea::placeholder {
@@ -92,7 +90,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); /* Degradê Roxo */
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); 
   color: white;
   border: none;
   padding: 14px 32px;
@@ -117,7 +115,7 @@
 }
 
 .evolutionContainer {
-  max-width: 100%; /* Mesma largura do form */
+  max-width: 100%; 
   width: 100%;
   margin-top: 40px;
 }
@@ -182,11 +180,11 @@
 }
 
 .tipNumber {
-  background-color: #f3e8ff; /* Roxo bem clarinho */
+  background-color: #f3e8ff; 
   color: #7c3aed;
   width: 32px;
   height: 32px;
-  min-width: 32px; /* Não deixa amassar */
+  min-width: 32px; 
   border-radius: 50%;
   display: flex;
   align-items: center;

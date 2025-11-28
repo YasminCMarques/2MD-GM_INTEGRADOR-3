@@ -1,6 +1,4 @@
-/* ===========================
-   GERAL
-=========================== */
+
 .app-wrapper {
   display: flex;
   justify-content: center;
@@ -8,9 +6,6 @@
   padding: 20px;
 }
 
-/* ===========================
-   CONTAINER
-=========================== */
 .nc-container {
   background: #ffffff;
   padding: 40px 50px;

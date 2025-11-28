@@ -58,7 +58,7 @@ export default function SugestoesRecebidasPage() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         status: status, // 'aprovada' ou 'rejeitada'
-        pontos: pontos // Nota (se for rejeitada, o back ignora isso)
+        pontos: pontos 
       })
     });
 
@@ -133,7 +133,7 @@ export default function SugestoesRecebidasPage() {
               </div>
 
               <div className={styles.cardFooter}>
-                {/* Botão que abre o modal */}
+  
                 <button 
                   className={styles.actionButton} 
                   onClick={() => handleOpenModal(item)}

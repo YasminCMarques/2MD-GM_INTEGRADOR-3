@@ -11,7 +11,7 @@ import {
 import "./sidebarcolaborador.css";
 
 export default function SidebarNavColaborador({ setConteudo }) {
-  // Começa ativo em 'meu-painel' para ficar igual à foto
+
   const [ativo, setAtivo] = useState("meu-painel");
 
   const handleClick = (id) => {

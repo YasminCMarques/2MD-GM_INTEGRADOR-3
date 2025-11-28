@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { Lightbulb, Award, Star, TrendingUp, Plus } from 'lucide-react';
 import styles from './page.module.css';
 
-// URL DO SEU BACKEND
+
 const API_URL = 'http://localhost:3000/api/sugestoes/minhas';
 
 export default function MinhasSugestoesPage() {
@@ -15,9 +15,9 @@ export default function MinhasSugestoesPage() {
   useEffect(() => {
     async function carregarDados() {
       try {
-        // --- FUNÇÃO DE BUSCA DE TOKEN (AGORA MAIS INTELIGENTE) ---
+
         const getToken = () => {
-          // 1. Tenta encontrar no LocalStorage com vários nomes possíveis
+
           const chavesPossiveis = ['token', 'access_token', 'jwt', 'userToken', 'auth_token'];
           
           for (const chave of chavesPossiveis) {
@@ -28,7 +28,7 @@ export default function MinhasSugestoesPage() {
             }
           }
 
-          // 2. Tenta pegar dos Cookies (caso não tenha achado no LocalStorage)
+
           if (typeof document !== 'undefined') {
             const match = document.cookie.match(new RegExp('(^| )token=([^;]+)'));
             if (match) {
@@ -40,11 +40,11 @@ export default function MinhasSugestoesPage() {
           return null;
         };
 
-        // --- DEBUGGER: MOSTRA O QUE TEM NO SEU NAVEGADOR ---
+
         console.group("🕵️ DEBUG DO TOKEN");
         console.log("Procurando token no LocalStorage...");
         if (typeof window !== 'undefined') {
-            // Lista tudo que tem no LocalStorage para você ver o nome certo
+
             for (let i = 0; i < localStorage.length; i++) {
                 const key = localStorage.key(i);
                 console.log(` - Chave encontrada: "${key}" | Valor: ${localStorage.getItem(key)?.substring(0, 15)}...`);
@@ -55,13 +55,13 @@ export default function MinhasSugestoesPage() {
         const token = getToken();
 
         if (!token) {
-          // Se cair aqui, abra o Console (F12) e veja o que foi impresso no "DEBUG DO TOKEN"
+
           setError('Token não encontrado. Abra o Console (F12) para ver os detalhes.');
           setLoading(false);
           return;
         }
 
-        // 3. Faz a chamada para o seu Backend Express
+
         const res = await fetch(API_URL, {
           method: 'GET',
           headers: {

@@ -1,23 +1,19 @@
-/* =========================================
-   LAYOUT GERAL & ESTRUTURA
-========================================= */
+
 .rh-layout {
   display: flex;
   align-items: flex-start;
   gap: 30px;
   padding: 30px 40px;
-  /* Garante que o layout não quebre em telas menores antes do breakpoint */
   min-height: 100vh; 
   box-sizing: border-box;
 }
 
 .rh-dashboard-container {
   flex: 1;
-  /* Removida a duplicidade de padding que havia no código original */
   padding: 20px; 
   max-width: 1500px;
   margin: auto;
-  width: 100%; /* Garante que não estoure a largura */
+  width: 100%; 
   font-family: "Inter", sans-serif;
   box-sizing: border-box;
 }
@@ -34,13 +30,9 @@
   font-size: 15px;
 }
 
-/* =========================================
-   GRID DOS CARDS SUPERIORES
-========================================= */
 .rh-cards-grid {
   margin-top: 30px;
   display: grid;
-  /* auto-fit já ajuda na responsividade, mas o minmax ajusta a largura mínima */
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 20px;
 }
@@ -86,7 +78,7 @@
   padding: 8px;
   border-radius: 10px;
   color: #fff;
-  display: flex; /* Garante centralização do ícone */
+  display: flex; 
   align-items: center;
   justify-content: center;
 }
@@ -96,13 +88,11 @@
 .rh-card-icon.yellow { background: #f59e0b; }
 .rh-card-icon.green { background: #16a34a; }
 
-/* =========================================
-   GRID INFERIOR (Box Charts/Lists)
-========================================= */
+
 .rh-bottom-grid {
   margin-top: 35px;
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Padrão: 2 colunas */
+  grid-template-columns: 1fr 1fr; 
   gap: 25px;
 }
 
@@ -112,7 +102,6 @@
   padding: 25px;
   border: 1px solid #eee;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  /* Garante que o conteúdo não vase */
   overflow: hidden; 
 }
 
@@ -122,9 +111,7 @@
   margin-bottom: 15px;
 }
 
-/* =========================================
-   ATIVIDADES RECENTES
-========================================= */
+/* ATIVIDADES RECENTES */
 .rh-activity {
   display: flex;
   align-items: center;
@@ -136,22 +123,21 @@
 
 .rh-activity:last-child { border-bottom: none; }
 
-.dot { width: 10px; height: 10px; border-radius: 50%; /* Adicionei radius para garantir que seja bolinha */ }
-.dot.green { background-color: #16a34a; } /* Mudei de color para background-color se for div */
+.dot { width: 10px; height: 10px; border-radius: 50%;  }
+.dot.green { background-color: #16a34a; }
 .dot.blue { background-color: #2563eb; }
 .dot.yellow { background-color: #f59e0b; }
 
-/* Caso use Lucide Icons em vez de div para o dot, mantenha 'color' */
-/* .dot-icon { color: ... } */
+
 
 .activity-info {
   color: #666;
   margin-left: 5px;
   font-size: 14px;
-  flex: 1; /* Ocupa o espaço disponível */
-  white-space: nowrap; /* Evita quebra de linha indesejada */
+  flex: 1; 
+  white-space: nowrap; 
   overflow: hidden;
-  text-overflow: ellipsis; /* Três pontinhos se o texto for longo */
+  text-overflow: ellipsis; 
 }
 
 .activity-time {
@@ -160,9 +146,7 @@
   white-space: nowrap;
 }
 
-/* =========================================
-   TOP PERFORMERS
-========================================= */
+
 .rh-performer {
   display: flex;
   align-items: center;
@@ -183,7 +167,7 @@
   margin-right: 12px;
   font-weight: 700;
   color: white;
-  flex-shrink: 0; /* Impede que o círculo amasse */
+  flex-shrink: 0; 
 }
 
 .rank.gold { background: #fbbf24; }
@@ -197,46 +181,42 @@
   color: #2563eb;
 }
 
-/* =========================================
-   RESPONSIVIDADE (MEDIA QUERIES)
-========================================= */
 
-/* Telas médias (Tablets / Laptops pequenos - até 1024px) */
+
 @media (max-width: 1024px) {
   .rh-layout {
     padding: 20px;
     gap: 20px;
-    flex-direction: column; /* Se houver sidebar, ela fica no topo ou some */
+    flex-direction: column; 
   }
 
   .rh-bottom-grid {
-    grid-template-columns: 1fr; /* Vira 1 coluna (um box embaixo do outro) */
+    grid-template-columns: 1fr; 
   }
 }
 
-/* Telas pequenas (Celulares - até 768px) */
 @media (max-width: 768px) {
   .rh-layout {
     padding: 10px;
   }
 
   .rh-dashboard-container {
-    padding: 15px; /* Reduz padding interno */
+    padding: 15px; 
   }
 
   .rh-title {
-    font-size: 24px; /* Fonte menor no mobile */
+    font-size: 24px; 
   }
 
   .rh-cards-grid {
-    grid-template-columns: 1fr; /* Cards um embaixo do outro no celular */
+    grid-template-columns: 1fr; 
   }
 
   .rh-box {
-    padding: 15px; /* Menos espaçamento interno nos boxes */
+    padding: 15px; 
   }
 
   .activity-info {
-    font-size: 13px; /* Ajuste de fonte */
+    font-size: 13px; 
   }
 }

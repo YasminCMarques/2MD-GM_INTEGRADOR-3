@@ -3,10 +3,10 @@ import React, { useEffect, useState } from 'react';
 import styles from './ranking.module.css';
 
 export default function RankingDashboard() {
-  // Estado inicial
+  
   const [rankingData, setRankingData] = useState({ 
     ranking: [], 
-    recentes: [], // Nova lista vindo do banco
+    recentes: [], 
     stats: {} 
   });
   const [loading, setLoading] = useState(true);
@@ -14,7 +14,7 @@ export default function RankingDashboard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Certifique-se que a porta é a mesma do seu console (3000 ou a que estiver rodando o back)
+      
         const response = await fetch('http://localhost:3000/api/ranking');
         const result = await response.json();
 
@@ -35,7 +35,7 @@ export default function RankingDashboard() {
 
   const { ranking, recentes, stats } = rankingData;
 
-  // --- LÓGICA DO PÓDIO (Ordenação Visual: Prata - Ouro - Bronze) ---
+
   const goldUser = ranking[0] || null;
   const silverUser = ranking[1] || null;
   const bronzeUser = ranking[2] || null;

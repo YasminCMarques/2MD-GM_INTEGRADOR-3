@@ -40,7 +40,7 @@ export default function SidebarNav({ setConteudo }) {
           </li>
 
           {/* NOVO COLABORADOR */}
-          {/* Nota: O ID aqui deve ser "novo-colaborador" para bater com o case do page.jsx */}
+          
           <li className={ativo === "novo-colaborador" ? "active" : ""}>
             <button onClick={() => handleClick("novo-colaborador")}>
               <UserPlus className="icon" /> Novo Colaborador

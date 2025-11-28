@@ -5,17 +5,6 @@ import { Mail, Phone, IdCard, Building, Briefcase } from "lucide-react";
 
 import "./telainicial.css";
 
-function gerarIniciais(nome) {
-  if (!nome) return "??";
-  return nome
-    .split(" ")
-    .map((p) => p[0])
-    .join("")
-    .toUpperCase()
-    .substring(0, 2);
-}
-
-
 
 // 📌 DADOS DO CARROSSEL
 // 📌 DADOS DO CARROSSEL — ATUALIZADO GM 2025
@@ -73,11 +62,9 @@ const carouselItems = [
 
 export default function MeuPainelContent() {
   const [user, setUser] = useState(null);
-  // 📌 NOVO STATE PARA O CARROSSEL
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    // pega o token salvo no login
     const token = localStorage.getItem("token");
 
     if (token) {
@@ -89,14 +76,13 @@ export default function MeuPainelContent() {
       }
     }
 
-    // 📌 LÓGICA DO CARROSSEL: Troca o slide a cada 5 segundos
     const intervalId = setInterval(() => {
       setCurrentIndex((prevIndex) =>
         (prevIndex + 1) % carouselItems.length
       );
-    }, 5000); // Troca a cada 5 segundos
+    }, 5000); 
 
-    return () => clearInterval(intervalId); // Limpa o intervalo ao desmontar
+    return () => clearInterval(intervalId); 
   }, []);
 
   const goToSlide = (index) => {
@@ -107,18 +93,11 @@ export default function MeuPainelContent() {
   return (
     <div className="fade-in-content">
 
-      {/* ==========================  
-          📌 CONTAINER DO USUÁRIO  
-      ========================== */}
+      {/* CONTAINER DO USUÁRIO */}
     {user && (
   <div className="user-box">
 
     <h2 className="user-title">Informações Pessoais</h2>
-
-    {/* CÍRCULO COM INICIAIS */}
-    <div className="user-circle">
-      {gerarIniciais(user.nome)}
-    </div>
 
     <div className="user-info">
       <h3 className="user-name">{user.nome}</h3>
@@ -131,13 +110,11 @@ export default function MeuPainelContent() {
   </div>
 )}
 
-      {/* ==========================  
-          📌 CARROSSEL DA GM  
-      ========================== */}
+      {/* CARROSSEL DA GM */}
       <div className="carousel-container">
         <div
           className="carousel-track"
-          // O style dinâmico move o carrossel horizontalmente
+   
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
           {carouselItems.map((item, index) => (
@@ -160,7 +137,7 @@ export default function MeuPainelContent() {
           ))}
         </div>
 
-        {/* Indicadores/Pontos do Carrossel */}
+        {/*  Carrossel */}
         <div className="carousel-dots">
           {carouselItems.map((_, index) => (
             <span
@@ -172,11 +149,11 @@ export default function MeuPainelContent() {
         </div>
       </div>
 
-      {/* RESTANTE DO SEU CONTEÚDO... */}
+     
 
       <div className="cards-container">
         {/* Card 1 */}
-        {/* ... (Seus 3 primeiros cards de Missão, Equipe, Visão) */}
+
         <div className="info-card">
           <img
             className="info-img"
@@ -239,7 +216,7 @@ export default function MeuPainelContent() {
 
       <div className="cards-container">
         {/* Card Zero Acidentes */}
-        {/* ... (Seus 3 cards do Triplo Zero) */}
+      
         <div className="info-card">
           <img
             className="info-img"

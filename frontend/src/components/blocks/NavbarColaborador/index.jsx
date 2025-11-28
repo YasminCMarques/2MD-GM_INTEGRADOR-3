@@ -16,10 +16,10 @@ export default function NavbarColaborador() {
     try {
       const payload = jwtDecode(token);
 
-      // Como NÃO existe 'nome', usamos o EMAIL como nome exibido
+     
       if (payload?.email) setNome(payload.email);
       
-      // O ID existe, então usamos ele normalmente
+   
       if (payload?.id) setId(payload.id);
 
     } catch (err) {

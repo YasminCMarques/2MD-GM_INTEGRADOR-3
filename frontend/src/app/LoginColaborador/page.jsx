@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import { useRouter } from 'next/navigation'; // Hook de navegação
+import { useRouter } from 'next/navigation'; 
 import { Lock, Eye, EyeOff, User, Fingerprint, ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import Swal from 'sweetalert2'; // Feedback visual
-import { jwtDecode } from "jwt-decode"; // Decodificador
+import Swal from 'sweetalert2'; 
+import { jwtDecode } from "jwt-decode"; 
 import "./logincolaborador.css";
 
 export default function LoginColaborador() {
@@ -13,9 +13,9 @@ export default function LoginColaborador() {
   
   // Estados para capturar os dados
   const [showPassword, setShowPassword] = useState(false);
-  const [loginMethod, setLoginMethod] = useState("cpf"); // Apenas visual por enquanto
+  const [loginMethod, setLoginMethod] = useState("cpf"); 
   
-  const [identificador, setIdentificador] = useState(''); // O que o usuário digitar (CPF/Matrícula/Email)
+  const [identificador, setIdentificador] = useState(''); 
   const [senha, setSenha] = useState('');
   const [carregando, setCarregando] = useState(false);
 
@@ -24,7 +24,7 @@ export default function LoginColaborador() {
     setCarregando(true);
 
     try {
-      // Nota: Seu backend espera "email". Estamos enviando o que foi digitado no campo identificador.
+
       const resposta = await fetch("http://localhost:3000/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -44,16 +44,13 @@ export default function LoginColaborador() {
         return;
       }
 
-      // --- VALIDAÇÃO DE SEGURANÇA (COLABORADOR) ---
+      //  VALIDAÇÃO DE SEGURANÇA COLABORADOR
       const token = dados.dados.token;
       
       try {
         const usuarioDecodificado = jwtDecode(token);
         console.log("Login Colaborador - Payload:", usuarioDecodificado);
 
-        // AQUI ESTÁ A LÓGICA INVERTIDA:
-        // Se o tipo NÃO for 'comum', nós barramos.
-        // Isso impede que um ADMIN entre na tela de quem é peão de fábrica/escritório comum.
         if (usuarioDecodificado.tipo !== 'comum') {
            Swal.fire({
              title: "Perfil Incorreto",
@@ -62,7 +59,7 @@ export default function LoginColaborador() {
              confirmButtonText: "Ir para Login RH"
            }).then((result) => {
              if (result.isConfirmed) {
-                router.push("/LoginRH"); // Opcional: Redireciona para o lugar certo
+                router.push("/LoginRH"); 
              }
            });
            setCarregando(false);
@@ -78,7 +75,6 @@ export default function LoginColaborador() {
         return;
       }
 
-      // --- SUCESSO ---
       localStorage.setItem("token", token);
       
       await Swal.fire({
@@ -89,7 +85,7 @@ export default function LoginColaborador() {
         timer: 1500
       });
 
-      router.push("/Colaborador"); // Manda para a página interna
+      router.push("/Colaborador"); 
 
     } catch (erro) {
       Swal.fire({ title: "Erro", text: "Falha na conexão com o servidor", icon: "error" });
@@ -116,7 +112,7 @@ export default function LoginColaborador() {
               <p>Bem-vindo à GM</p>
             </div>
 
-            {/* Botões de troca de método (Apenas visual, pois o back valida email por enquanto) */}
+
             <div className="loginMethod">
               <button
                 className={`methodBtn ${loginMethod === "cpf" ? "active" : ""}`}
@@ -180,7 +176,7 @@ export default function LoginColaborador() {
                 </label>
               </div>
 
-              {/* MUDANÇA IMPORTANTE: Tirei o Link e deixei apenas o Button Submit */}
+
               <button type="submit" className="btn purple" disabled={carregando}>
                  {carregando ? "Entrando..." : "Acessar como Colaborador"}
               </button>

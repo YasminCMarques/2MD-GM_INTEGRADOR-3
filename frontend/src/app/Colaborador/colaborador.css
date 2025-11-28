@@ -1,12 +1,12 @@
 .colaborador-layout {
   display: flex;
-  width: 100%; /* em vez de 100vw */
+  width: 100%; 
   min-height: calc(100vh - 80px);
   background-color: #f4f7fe;
   overflow-x: hidden;
 }
 
-/* Sidebar fixa à esquerda no desktop */
+
 aside,
 .sidebar-colaborador {
   flex-shrink: 0;
@@ -71,7 +71,7 @@ aside,
   }
 }
 
-/* --- MOBILE (Grid 1 coluna, sidebar vira bloco) --- */
+
 @media (max-width: 576px) {
 
   .cards-grid {

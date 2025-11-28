@@ -10,45 +10,40 @@ body {
   color: #1f1f1f;
 }
 
-/* Estilo do Título "Triplo Zero" (que estava sem CSS) */
+
 .titulo {
   text-align: center;
   font-size: 24px;
-  color: #39237E; /* Roxo escuro para combinar com a marca */
+  color: #39237E; 
   margin: 40px 0 20px 0;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
-/* =========================================
-   2. GRID PRINCIPAL (A SOLUÇÃO DOS 3 CARDS)
-========================================= */
 .cards-container {
   width: 95%; 
-  max-width: 1600px; /* Limite para telas muito grandes */
-  margin: 0 auto 40px auto; /* Centraliza e dá margem no fundo */
+  max-width: 1600px; 
+  margin: 0 auto 40px auto; 
   
   display: grid;
-  /* FORÇA 3 COLUNAS IGUAIS */
+  
   grid-template-columns: repeat(3, 1fr);
   
-  gap: 30px; /* Espaço entre os cards */
-  padding: 10px; /* Evita cortar a sombra do card */
+  gap: 30px; 
+  padding: 10px; 
 }
 
-/* =========================================
-   3. ESTILO DOS CARDS
-========================================= */
+
 .info-card {
   background: #fff;
   border-radius: 16px;
-  overflow: hidden; /* Garante que a imagem não saia da borda redonda */
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08); /* Sombra suave */
+  overflow: hidden; 
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08); 
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease;
   
   display: flex;
   flex-direction: column;
-  height: 100%; /* Faz todos os cards terem a mesma altura */
+  height: 100%; 
 }
 
 .info-card:hover {
@@ -60,15 +55,15 @@ body {
 .info-img {
   width: 100%;
   height: 200px;
-  object-fit: cover; /* Garante que a imagem preencha sem distorcer */
+  object-fit: cover; 
 }
 
-/* Conteúdo (Texto e Título) */
+
 .info-content {
   padding: 25px;
   display: flex;
   flex-direction: column;
-  flex: 1; /* Ocupa o espaço restante */
+  flex: 1; 
 }
 
 .info-content h3 {
@@ -76,7 +71,7 @@ body {
   margin-bottom: 12px;
   display: flex;
   align-items: center;
-  gap: 12px; /* Espaço entre o ícone e o texto */
+  gap: 12px; 
   color: #1b2559;
 }
 
@@ -89,16 +84,11 @@ body {
 
 /* Ajuste do ícone no título */
 .icone {
-  /* O tamanho é controlado pelo width/height no JSX, 
-     aqui só garantimos o alinhamento se necessário */
+ 
   display: block;
 }
 
-/* =========================================
-   4. RESPONSIVIDADE (MEDIA QUERIES)
-========================================= */
 
-/* Tablets e Notebooks Pequenos (menos de 1100px) -> 2 Colunas */
 @media (max-width: 1100px) {
   .cards-container {
     grid-template-columns: repeat(2, 1fr);
@@ -106,7 +96,7 @@ body {
   }
 }
 
-/* Celulares (menos de 768px) -> 1 Coluna */
+
 @media (max-width: 768px) {
   .cards-container {
     grid-template-columns: 1fr;
@@ -116,7 +106,7 @@ body {
   }
   
   .info-img {
-    height: 180px; /* Imagem um pouco menor no celular */
+    height: 180px; 
   }
 }
 

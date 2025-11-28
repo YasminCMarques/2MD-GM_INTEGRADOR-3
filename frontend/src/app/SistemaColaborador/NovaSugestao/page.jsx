@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from 'react';
-import { Send, TrendingUp } from 'lucide-react'; // Adicionado TrendingUp
+import { Send, TrendingUp } from 'lucide-react'; 
 import Swal from 'sweetalert2';
 import styles from './page.module.css';
 

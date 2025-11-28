@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { ArrowLeft } from "lucide-react";
 import Link from 'next/link';
 import Swal from 'sweetalert2';
-import { jwtDecode } from "jwt-decode"; // Importação necessária
+import { jwtDecode } from "jwt-decode"; 
 import './loginrh.css';
 
 export default function LoginRH() {
@@ -38,15 +38,14 @@ export default function LoginRH() {
         return;
       }
 
-      // --- VALIDAÇÃO DE SEGURANÇA DO RH ---
+      //  VALIDAÇÃO DE SEGURANÇA DO RH 
       
       const token = dados.dados.token;
       
       try {
           const usuarioDecodificado = jwtDecode(token);
-          console.log("Payload do Token:", usuarioDecodificado); // Para você conferir no F12
+          console.log("Payload do Token:", usuarioDecodificado); 
 
-          // Verifica se a coluna 'tipo' é exatamente 'admin'
           if (usuarioDecodificado.tipo !== 'admin') {
             Swal.fire({
                 title: "Acesso Restrito",
@@ -56,7 +55,7 @@ export default function LoginRH() {
                 confirmButtonText: "Entendido"
             });
             setCarregando(false);
-            return; // PARA AQUI. Não salva token, não redireciona.
+            return; 
           }
           
       } catch (errorDecode) {
@@ -65,7 +64,7 @@ export default function LoginRH() {
           return;
       }
 
-      // --- SE PASSOU, CONTINUA ---
+
 
       localStorage.setItem("token", token);
 

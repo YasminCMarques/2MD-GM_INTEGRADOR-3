@@ -1,29 +1,75 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
+import { Mail, Phone, IdCard, Building, Briefcase } from "lucide-react";
+
 import "./telainicial.css";
 
+function gerarIniciais(nome) {
+  if (!nome) return "??";
+  return nome
+    .split(" ")
+    .map((p) => p[0])
+    .join("")
+    .toUpperCase()
+    .substring(0, 2);
+}
+
+
+
 // 📌 DADOS DO CARROSSEL
+// 📌 DADOS DO CARROSSEL — ATUALIZADO GM 2025
 const carouselItems = [
   {
-    title: "✨ Novo Lançamento: Chevrolet Silverado EV",
-    description: "Conheça a picape elétrica com até 724 km de autonomia! Redefinindo força e sustentabilidade.",
-    imageUrl: "https://images.unsplash.com/photo-1621256429283-e02359676640?q=80&w=1400&auto=format&fit=crop",
-    link: "https://www.chevrolet.com.br/pick-ups/silverado", // Exemplo de link
+    title: "🚗 Novo Chevrolet Onix 2025",
+    description:
+      "O hatch mais vendido do Brasil agora está ainda mais tecnológico: novo multimídia MyLink 2.0, desempenho superior e consumo otimizado.",
+    imageUrl:
+      "https://clickpetroleoegas.com.br/wp-content/uploads/2024/10/Sem-titulo-8-4.jpg",
+    link: "https://www.chevrolet.com.br/carros/onix",
   },
   {
-    title: "⚡ Plataforma Ultium: O Futuro Elétrico",
-    description: "Nossa tecnologia modular de baterias impulsiona a próxima geração de Veículos Elétricos (EVs) da GM.",
-    imageUrl: "https://images.unsplash.com/photo-1632378875569-424a1b8004e0?q=80&w=1400&auto=format&fit=crop",
-    link: "https://www.gm.com/mobility/ultium",
+    title: "🚙 Tracker 2025: Mais Segurança e Conectividade",
+    description:
+      "SUV líder com novas assistências de direção, Wi-Fi nativo mais rápido e a versão RS com acabamento esportivo exclusivo.",
+    imageUrl:
+      "https://cloudfront-us-east-1.images.arcpublishing.com/estadao/HBECJVC33BMK7C32DYJBKIMGDM.jpg",
+    link: "https://www.chevrolet.com.br/suvs/tracker",
   },
   {
-    title: "🚀 Super Cruise: Dirigibilidade Autônoma",
-    description: "Tecnologia de assistência ao motorista que permite a condução 'mãos-livres' em rodovias compatíveis.",
-    imageUrl: "https://images.unsplash.com/photo-1616782352123-d3c5f591f42d?q=80&w=1400&auto=format&fit=crop",
+    title: "🏋️ Nova Montana 2025",
+    description:
+      "A picape urbana mais inteligente do mercado agora com novo pacote de tecnologia premium e ainda mais espaço no MultiFlex.",
+    imageUrl:
+      "https://quatrorodas.abril.com.br/wp-content/uploads/2023/07/Chevrolet-Montana-RS-2.jpg?quality=70&strip=info",
+    link: "https://www.chevrolet.com.br/caminhonetes/montana",
+  },
+  {
+    title: "⚡ Silverado EV — O Futuro Chegou",
+    description:
+      "Primeira picape 100% elétrica da GM, com até 724 km de autonomia e torque instantâneo de arrancar o fôlego.",
+    imageUrl:
+      "https://smartcdn.gprod.postmedia.digital/driving/wp-content/uploads/2024/10/2025-chevrolet-silverado-ev-lt-001-1.jpg",
+    link: "https://www.chevrolet.com.br/pick-ups/silverado",
+  },
+  {
+    title: "🚀 Super Cruise — Condução Sem Mãos",
+    description:
+      "Dirija longas distâncias sem usar as mãos com o sistema mais avançado de condução autônoma já desenvolvido pela GM.",
+    imageUrl:
+      "https://www.cadillac.com/content/dam/cadillac/na/us/english/index/ownership/technology/supercruise/large/new/newer/images/24-cadillac-ownership-super-cruise-feature-l-v2.jpg?imwidth=1200",
     link: "https://www.chevrolet.com.br/super-cruise",
   },
+  {
+    title: "🔋 Plataforma Ultium",
+    description:
+      "Tecnologia revolucionária que equipa a nova geração de elétricos da GM. Mais autonomia, mais durabilidade e recarga ultrarrápida.",
+    imageUrl:
+      "https://quatrorodas.abril.com.br/wp-content/uploads/2022/08/GMC-Hummer-EV-Edition-1-Milford-4.jpg?quality=70&strip=info&w=720&crop=1",
+    link: "https://www.gm.com/mobility/ultium",
+  },
 ];
+
 
 export default function MeuPainelContent() {
   const [user, setUser] = useState(null);
@@ -45,7 +91,7 @@ export default function MeuPainelContent() {
 
     // 📌 LÓGICA DO CARROSSEL: Troca o slide a cada 5 segundos
     const intervalId = setInterval(() => {
-      setCurrentIndex((prevIndex) => 
+      setCurrentIndex((prevIndex) =>
         (prevIndex + 1) % carouselItems.length
       );
     }, 5000); // Troca a cada 5 segundos
@@ -64,39 +110,41 @@ export default function MeuPainelContent() {
       {/* ==========================  
           📌 CONTAINER DO USUÁRIO  
       ========================== */}
-      {user && (
-        <div className="user-box">
-          <img
-            src="/imagens/user_default.png"
-            className="user-photo"
-            alt="Foto usuário"
-          />
+    {user && (
+  <div className="user-box">
 
-          <div className="user-info">
-            <h2>{user.nome}</h2>
-            <p><b>Email:</b> {user.email}</p>
-            <p><b>CPF:</b> {user.cpf}</p>
-            <p><b>Telefone:</b> {user.telefone}</p>
-            <p><b>Departamento:</b> {user.departamento}</p>
-            <p><b>Cargo:</b> {user.cargo}</p>
-          </div>
-        </div>
-      )}
+    <h2 className="user-title">Informações Pessoais</h2>
+
+    {/* CÍRCULO COM INICIAIS */}
+    <div className="user-circle">
+      {gerarIniciais(user.nome)}
+    </div>
+
+    <div className="user-info">
+      <h3 className="user-name">{user.nome}</h3>
+
+      <p><Mail size={20} /> {user.email}</p>
+      <p><IdCard size={20} /> {user.cpf}</p>
+      <p><Phone size={20} /> Acesso {user.tipo}</p>
+      <p><Phone size={20} /> ID: {user.id}</p>
+    </div>
+  </div>
+)}
 
       {/* ==========================  
           📌 CARROSSEL DA GM  
       ========================== */}
       <div className="carousel-container">
-        <div 
-          className="carousel-track" 
+        <div
+          className="carousel-track"
           // O style dinâmico move o carrossel horizontalmente
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
           {carouselItems.map((item, index) => (
             <div className="carousel-slide" key={index}>
-              <img 
-                src={item.imageUrl} 
-                alt={item.title} 
+              <img
+                src={item.imageUrl}
+                alt={item.title}
                 className="carousel-image"
               />
               <div className="carousel-overlay">
@@ -123,9 +171,9 @@ export default function MeuPainelContent() {
           ))}
         </div>
       </div>
-      
+
       {/* RESTANTE DO SEU CONTEÚDO... */}
-      
+
       <div className="cards-container">
         {/* Card 1 */}
         {/* ... (Seus 3 primeiros cards de Missão, Equipe, Visão) */}
@@ -141,9 +189,9 @@ export default function MeuPainelContent() {
               <b>Nossa Missão</b>
             </h3>
             <p>
-                Nossa missão é criar um mundo com Zero Acidentes, Zero Emissões e Zero Congestionamentos . Trabalhamos diariamente não apenas para fabricar carros, 
-                mas para desenvolver 
-                tecnologias que salvam vidas, protegem o planeta e transformam a mobilidade global em uma experiência mais segura e fluida
+              Nossa missão é criar um mundo com Zero Acidentes, Zero Emissões e Zero Congestionamentos . Trabalhamos diariamente não apenas para fabricar carros,
+              mas para desenvolver
+              tecnologias que salvam vidas, protegem o planeta e transformam a mobilidade global em uma experiência mais segura e fluida
             </p>
           </div>
         </div>
@@ -160,8 +208,8 @@ export default function MeuPainelContent() {
               <img src="./imagens/equipe.png" width={35} height={35} alt="" /> <b>Nossa Equipe</b>
             </h3>
             <p>
-              Somos movidos por mais de 167 mil mentes inovadoras ao redor do globo. A GM é formada por pessoas diversas e apaixonadas, unidas pelo 
-              propósito de inovar. Acreditamos na cultura do 'Everybody In', 
+              Somos movidos por mais de 167 mil mentes inovadoras ao redor do globo. A GM é formada por pessoas diversas e apaixonadas, unidas pelo
+              propósito de inovar. Acreditamos na cultura do 'Everybody In',
               onde cada colaborador é essencial para liderar a revolução elétrica e automotiva.
             </p>
           </div>
@@ -179,8 +227,8 @@ export default function MeuPainelContent() {
               <img className="icone" src="./imagens/visao.png" width={35} height={35} alt="" /> <b>Nossa Visão</b>
             </h3>
             <p>
-              Na General Motors, nossa visão vai muito além da fabricação de veículos; queremos ser uma plataforma de mudança de mobilidade. 
-              Enxergamos um futuro onde o transporte seja sustentável, inclusivo e acessível, 
+              Na General Motors, nossa visão vai muito além da fabricação de veículos; queremos ser uma plataforma de mudança de mobilidade.
+              Enxergamos um futuro onde o transporte seja sustentável, inclusivo e acessível,
               redefinindo a liberdade de ir e vir para as próximas gerações
             </p>
           </div>
@@ -188,7 +236,7 @@ export default function MeuPainelContent() {
       </div>
 
       <h3 className="titulo"> <b>Triplo Zero</b></h3>
-      
+
       <div className="cards-container">
         {/* Card Zero Acidentes */}
         {/* ... (Seus 3 cards do Triplo Zero) */}
@@ -203,10 +251,10 @@ export default function MeuPainelContent() {
               <img className="icone" src="./imagens/zero_acidentes.png" width={35} height={35} alt="" /> <b>Zero Acidentes</b>
             </h3>
             <p>
-                Não nos contentamos apenas em proteger os ocupantes em caso de complicações; nosso objetivo é evitar que elas aconteçam. Através da
-                implementação massiva de sistemas de segurança ativa e do avanço da tecnologia de condução autônoma, obtivemos para eliminar o erro humano da
-                inovação. Queremos criar um ambiente onde cada viagem seja segura,
-                proporcionando tranquilidade às famílias e garantindo que todos cheguem bem ao seu destino.
+              Não nos contentamos apenas em proteger os ocupantes em caso de complicações; nosso objetivo é evitar que elas aconteçam. Através da
+              implementação massiva de sistemas de segurança ativa e do avanço da tecnologia de condução autônoma, obtivemos para eliminar o erro humano da
+              inovação. Queremos criar um ambiente onde cada viagem seja segura,
+              proporcionando tranquilidade às famílias e garantindo que todos cheguem bem ao seu destino.
             </p>
           </div>
         </div>

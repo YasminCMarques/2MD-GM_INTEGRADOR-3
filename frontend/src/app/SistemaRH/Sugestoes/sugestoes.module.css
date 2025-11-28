@@ -100,7 +100,7 @@
 }
 
 .actionButton {
-    background-color: #2563eb; /* Azul similar ao da imagem */
+    background-color: #2563eb;
     color: white;
     border: none;
     padding: 0.6rem 1.2rem;
@@ -131,7 +131,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro transparente */
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -245,10 +245,10 @@
 /* Lista de Cards */
 .cardsList {
   display: flex;
-  flex-direction: row; /* Cards em linha */
-  flex-wrap: wrap; /* Permite que os cards que não cabem na linha atual se movam para a linha seguinte */
-  gap: 1.5rem; /* Espaço entre os cards */
-  justify-content: center; /* Centraliza os cards quando há poucos */
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
 }
 
 /* Card Individual */
@@ -258,19 +258,19 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   overflow: hidden;
   border: 1px solid #e2e8f0;
-  flex: 1 1 calc(33.33% - 1.5rem); /* Isso garante que os cards possam crescer e encolher, com 3 cards por linha */
-  box-sizing: border-box; /* Inclui o padding e border na largura do card */
+  flex: 1 1 calc(33.33% - 1.5rem);
+  box-sizing: border-box;
 }
 
-/* Responsividade: Quando a tela for menor, os cards vão ocupar mais espaço */
+
 @media (max-width: 768px) {
   .card {
-    flex: 1 1 calc(50% - 1.5rem); /* Para telas menores, mostramos 2 cards por linha */
+    flex: 1 1 calc(50% - 1.5rem);
   }
 }
 
 @media (max-width: 480px) {
   .card {
-    flex: 1 1 100%; /* Para telas pequenas, mostramos 1 card por linha */
+    flex: 1 1 100%;
   }
 }

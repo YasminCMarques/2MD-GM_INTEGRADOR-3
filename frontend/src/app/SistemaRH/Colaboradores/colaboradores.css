@@ -7,7 +7,7 @@
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
-.colab-container h1{
+.colab-container h1 {
     font-size: 30px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #000000;
@@ -293,21 +293,28 @@
 
 /* Animação de fade-in */
 @keyframes aparecer {
-    from { transform: translateY(-15px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+    from {
+        transform: translateY(-15px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 /* Responsividade */
 @media (max-width: 1024px) {
     .grid-colaboradores {
-        grid-template-columns: repeat(2, 1fr); /* 2 colunas em telas menores */
+        grid-template-columns: repeat(2, 1fr);
         gap: 30px;
     }
 }
 
 @media (max-width: 600px) {
     .grid-colaboradores {
-        grid-template-columns: 1fr; /* 1 coluna em telas pequenas */
+        grid-template-columns: 1fr;
         gap: 20px;
     }
 
@@ -325,4 +332,5 @@
     .modal-box {
         width: 100%;
         padding: 20px
-    }}
+    }
+}

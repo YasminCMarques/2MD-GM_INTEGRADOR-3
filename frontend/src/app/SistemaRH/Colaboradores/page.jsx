@@ -192,7 +192,7 @@ export default function ColaboradoresContent() {
 
     return (
         <div className="colab-container">
-            <h1>Colaboradores</h1>
+        <h1>Colaboradores</h1>
             <p className="subtitulo">Lista completa de colaboradores</p>
 
             <div className="filtros-box">

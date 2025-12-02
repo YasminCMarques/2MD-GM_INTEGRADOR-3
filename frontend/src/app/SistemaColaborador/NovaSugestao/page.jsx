@@ -47,9 +47,7 @@ export default function FormularioNovaSugestao({ aoSucesso }) {
                 icon: 'success',
                 confirmButtonColor: '#8b5cf6',
                 confirmButtonText: 'Ótimo!'
-            }).then((result) => {
-                if (aoSucesso) aoSucesso();
-            });
+            })
             setTitulo('');
             setDescricao('');
         } else {

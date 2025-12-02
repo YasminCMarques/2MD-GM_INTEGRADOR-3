@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
-import { Mail, Phone, IdCard, Building, Briefcase } from "lucide-react";
+import { Mail, Phone, IdCard, Building, Briefcase, createIcons, icons } from "lucide-react";
 
 import "./telainicial.css";
 
@@ -80,9 +80,9 @@ export default function MeuPainelContent() {
       setCurrentIndex((prevIndex) =>
         (prevIndex + 1) % carouselItems.length
       );
-    }, 5000); 
+    }, 5000);
 
-    return () => clearInterval(intervalId); 
+    return () => clearInterval(intervalId);
   }, []);
 
   const goToSlide = (index) => {
@@ -94,27 +94,29 @@ export default function MeuPainelContent() {
     <div className="fade-in-content">
 
       {/* CONTAINER DO USUÁRIO */}
-    {user && (
-  <div className="user-box">
+      {user && (
+        <div className="user-box">
 
-    <h2 className="user-title">Informações Pessoais</h2>
+          <h2 className="user-title">Informações Pessoais</h2>
 
-    <div className="user-info">
-      <h3 className="user-name">{user.nome}</h3>
+          <div className="user-info">
+            <h3 className="user-name">{user.nome}</h3>
 
-      <p><Mail size={20} /> {user.email}</p>
-      <p><IdCard size={20} /> {user.cpf}</p>
-      <p><Phone size={20} /> Acesso {user.tipo}</p>
-      <p><Phone size={20} /> ID: {user.id}</p>
-    </div>
-  </div>
-)}
+            <p><Mail size={20} /> {user.email}</p>
+            <p><IdCard size={20} /> {user.cpf}</p>
+
+            <p><Phone size={20} /> ID: {user.id}</p>
+            <p> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-user-round-icon lucide-circle-user-round"><path d="M18 20a6 6 0 0 0-12 0" /><circle cx="12" cy="10" r="4" /><circle cx="12" cy="12" r="10" /></svg> Acesso {user.tipo}
+            </p>
+          </div>
+        </div>
+      )}
 
       {/* CARROSSEL DA GM */}
       <div className="carousel-container">
         <div
           className="carousel-track"
-   
+
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
           {carouselItems.map((item, index) => (
@@ -149,7 +151,7 @@ export default function MeuPainelContent() {
         </div>
       </div>
 
-     
+
 
       <div className="cards-container">
         {/* Card 1 */}
@@ -216,7 +218,7 @@ export default function MeuPainelContent() {
 
       <div className="cards-container">
         {/* Card Zero Acidentes */}
-      
+
         <div className="info-card">
           <img
             className="info-img"

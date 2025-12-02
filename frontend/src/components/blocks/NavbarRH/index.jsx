@@ -22,7 +22,7 @@ export default function Navbar() {
         </div>
         <div className="header-right">
           <div className="user-profile">
-            <span className="user-name">Administrador RH</span>
+            <span className="user-name1">Administrador RH</span>
             
           </div>
         <Link href="/" className="logout-btn">

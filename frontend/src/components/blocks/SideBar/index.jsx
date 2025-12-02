@@ -22,8 +22,8 @@ export default function SidebarNav({ setConteudo }) {
   };
 
   return (
-    <aside className="sidebar-container">
-      <nav className="sidebar-nav">
+    <aside className="sidebar-container1">
+      <nav className="sidebar1-nav">
         <ul>
           {/* DASHBOARD */}
           <li className={ativo === "dashboard" ? "active" : ""}>

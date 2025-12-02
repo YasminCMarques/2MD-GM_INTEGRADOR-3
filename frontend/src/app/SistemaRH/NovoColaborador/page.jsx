@@ -133,7 +133,7 @@ export default function NovoColaboradorContent() {
     <div className="app-wrapper">
       <form className="nc-container" onSubmit={handleSubmit}>
         <div className="nc-header">
-          <h2 className='titulo'>Novo Cadastro</h2>
+          <h2 className='titulo2'>Novo Cadastro</h2>
           <p>Preencha as informações abaixo para adicionar um novo membro à equipe.</p>
         </div>
 

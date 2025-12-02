@@ -111,10 +111,7 @@ export default function MinhasSugestoesPage() {
           <h1 className={styles.title}>Minhas Sugestões</h1>
           <p className={styles.subtitle}>Colaborador: {usuario.nome || usuario.email}</p>
         </div>
-        <button className={styles.buttonNew}>
-          <Plus size={20} />
-          Nova Sugestão
-        </button>
+        
       </div>
 
       {/* Cards de Métricas */}

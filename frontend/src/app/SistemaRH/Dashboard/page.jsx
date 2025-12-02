@@ -54,7 +54,7 @@ export default function DashboardContent() {
 
       
       <div className="rh-section-clean">
-        <h3 className="titulo">Gráficos de Performance</h3>
+        <h3 className="titulo1">Gráficos de Performance</h3>
         
         
         <div className="rh-vertical-stack">

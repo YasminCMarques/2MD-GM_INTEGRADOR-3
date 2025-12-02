@@ -56,7 +56,7 @@ export default function RankingDashboard() {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <h1 className='titulo'>Ranking & Bonificação</h1>
+        <h1 className='titulo3'>Ranking & Bonificação</h1>
         <p>Sistema de reconhecimento baseado em sugestões aprovadas</p>
       </header>
 

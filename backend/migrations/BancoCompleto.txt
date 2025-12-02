@@ -1,0 +1,251 @@
+-- Migration: Criar banco de dados produtos_api
+-- Data: 2025-01-15
+-- Descrição: Criação inicial do banco de dados
+
+CREATE DATABASE IF NOT EXISTS produtos_api;
+
+-- Usar o banco de dados criado
+USE produtos_api;
+
+-- Migration: Criar tabela usuarios
+-- Data: 2025-01-15
+-- Descrição: Tabela para armazenar usuários do sistema
+
+USE produtos_api;
+
+CREATE TABLE IF NOT EXISTS usuarios (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    senha VARCHAR(255) NOT NULL,
+    tipo ENUM('admin', 'comum') NOT NULL DEFAULT 'comum',
+    data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
+    data_atualizacao DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+
+
+
+-- Migration: Criar banco de dados produtos_api
+-- Data: 2025-01-15
+-- Descrição: Criação inicial do banco de dados
+
+CREATE DATABASE IF NOT EXISTS produtos_api;
+
+-- Usar o banco de dados criado
+USE produtos_api;
+
+-- Migration: Criar tabela usuarios
+-- Data: 2025-01-15
+-- Descrição: Tabela para armazenar usuários do sistema
+
+USE produtos_api;
+
+CREATE TABLE IF NOT EXISTS usuarios (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    senha VARCHAR(255) NOT NULL,
+    tipo ENUM('admin', 'comum') NOT NULL DEFAULT 'comum',
+    data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
+    data_atualizacao DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Migration: Criar tabela produtos
+-- Data: 2025-01-15
+-- Descrição: Tabela para armazenar produtos do sistema
+
+USE produtos_api;
+
+-- Inserir usuários iniciais (senha: 123456)
+-- Hash gerado com bcrypt para a senha "123456" (validado)
+INSERT INTO usuarios (nome, email, senha, tipo) VALUES
+('Administrador', 'admin@produtos.com', '$2a$10$BLAcJu1irAzg06WbtoLoPe0RA.hkfZ0oJ25KYARPkHWRweJuWBALy', 'admin'),
+('João Silva', 'joao@email.com', '$2a$10$BLAcJu1irAzg06WbtoLoPe0RA.hkfZ0oJ25KYARPkHWRweJuWBALy', 'comum'),
+('Maria Souza', 'maria@email.com', '$2a$10$BLAcJu1irAzg06WbtoLoPe0RA.hkfZ0oJ25KYARPkHWRweJuWBALy', 'comum');
+
+
+INSERT INTO usuarios (nome, email, senha, tipo)
+VALUES
+('João Mendes', 'joao.mendes@email.com', '$2a$10$BLAcJu1irAzg06WbtoLoPe0RA.hkfZ0oJ25KYARPkHWRweJuWBALy', 'comum'),
+
+('Ana Costa', 'ana.costa@email.com', '$2a$10$BLAcJu1irAzg06WbtoLoPe0RA.hkfZ0oJ25KYARPkHWRweJuWBALy', 'comum'),
+
+('Carlos Henrique', 'carlos.henrique@email.com', '$2a$10$BLAcJu1irAzg06WbtoLoPe0RA.hkfZ0oJ25KYARPkHWRweJuWBALy', 'comum'),
+
+('Patrícia Lima', 'patricia.lima@email.com', '$2a$10$BLAcJu1irAzg06WbtoLoPe0RA.hkfZ0oJ25KYARPkHWRweJuWBALy', 'comum'),
+
+('Fernando Alves', 'fernando.alves@email.com', '$2a$10$BLAcJu1irAzg06WbtoLoPe0RA.hkfZ0oJ25KYARPkHWRweJuWBALy', 'admin'),
+
+('Beatriz Rocha', 'beatriz.rocha@email.com', '$2a$10$BLAcJu1irAzg06WbtoLoPe0RA.hkfZ0oJ25KYARPkHWRweJuWBALy', 'comum');
+
+-- Migration: Criar tabela logs
+-- Data: 2025-10-28
+-- Descrição: Tabela para registrar logs de acesso às rotas da API
+
+USE produtos_api;
+
+CREATE TABLE IF NOT EXISTS logs (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    usuario_id INT,
+    rota VARCHAR(255) NOT NULL,
+    metodo VARCHAR(10) NOT NULL,
+    ip_address VARCHAR(45),
+    user_agent TEXT,
+    status_code INT,
+    tempo_resposta_ms INT,
+    data_hora DATETIME DEFAULT CURRENT_TIMESTAMP,
+    dados_requisicao JSON,
+    dados_resposta JSON,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE SET NULL
+);
+    
+-- Índices para melhorar performance das consultas
+CREATE INDEX idx_logs_usuario_id ON logs(usuario_id);
+CREATE INDEX idx_logs_data_hora ON logs(data_hora);
+CREATE INDEX idx_logs_rota ON logs(rota);
+CREATE INDEX idx_logs_metodo ON logs(metodo);
+CREATE INDEX idx_logs_status_code ON logs(status_code);
+
+
+INSERT INTO usuarios (nome, email, senha, tipo)
+VALUES
+
+('Patrícia Lima', 'patricia.lima2@email.com', '$2a$10$BLAcJu1irAzg06WbtoLoPe0RA.hkfZ0oJ25KYARPkHWRweJuWBALy', 'comum') ;
+
+
+-- TELA DE RANKING 
+
+USE produtos_api;
+
+-- Adicionar coluna de departamento e cargo (opcional, mas útil para o display)
+ALTER TABLE usuarios
+ADD COLUMN departamento VARCHAR(100) DEFAULT 'Geral',
+ADD COLUMN cargo VARCHAR(100) DEFAULT 'Colaborador';
+
+-- Atualizar os usuários existentes para ter departamentos de teste
+UPDATE usuarios SET departamento = 'Engenharia' WHERE id = 1; -- Admin
+UPDATE usuarios SET departamento = 'Vendas' WHERE id = 2;
+UPDATE usuarios SET departamento = 'Marketing' WHERE id = 3;
+
+USE produtos_api;
+
+CREATE TABLE IF NOT EXISTS sugestoes (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    usuario_id INT NOT NULL,
+    titulo VARCHAR(255) NOT NULL,
+    descricao TEXT NOT NULL,
+    
+    -- Status para controlar o fluxo (apenas aprovadas devem somar pontos)
+    status ENUM('pendente', 'em_analise', 'aprovada', 'rejeitada') DEFAULT 'pendente',
+    
+    -- A pontuação que aparece no card (ex: 9.5, 10.0) ou pontos inteiros
+    pontos_gerados DECIMAL(4,1) DEFAULT 0.0,
+    
+    data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
+    data_atualizacao DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
+);
+
+-- Índice para deixar o ranking rápido
+CREATE INDEX idx_sugestoes_pontos ON sugestoes(pontos_gerados);
+
+USE produtos_api;
+
+-- Inserindo sugestões para gerar o Ranking
+-- João Silva (Vendas) - Vai ser o Top 1
+INSERT INTO sugestoes (usuario_id, titulo, descricao, status, pontos_gerados) VALUES
+(2, 'Otimização do CRM', 'Sugestão para melhorar o fluxo de leads', 'aprovada', 5.0),
+(2, 'Nova abordagem de vendas', 'Roteiro atualizado para clientes B2B', 'aprovada', 4.8); 
+-- Total João: 9.8
+
+-- Maria Souza (Marketing) - Top 2
+INSERT INTO sugestoes (usuario_id, titulo, descricao, status, pontos_gerados) VALUES
+(3, 'Campanha Instagram', 'Ideia para reels semanais', 'aprovada', 9.3);
+-- Total Maria: 9.3
+
+-- Admin (Engenharia) - Top 3
+INSERT INTO sugestoes (usuario_id, titulo, descricao, status, pontos_gerados) VALUES
+(1, 'Refatoração do Banco', 'Melhoria nos índices do MySQL', 'aprovada', 9.0),
+(1, 'Automação de Deploy', 'Pipeline CI/CD', 'em_analise', 0.0); -- Não conta ainda
+-- Total Admin: 9.0
+
+select * from sugestoes;
+select * from usuarios ;
+
+USE produtos_api;
+
+-- 1. Vamos garantir que existem usuários para vincular as sugestões
+-- O comando IGNORE pula se o usuário já existir (pelo ID ou email)
+INSERT IGNORE INTO usuarios (id, nome, email, senha, tipo, departamento) VALUES
+(1, 'Carlos Santos', 'carlos@email.com', '$2b$10$...', 'admin', 'Engenharia'),
+(2, 'Maria Oliveira', 'maria@email.com', '$2b$10$...', 'comum', 'Vendas'),
+(3, 'Ana Silva', 'ana@email.com', '$2b$10$...', 'comum', 'Marketing'),
+(4, 'Roberto Costa', 'roberto@email.com', '$2b$10$...', 'comum', 'RH');
+
+-- 2. Inserir Sugestões APROVADAS
+-- O sistema só mostra no ranking quem tem sugestões com status = 'aprovada'
+INSERT INTO sugestoes (usuario_id, titulo, descricao, status, pontos_gerados, data_criacao) VALUES
+-- Maria Oliveira (Vendas) - Vai ser TOP 1 (Total: 15.0)
+(2, 'Nova abordagem de vendas B2B', 'Roteiro atualizado para clientes corporativos', 'aprovada', 8.0, NOW()),
+(2, 'Otimização do CRM', 'Automação de cadastro de leads', 'aprovada', 7.0, NOW()),
+
+-- Carlos Santos (Engenharia) - Vai ser TOP 2 (Total: 12.5)
+(1, 'Refatoração do Banco de Dados', 'Melhoria de performance nas queries', 'aprovada', 9.5, NOW()),
+(1, 'Correção de Bugs Críticos', 'Fix no sistema de login', 'aprovada', 3.0, NOW()),
+
+-- Ana Silva (Marketing) - Vai ser TOP 3 (Total: 9.0)
+(3, 'Campanha Instagram Verão', 'Vídeos curtos para redes sociais', 'aprovada', 9.0, NOW()),
+
+-- Sugestões pendentes ou reprovadas (NÃO devem somar pontos nem aparecer na lista)
+(4, 'Troca de Cadeiras', 'Solicito cadeiras novas', 'pendente', 0.0, NOW()),
+(1, 'Ideia Teste', 'Teste de sistema', 'rejeitada', 0.0, NOW());
+
+
+USE produtos_api;
+
+
+
+-- 1. Adicionar a coluna CPF (Deve ser ÚNICA para não ter duas pessoas com o mesmo CPF)
+ALTER TABLE usuarios
+ADD COLUMN cpf VARCHAR(14) UNIQUE AFTER email;
+
+-- 2. Atualizar os usuários existentes com CPFs de teste
+-- Estou usando o formato com pontuação (000.000.000-00) pois é o mais comum de salvar
+
+-- Administrador
+UPDATE usuarios SET cpf = '000.000.000-01' WHERE email = 'admin@produtos.com';
+
+-- João Silva (Vendas)
+UPDATE usuarios SET cpf = '111.111.111-11' WHERE email = 'joao@email.com';
+
+-- Maria Souza (Marketing)
+UPDATE usuarios SET cpf = '222.222.222-22' WHERE email = 'maria@email.com';
+
+-- João Mendes
+UPDATE usuarios SET cpf = '333.333.333-33' WHERE email = 'joao.mendes@email.com';
+
+-- Ana Costa
+UPDATE usuarios SET cpf = '444.444.444-44' WHERE email = 'ana.costa@email.com';
+
+-- Carlos Henrique
+UPDATE usuarios SET cpf = '555.555.555-55' WHERE email = 'carlos.henrique@email.com';
+
+-- Patrícia Lima
+UPDATE usuarios SET cpf = '666.666.666-66' WHERE email = 'patricia.lima@email.com';
+
+-- Fernando Alves (Admin 2)
+UPDATE usuarios SET cpf = '777.777.777-77' WHERE email = 'fernando.alves@email.com';
+
+-- Beatriz Rocha
+UPDATE usuarios SET cpf = '888.888.888-88' WHERE email = 'beatriz.rocha@email.com';
+
+-- Patrícia Marina (lima2)
+UPDATE usuarios SET cpf = '999.999.999-99' WHERE email = 'patricia.lima2@email.com';
+
+-- Cauã Teste
+UPDATE usuarios SET cpf = '123.456.789-00' WHERE email = 'caua@gm.com';
+
+-- Verificar como ficou
+SELECT id, nome, email, cpf, tipo FROM usuarios;

@@ -65,7 +65,8 @@ class AuthController {
                     id: usuario.id, 
                     email: usuario.email,
                     cpf: usuario.cpf, // Novo campo no token
-                    tipo: usuario.tipo 
+                    tipo: usuario.tipo,
+                    telefone:usuario.telefone 
                 },
                 JWT_CONFIG.secret,
                 { expiresIn: JWT_CONFIG.expiresIn }
@@ -81,7 +82,8 @@ class AuthController {
                         nome: usuario.nome,
                         email: usuario.email,
                         cpf: usuario.cpf,
-                        tipo: usuario.tipo
+                        tipo: usuario.tipo,
+                        telefone:usuario.telefone
                     }
                 }
             });
@@ -98,7 +100,7 @@ class AuthController {
     // POST /auth/registrar - Registrar novo usuário
     static async registrar(req, res) {
         try {
-            const { nome, email, senha, tipo } = req.body;
+            const { nome, email, senha, tipo,telefone } = req.body;
             
             // Validações básicas
             if (!nome || nome.trim() === '') {
@@ -174,7 +176,9 @@ class AuthController {
                 nome: nome.trim(),
                 email: email.trim().toLowerCase(),
                 senha: senha,
-                tipo: tipo || 'comum'
+                tipo: tipo || 'comum',
+                telefone: telefone ? telefone.trim() : null
+                
             };
 
             // Criar usuário
@@ -187,7 +191,8 @@ class AuthController {
                     id: usuarioId,
                     nome: dadosUsuario.nome,
                     email: dadosUsuario.email,
-                    tipo: dadosUsuario.tipo
+                    tipo: dadosUsuario.tipo,
+                    telefone:dadosUsuario.telefone
                 }
             });
         } catch (error) {
@@ -283,7 +288,7 @@ class AuthController {
     // POST /usuarios - Criar novo usuário (apenas admin)
     static async criarUsuario(req, res) {
         try {
-            const { nome, email, senha, tipo } = req.body;
+            const { nome, email, senha, tipo, telefone } = req.body;
             
             // Validações básicas
             if (!nome || nome.trim() === '') {
@@ -359,7 +364,8 @@ class AuthController {
                 nome: nome.trim(),
                 email: email.trim().toLowerCase(),
                 senha: senha,
-                tipo: tipo || 'comum'
+                tipo: tipo || 'comum',
+                telefone: telefone ? telefone.trim() : null
             };
 
             // Criar usuário
@@ -372,7 +378,8 @@ class AuthController {
                     id: usuarioId,
                     nome: dadosUsuario.nome,
                     email: dadosUsuario.email,
-                    tipo: dadosUsuario.tipo
+                    tipo: dadosUsuario.tipo,
+                    telefone: dadosUsuario.telefone
                 }
             });
         } catch (error) {

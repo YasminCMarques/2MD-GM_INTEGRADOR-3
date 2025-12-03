@@ -22,7 +22,7 @@ export default function ColaboradoresContent() {
         email: "",
         tipo: "",
         telefone: "",
-        casa: "",
+        cpf: "",
         data_criacao: ""
     });
 
@@ -33,7 +33,7 @@ export default function ColaboradoresContent() {
             email: colab.email,
             tipo: colab.tipo,
             telefone: colab.telefone || "",
-            casa: colab.casa || "",
+            cpf: colab.cpf || "",
             data_criacao: colab.data_criacao
         });
         setMostrarModal(true);
@@ -313,8 +313,8 @@ export default function ColaboradoresContent() {
                         </div>
 
                         <div className="form-group">
-                            <label>Casa / Unidade</label>
-                            <input name="casa" value={formData.casa} onChange={handleChange} />
+                            <label>CPF</label>
+                            <input name="CPF" value={formData.cpf} onChange={handleChange} />
                         </div>
 
                         <div className="modal-actions">

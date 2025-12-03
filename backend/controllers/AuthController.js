@@ -100,7 +100,7 @@ class AuthController {
     // POST /auth/registrar - Registrar novo usuário
     static async registrar(req, res) {
         try {
-            const { nome, email, senha, tipo,telefone } = req.body;
+            const { nome, email, senha, tipo,telefone,cpf } = req.body;
             
             // Validações básicas
             if (!nome || nome.trim() === '') {
@@ -177,7 +177,8 @@ class AuthController {
                 email: email.trim().toLowerCase(),
                 senha: senha,
                 tipo: tipo || 'comum',
-                telefone: telefone ? telefone.trim() : null
+                telefone: telefone ? telefone.trim() : null,
+                cpf: cpf 
                 
             };
 
@@ -192,7 +193,8 @@ class AuthController {
                     nome: dadosUsuario.nome,
                     email: dadosUsuario.email,
                     tipo: dadosUsuario.tipo,
-                    telefone:dadosUsuario.telefone
+                    telefone:dadosUsuario.telefone,
+                    cpf: dadosUsuario.cpf
                 }
             });
         } catch (error) {
@@ -288,7 +290,7 @@ class AuthController {
     // POST /usuarios - Criar novo usuário (apenas admin)
     static async criarUsuario(req, res) {
         try {
-            const { nome, email, senha, tipo, telefone } = req.body;
+            const { nome, email, senha, tipo, telefone, cpf } = req.body;
             
             // Validações básicas
             if (!nome || nome.trim() === '') {
@@ -365,7 +367,8 @@ class AuthController {
                 email: email.trim().toLowerCase(),
                 senha: senha,
                 tipo: tipo || 'comum',
-                telefone: telefone ? telefone.trim() : null
+                telefone: telefone ? telefone.trim() : null,
+                cpf:cpf
             };
 
             // Criar usuário
@@ -379,7 +382,8 @@ class AuthController {
                     nome: dadosUsuario.nome,
                     email: dadosUsuario.email,
                     tipo: dadosUsuario.tipo,
-                    telefone: dadosUsuario.telefone
+                    telefone: dadosUsuario.telefone,
+                    cpf: dadosUsuario.cpf
                 }
             });
         } catch (error) {

@@ -138,14 +138,14 @@ export default function SugestoesRecebidasPage() {
                   className={styles.actionButton} 
                   onClick={() => handleOpenModal(item)}
                 >
-                  ⚙️ Avaliar Sugestão
+                   Avaliar Sugestão
                 </button>
               </div>
             </div>
           ))
         ) : (
           <div className={styles.emptyState}>
-            <p>🎉 Nenhuma sugestão pendente! Tudo limpo por aqui.</p>
+            <p> Nenhuma sugestão pendente! Tudo limpo por aqui.</p>
           </div>
         )}
       </div>
@@ -189,14 +189,14 @@ export default function SugestoesRecebidasPage() {
                 className={styles.btnReject} 
                 onClick={() => handleAvaliar('rejeitada')}
               >
-                Rejeitar X
+                Rejeitar 
               </button>
 
               <button 
                 className={styles.btnApprove} 
                 onClick={() => handleAvaliar('aprovada')}
               >
-                Aprovar & Pontuar ✅
+                Aprovar & Pontuar 
               </button>
             </div>
           </div>

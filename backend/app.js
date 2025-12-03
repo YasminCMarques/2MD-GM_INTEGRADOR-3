@@ -20,6 +20,7 @@ import { errorMiddleware } from './middlewares/errorMiddleware.js';
 // Carregar variáveis do arquivo .env
 dotenv.config();
 
+import dashboardRotas from './routes/dashboardRotas.js'; 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -55,6 +56,8 @@ app.use('/api/criptografia', criptografiaRotas);
 app.use('/api/usuarios', usuarioRotas);
 app.use('/api/ranking', rankingRoutes);
 app.use('/api/sugestoes', sugestoesRoutes); // ✅ Rota registrada corretamente!
+app.use('/api/dashboard', dashboardRotas);
+
 
 // Rota raiz
 app.get('/', (req, res) => {

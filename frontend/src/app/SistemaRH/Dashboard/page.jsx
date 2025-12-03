@@ -1,12 +1,11 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import {
   Users,
   GraduationCap,
   ClipboardCheck,
   BarChart3,
-  Gift,
-  DollarSign,
   Circle,
   TrendingUp,
   FileText,
@@ -14,117 +13,141 @@ import {
 import "./dashboard.css";
 
 export default function DashboardContent() {
+  // Estado inicial com valores zerados
+  const [data, setData] = useState({
+    totalColaboradores: 0,
+    totalEstagiarios: 0,
+    avaliacoesPendentes: 0,
+    performanceMedia: 0,
+    topPerformers: [],
+    atividadesRecentes: []
+  });
+  
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchDashboard() {
+      try {
+        // IMPORTANTE: Certifique-se que a URL bate com seu backend
+        const response = await fetch('http://localhost:3000/api/dashboard');
+        
+        if (response.ok) {
+          const result = await response.json();
+          setData(result);
+        } else {
+          console.error("Erro ao buscar dados");
+        }
+      } catch (error) {
+        console.error("Erro de conexão:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchDashboard();
+  }, []);
+
+  if (loading) {
+    return <div className="rh-dashboard-container"><p>Carregando dados...</p></div>;
+  }
+
   return (
     <div className="rh-dashboard-container">
 
       <h1 className="rh-title">Dashboard</h1>
       <p className="rh-subtitle">Visão geral do sistema de gestão de colaboradores</p>
 
+      {/* CARDS SUPERIORES - DADOS REAIS */}
       <div className="rh-cards-grid">
         <div className="rh-card">
           <Users className="rh-card-icon blue" />
           <h3>Total de Colaboradores</h3>
-          <p className="rh-card-value">847</p>
-          <span className="rh-card-status positive">+ 10 este mês</span>
+          <p className="rh-card-value">{data.totalColaboradores}</p>
+          <span className="rh-card-status positive">Ativos no sistema</span>
         </div>
 
         <div className="rh-card">
           <GraduationCap className="rh-card-icon purple" />
           <h3>Aprendizes/Estagiários</h3>
-          <p className="rh-card-value">50</p>
-          <span className="rh-card-status positive">+ 8 este mês</span>
+          <p className="rh-card-value">{data.totalEstagiarios}</p>
+          <span className="rh-card-status positive">Em treinamento</span>
         </div>
 
         <div className="rh-card">
           <ClipboardCheck className="rh-card-icon yellow" />
           <h3>Avaliações Pendentes</h3>
-          <p className="rh-card-value">23</p>
-          <span className="rh-card-status negative">- 10 este mês</span>
+          <p className="rh-card-value">{data.avaliacoesPendentes}</p>
+          <span className="rh-card-status negative">Aguardando aprovação</span>
         </div>
 
         <div className="rh-card">
           <BarChart3 className="rh-card-icon green" />
           <h3>Performance Média</h3>
-          <p className="rh-card-value">8.4</p>
-          <span className="rh-card-status positive">+ 0.3 este mês</span>
+          <p className="rh-card-value">{data.performanceMedia}</p>
+          <span className="rh-card-status positive">Pontuação Geral</span>
         </div>
-
-        
       </div>
 
       
       <div className="rh-section-clean">
         <h3 className="titulo1">Gráficos de Performance</h3>
         
-        
         <div className="rh-vertical-stack">
-          
           <div className="rh-card-wide">
             <TrendingUp className="rh-card-icon green" />
             <h3>Crescimento de Colaboradores</h3>
             <p className="rh-card-value">+20%</p>
-            <span className="rh-card-status positive">Este mês</span>
+            <span className="rh-card-status positive">Este mês (Simulado)</span>
           </div>
 
           <div className="rh-card-wide">
             <BarChart3 className="rh-card-icon blue" />
             <h3>Performance em Projetos</h3>
             <p className="rh-card-value">80%</p>
-            <span className="rh-card-status positive">Excelente</span>
+            <span className="rh-card-status positive">Excelente (Simulado)</span>
           </div>
-
         </div>
       </div>
 
       <div className="rh-bottom-grid">
         
-        
+        {/* ATIVIDADES RECENTES - VINDO DOS LOGS */}
         <div className="rh-box">
-          <h3>Atividades Recentes</h3>
-          <div className="rh-activity">
-            <Circle className="dot green" /> Ana Silva
-            <span className="activity-info">Novo Colaborador</span>
-            <span className="activity-time">Há 2 horas</span>
-          </div>
-          <div className="rh-activity">
-            <Circle className="dot blue" /> Carlos Santos
-            <span className="activity-info">Feedback Enviado</span>
-            <span className="activity-time">Há 3 horas</span>
-          </div>
-          <div className="rh-activity">
-            <Circle className="dot yellow" /> Maria Oliveira
-            <span className="activity-info">Bonificação</span>
-            <span className="activity-time">Há 5 horas</span>
-          </div>
-          <div className="rh-activity">
-            <Circle className="dot green" /> João Pedro
-            <span className="activity-info">Treinamento Concluído</span>
-            <span className="activity-time">Há 6 horas</span>
-          </div>
+          <h3>Atividades Recentes (Logs)</h3>
+          {data.atividadesRecentes && data.atividadesRecentes.length > 0 ? (
+            data.atividadesRecentes.map((item, index) => (
+              <div className="rh-activity" key={index}>
+                <Circle className="dot blue" /> {item.nome}
+                <span className="activity-info">{item.acao}</span>
+                <span className="activity-time">{item.tempo}</span>
+              </div>
+            ))
+          ) : (
+            <p>Sem atividades recentes.</p>
+          )}
         </div>
 
+        {/* RANKING - VINDO DO BANCO */}
         <div className="rh-box">
           <h3>Top Performers do Mês</h3>
-          <div className="rh-performer">
-            <span className="rank gold">1</span> Maria Oliveira - Vendas
-            <span className="score">9.8</span>
-          </div>
-          <div className="rh-performer">
-            <span className="rank silver">2</span> Carlos Santos - Engenharia
-            <span className="score">9.5</span>
-          </div>
-          <div className="rh-performer">
-            <span className="rank bronze">3</span> Ana Silva - Marketing
-            <span className="score">9.3</span>
-          </div>
-          <div className="rh-performer">
-            <span className="rank blue">4</span> Pedro Costa - TI
-            <span className="score">9.1</span>
-          </div>
+          {data.topPerformers && data.topPerformers.length > 0 ? (
+            data.topPerformers.map((user, index) => (
+              <div className="rh-performer" key={index}>
+                <span className={`rank ${index === 0 ? 'gold' : index === 1 ? 'silver' : 'bronze'}`}>
+                  {index + 1}
+                </span> 
+                {user.nome} - {user.departamento || 'Geral'}
+                <span className="score">{user.score}</span>
+              </div>
+            ))
+          ) : (
+             <p>Nenhum ranking disponível.</p>
+          )}
         </div>
 
       </div>
 
+      {/* RODAPÉ ESTÁTICO (Mantido original) */}
       <div className="rh-box">
         <h3>Últimos Relatórios Gerados</h3>
         <div className="rh-activity">

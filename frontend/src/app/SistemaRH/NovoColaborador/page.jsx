@@ -11,7 +11,7 @@ export default function NovoColaboradorContent() {
     sobrenome: '',
     email: '',
     telefone: '',
-    cargo: '',
+    cpf: '',
     departamento: 'vendas',
     senha: '',
     tipo: 'comum'
@@ -82,7 +82,7 @@ export default function NovoColaboradorContent() {
         nome: `${formData.nome} ${formData.sobrenome}`.trim(),
         email: formData.email,
         telefone: formData.telefone,
-        cargo: formData.cargo,
+        cpf: formData.cpf,
         departamento: formData.departamento,
         senha: formData.senha,
         tipo: formData.tipo,
@@ -111,7 +111,7 @@ export default function NovoColaboradorContent() {
         // Limpa tudo
         setFormData({
           nome: '', sobrenome: '', email: '', telefone: '',
-          cargo: '', departamento: 'vendas', senha: '', tipo: 'comum'
+          cpf: '', departamento: 'vendas', senha: '', tipo: 'comum'
         });
         setFotoArquivo(null);
         setFotoPreview(null);
@@ -182,8 +182,8 @@ export default function NovoColaboradorContent() {
             <input type="telefone" id="telefone" name="telefone" value={formData.telefone} onChange={handleChange} placeholder="(11) 99999-9999" />
           </div>
            <div className="form-group">
-            <label htmlFor="cargo">Cargo</label>
-            <input type="text" id="cargo" name="cargo" value={formData.cargo} onChange={handleChange} placeholder="Ex: Desenvolvedor Senior" required />
+            <label htmlFor="cpf">CPF</label>
+            <input type="text" id="cpf" name="cpf" value={formData.cpf} onChange={handleChange} placeholder="Ex: CPF" required />
           </div>
           <div className="form-group">
             <label htmlFor="departamento">Departamento</label>

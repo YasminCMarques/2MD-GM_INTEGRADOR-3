@@ -86,7 +86,12 @@ export default function ColaboradoresContent() {
 
             if (!res.ok) {
                 const errorData = await res.json().catch(() => ({}));
-                throw new Error(errorData.message || "Erro ao atualizar usuário.");
+                throw new Error(
+                    errorData.mensagem ||
+                    errorData.erro ||
+                    errorData.message ||
+                    "Erro ao atualizar usuário."
+                );
             }
 
             Swal.fire("Usuário atualizado!");
@@ -140,7 +145,12 @@ export default function ColaboradoresContent() {
 
                     if (!res.ok) {
                         const errorData = await res.json().catch(() => ({}));
-                        throw new Error(errorData.message || "Erro ao excluir usuário.");
+                        throw new Error(
+                            errorData.mensagem ||
+                            errorData.erro ||
+                            errorData.message ||
+                            "Erro ao excluir usuário."
+                        );
                     }
 
                     setColaboradores((prev) => prev.filter((c) => c.id !== formData.id));

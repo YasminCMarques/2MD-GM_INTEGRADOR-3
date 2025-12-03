@@ -179,7 +179,7 @@ export default function NovoColaboradorContent() {
           </div>
            <div className="form-group">
             <label htmlFor="telefone">Telefone</label>
-            <input type="tel" id="telefone" name="telefone" value={formData.telefone} onChange={handleChange} placeholder="(11) 99999-9999" />
+            <input type="telefone" id="telefone" name="telefone" value={formData.telefone} onChange={handleChange} placeholder="(11) 99999-9999" />
           </div>
            <div className="form-group">
             <label htmlFor="cargo">Cargo</label>

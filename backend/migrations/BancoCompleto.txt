@@ -1,15 +1,4 @@
--- Migration: Criar banco de dados produtos_api
--- Data: 2025-01-15
--- Descrição: Criação inicial do banco de dados
-
 CREATE DATABASE IF NOT EXISTS produtos_api;
-
--- Usar o banco de dados criado
-USE produtos_api;
-
--- Migration: Criar tabela usuarios
--- Data: 2025-01-15
--- Descrição: Tabela para armazenar usuários do sistema
 
 USE produtos_api;
 
@@ -22,8 +11,6 @@ CREATE TABLE IF NOT EXISTS usuarios (
     data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
     data_atualizacao DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
-
-
 
 
 -- Migration: Criar banco de dados produtos_api
@@ -60,7 +47,7 @@ USE produtos_api;
 -- Inserir usuários iniciais (senha: 123456)
 -- Hash gerado com bcrypt para a senha "123456" (validado)
 INSERT INTO usuarios (nome, email, senha, tipo) VALUES
-('Administrador', 'admin@produtos.com', '$2a$10$BLAcJu1irAzg06WbtoLoPe0RA.hkfZ0oJ25KYARPkHWRweJuWBALy', 'admin'),
+('Administrador', 'admin@gm.com', '$2a$10$BLAcJu1irAzg06WbtoLoPe0RA.hkfZ0oJ25KYARPkHWRweJuWBALy', 'admin'),
 ('João Silva', 'joao@email.com', '$2a$10$BLAcJu1irAzg06WbtoLoPe0RA.hkfZ0oJ25KYARPkHWRweJuWBALy', 'comum'),
 ('Maria Souza', 'maria@email.com', '$2a$10$BLAcJu1irAzg06WbtoLoPe0RA.hkfZ0oJ25KYARPkHWRweJuWBALy', 'comum');
 
@@ -79,9 +66,6 @@ VALUES
 
 ('Beatriz Rocha', 'beatriz.rocha@email.com', '$2a$10$BLAcJu1irAzg06WbtoLoPe0RA.hkfZ0oJ25KYARPkHWRweJuWBALy', 'comum');
 
--- Migration: Criar tabela logs
--- Data: 2025-10-28
--- Descrição: Tabela para registrar logs de acesso às rotas da API
 
 USE produtos_api;
 
@@ -106,13 +90,6 @@ CREATE INDEX idx_logs_data_hora ON logs(data_hora);
 CREATE INDEX idx_logs_rota ON logs(rota);
 CREATE INDEX idx_logs_metodo ON logs(metodo);
 CREATE INDEX idx_logs_status_code ON logs(status_code);
-
-
-INSERT INTO usuarios (nome, email, senha, tipo)
-VALUES
-
-('Patrícia Lima', 'patricia.lima2@email.com', '$2a$10$BLAcJu1irAzg06WbtoLoPe0RA.hkfZ0oJ25KYARPkHWRweJuWBALy', 'comum') ;
-
 
 -- TELA DE RANKING 
 
@@ -171,9 +148,6 @@ INSERT INTO sugestoes (usuario_id, titulo, descricao, status, pontos_gerados) VA
 (1, 'Automação de Deploy', 'Pipeline CI/CD', 'em_analise', 0.0); -- Não conta ainda
 -- Total Admin: 9.0
 
-select * from sugestoes;
-select * from usuarios ;
-
 USE produtos_api;
 
 -- 1. Vamos garantir que existem usuários para vincular as sugestões
@@ -205,8 +179,6 @@ INSERT INTO sugestoes (usuario_id, titulo, descricao, status, pontos_gerados, da
 
 USE produtos_api;
 
-
-
 -- 1. Adicionar a coluna CPF (Deve ser ÚNICA para não ter duas pessoas com o mesmo CPF)
 ALTER TABLE usuarios
 ADD COLUMN cpf VARCHAR(14) UNIQUE AFTER email;
@@ -215,7 +187,7 @@ ADD COLUMN cpf VARCHAR(14) UNIQUE AFTER email;
 -- Estou usando o formato com pontuação (000.000.000-00) pois é o mais comum de salvar
 
 -- Administrador
-UPDATE usuarios SET cpf = '000.000.000-01' WHERE email = 'admin@produtos.com';
+UPDATE usuarios SET cpf = '000.000.000-01' WHERE email = 'admin@gm.com';
 
 -- João Silva (Vendas)
 UPDATE usuarios SET cpf = '111.111.111-11' WHERE email = 'joao@email.com';
@@ -241,11 +213,43 @@ UPDATE usuarios SET cpf = '777.777.777-77' WHERE email = 'fernando.alves@email.c
 -- Beatriz Rocha
 UPDATE usuarios SET cpf = '888.888.888-88' WHERE email = 'beatriz.rocha@email.com';
 
--- Patrícia Marina (lima2)
-UPDATE usuarios SET cpf = '999.999.999-99' WHERE email = 'patricia.lima2@email.com';
-
--- Cauã Teste
-UPDATE usuarios SET cpf = '123.456.789-00' WHERE email = 'caua@gm.com';
-
 -- Verificar como ficou
 SELECT id, nome, email, cpf, tipo FROM usuarios;
+
+ALTER TABLE usuarios
+ADD telefone int NOT NULL;
+
+select * from usuarios;
+
+ALTER TABLE usuarios
+MODIFY telefone VARCHAR(20) NOT NULL;
+
+-- Administrador
+UPDATE usuarios SET telefone = '11911111111' WHERE email = 'admin@gm.com';
+
+-- João Silva (Vendas)
+UPDATE usuarios SET telefone = '11922222222' WHERE email = 'joao@email.com';
+
+-- Maria Souza (Marketing)
+UPDATE usuarios SET telefone = '11933333333' WHERE email = 'maria@email.com';
+
+-- João Mendes
+UPDATE usuarios SET telefone = '11944444444' WHERE email = 'joao.mendes@email.com';
+
+-- Ana Costa
+UPDATE usuarios SET telefone = '11955555555' WHERE email = 'ana.costa@email.com';
+
+-- Carlos Henrique
+UPDATE usuarios SET telefone = '11966666666' WHERE email = 'carlos.henrique@email.com';
+
+-- Patrícia Lima
+UPDATE usuarios SET telefone = '11977777777' WHERE email = 'patricia.lima@email.com';
+
+-- Fernando Alves (Admin 2)
+UPDATE usuarios SET telefone = '11988888888' WHERE email = 'fernando.alves@email.com';
+
+-- Beatriz Rocha
+UPDATE usuarios SET telefone = '11999999999' WHERE email = 'beatriz.rocha@email.com';
+
+
+select * from usuarios
